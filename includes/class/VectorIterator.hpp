@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:20:21 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/09 21:07:28 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/09 21:16:11 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 namespace ft
 {
-	template <typename T>
+	template <class T>
 	class VectorIterator
 	{
 		public:
@@ -55,6 +55,7 @@ namespace ft
 			{
 				if (this != &rhs)
 					this->_ptr = rhs._ptr;
+					
 				return *this;
 			}
 
