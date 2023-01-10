@@ -33,7 +33,7 @@ https://learn.microsoft.com/en-us/cpp/standard-library/vector-class?view=msvc-17
 	
 https://www.simplilearn.com/tutorials/cpp-tutorial/cpp-vector
 ## (constructor)
-- [V] explicit vector (const allocator_type& alloc = allocator_type());
+- [x] explicit vector (const allocator_type& alloc = allocator_type());
 - [x] explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type());
 - [x] template <class InputIterator> vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type());
 - [x] vector (const vector& x);
