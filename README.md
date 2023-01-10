@@ -33,15 +33,15 @@ https://learn.microsoft.com/en-us/cpp/standard-library/vector-class?view=msvc-17
 	
 https://www.simplilearn.com/tutorials/cpp-tutorial/cpp-vector
 ## (constructor)
-- [x] explicit vector (const allocator_type& alloc = allocator_type());
-- [x] explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type());
-- [x] template <class InputIterator> vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type());
-- [x] vector (const vector& x);
+- [ok] explicit vector (const allocator_type& alloc = allocator_type());
+- [ok] explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type());
+- [ok] template <class InputIterator> vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type());
+- [ok] vector (const vector& x);
 ## (destructor)
 ## operator=
-- [x] vector& operator= (const vector& x);
+- [ok] vector& operator= (const vector& x);
 ## begin
-- [x] iterator begin()
+- [ok] iterator begin()
 - [x] const_iterator begin() const;
 ## end
 - [x] iterator end()
@@ -91,7 +91,7 @@ https://www.simplilearn.com/tutorials/cpp-tutorial/cpp-vector
 - [x] iterator erase (iterator position)
 - [x] iterator erase (iterator first, iterator last);
 ## clear
-- [x] void clear();
+- [ok] void clear();
 ## swap
 - [x] void swap(Vector &x);
 ## relational operators

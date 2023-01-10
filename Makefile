@@ -6,13 +6,13 @@
 #    By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/23 13:22:35 by nadesjar          #+#    #+#              #
-#    Updated: 2023/01/09 21:07:47 by dracken24        ###   ########.fr        #
+#    Updated: 2023/01/10 00:24:40 by dracken24        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 P_OBJS 		= ./objs/
 P_SRCS		= ./srcs/
-P_CLASS		= ./srcs/class/
+P_CLASS		= ./srcs/templates/
 
 FILES			= $(P_SRCS)main.cpp \
 
