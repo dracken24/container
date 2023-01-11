@@ -42,67 +42,67 @@ https://www.simplilearn.com/tutorials/cpp-tutorial/cpp-vector
 - [ok] vector& operator= (const vector& x);
 ## begin
 - [ok] iterator begin()
-- [x] const_iterator begin() const;
+- [ok] const_iterator begin() const;
 ## end
-- [x] iterator end()
-- [x] const_iterator end() const;
+- [ok] iterator end()
+- [ok] const_iterator end() const;
 ## rbegin
-- [x] reverse_iterator rbegin()
-- [x] const_reverse_iterator rbegin() const;
+- [ok] reverse_iterator rbegin()
+- [ok] const_reverse_iterator rbegin() const;
 ## rend
-- [x] reverse_iterator rend()
-- [x] const_reverse_iterator rend() const;
+- [ok] reverse_iterator rend()
+- [ok] const_reverse_iterator rend() const;
 ## size
-- [x] size_type size() const;
+- [ok] size_type size() const;
 ## max_size
-- [x] size_type max_size() const;
+- [ok] size_type max_size() const;
 ## resize
-- [x] void resize (size_type n, value_type val = value_type());
+- [ok] void resize (size_type n, value_type val = value_type());
 ## capacity
-- [x] size_type capacity() const;
+- [ok] size_type capacity() const;
 ## empty
-- [x] bool empty() const;
+- [ok] bool empty() const;
 ## reserve
-- [x] void reserve (size_type n);
+- [ok] void reserve (size_type n);
 ## operator[]
-- [x] reference operator[] (size_type n)
-- [x] const_reference operator[] (size_type n) const;
+- [ok] reference operator[] (size_type n)
+- [ok] const_reference operator[] (size_type n) const;
 ## at
-- [x] reference at (size_type n)
-- [x] const_reference at (size_type n) const;
+- [ok] reference at (size_type n)
+- [ok] const_reference at (size_type n) const;
 ## front
-- [x] reference front()
-- [x] const_reference front() const;
+- [ok] reference front()
+- [ok] const_reference front() const;
 ## back
-- [x] reference back()
-- [x] const_reference back() const;
+- [ok] reference back()
+- [ok] const_reference back() const;
 ## assign
-- [x] template <class InputIterator> void assign (InputIterator first, InputIterator last);
-- [x] void assign (size_type n, const value_type& val);
+- [ok] template <class InputIterator> void assign (InputIterator first, InputIterator last);
+- [ok] void assign (size_type n, const value_type& val);
 ## push_back
-- [x] void push_back (const value_type& val);
+- [ok] void push_back (const value_type& val);
 ## pop_back
-- [x] void pop_back();
+- [ok] void pop_back();
 ## insert
-- [x] iterator insert (iterator position, const value_type& val);
-- [x] void insert (iterator position, size_type n, const value_type& val);
-- [x] template <class InputIterator> void insert (iterator position, InputIterator first, InputIterator last);
+- [ok] iterator insert (iterator position, const value_type& val);
+- [ok] void insert (iterator position, size_type n, const value_type& val);
+- [ok] template <class InputIterator> void insert (iterator position, InputIterator first, InputIterator last);
 ## erase
 - [x] iterator erase (iterator position)
 - [x] iterator erase (iterator first, iterator last);
 ## clear
 - [ok] void clear();
 ## swap
-- [x] void swap(Vector &x);
+- [ok] void swap(Vector &x);
 ## relational operators
-- [x] template <class T, class Alloc> bool operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-- [x] template <class T, class Alloc> bool operator!= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-- [x] template <class T, class Alloc> bool operator< (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-- [x] template <class T, class Alloc> bool operator<= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-- [x] template <class T, class Alloc> bool operator> (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-- [x] template <class T, class Alloc> bool operator>= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
+- [ok] template <class T, class Alloc> bool operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
+- [ok] template <class T, class Alloc> bool operator!= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
+- [ok] template <class T, class Alloc> bool operator< (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
+- [ok] template <class T, class Alloc> bool operator<= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
+- [ok] template <class T, class Alloc> bool operator> (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
+- [ok] template <class T, class Alloc> bool operator>= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
 ## swap
-- [x] template <class T, class Alloc> void swap (vector<T,Alloc>& x, vector<T,Alloc>& y);
+- [ok] template <class T, class Alloc> void swap (vector<T,Alloc>& x, vector<T,Alloc>& y);
 
 # MAP_______________________________________
 ## (constructor)
