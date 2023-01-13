@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 08:09:40 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/12 20:31:44 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/12 23:41:06 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ namespace ft
 		pointer _m_ptr;
 	};
 
-	template < class Iterator >
+	template < typename Iterator >
     struct iterator_traits
     {
         typedef typename Iterator::iterator_category   iterator_category;
@@ -137,7 +137,7 @@ namespace ft
         typedef typename Iterator::reference           reference;
     };
 
-	template < class Iterator, class Container >
+	template < typename Iterator, typename Container >
     class normal_iterator
     {
 
@@ -184,6 +184,7 @@ namespace ft
         normal_iterator& operator=(const normal_iterator& other)
         {
             _Elem = other._Elem;
+			
             return *this;
         }
 
@@ -221,7 +222,7 @@ namespace ft
 			return normal_iterator(_Elem--);
 		}
 
-        reference operator[](difference_type n)
+        reference operator[](difference_type n) 
 		{
 			return _Elem[n];
 		}
@@ -229,24 +230,24 @@ namespace ft
         normal_iterator& operator+=(difference_type n)
         {
             _Elem += n;
+			
             return *this;
         }
 
         normal_iterator operator+(difference_type n) const
-        {
-			return normal_iterator(_Elem + n);
-		}
+        { return normal_iterator(_Elem + n); }
 
         normal_iterator& operator-=(difference_type n)
         {
             _Elem -= n;
+			
             return *this;
         }
       
         normal_iterator operator-(difference_type n) const
-        {
+        { 
 			return normal_iterator(_Elem - n);
-		}
+			}
        
         const iterator_type& base() const
 		{
@@ -254,6 +255,17 @@ namespace ft
 		}
 
     };
+
+	template<class Iterator>
+	struct iterator_traits
+	{
+		typedef typename Iterator::value_type			value_type;
+		typedef typename Iterator::difference_type		difference_type;
+		typedef typename Iterator::pointer				pointer;
+		typedef typename Iterator::reference			reference;
+		typedef typename Iterator::iterator_category	iterator_category;
+	};
+
 
 	template<class Iterator>
 	class reverse_iterator
