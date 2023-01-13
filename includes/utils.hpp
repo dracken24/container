@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:13:12 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/11 11:15:54 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/12 20:02:03 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 # define UTILS_HPP
 
     template<bool B, typename T = void >
-    struct enable_if {};
+    struct enable_if
+	{
+		
+	};
 
     template<typename T>
     struct enable_if<true, T>
@@ -30,13 +33,13 @@
 		static const bool           value = Val;
 	};
 
-    typedef integral_constant<bool, true> true_type;
-	typedef integral_constant<bool, false> false_type;
+    typedef integral_constant<bool, true>	true_type;
+	typedef integral_constant<bool, false>	false_type;
     
 	//* ============================= Is_integral =============================
 	
 	template < typename >
-	struct _is_integral_result : public false_type {};
+	struct _is_integral_result : public false_type	{};
 	
 	template <>
 	struct _is_integral_result<bool> : public true_type {};

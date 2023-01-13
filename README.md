@@ -88,8 +88,8 @@ https://www.simplilearn.com/tutorials/cpp-tutorial/cpp-vector
 - [ok] void insert (iterator position, size_type n, const value_type& val);
 - [ok] template <class InputIterator> void insert (iterator position, InputIterator first, InputIterator last);
 ## erase
-- [x] iterator erase (iterator position)
-- [x] iterator erase (iterator first, iterator last);
+- [ok] iterator erase (iterator position)
+- [ok] iterator erase (iterator first, iterator last);
 ## clear
 - [ok] void clear();
 ## swap
