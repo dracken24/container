@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 23:43:30 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/15 16:06:17 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/16 19:02:05 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,107 +20,106 @@
 # include <limits>
 
 // # include "Iterator.hpp"
-# include "../utils.hpp"
 
-namespace ft
-{
-	template < typename T, typename Alloc = std::allocator<T> >
-	class Vector
-	{
-		public:
-			typedef T		value_type;
-			typedef Alloc	allocator_type;
+// namespace ft
+// {
+// 	template < typename T, typename Alloc = std::allocator<T> >
+// 	class Vector
+// 	{
+// 		public:
+// 			typedef T		value_type;
+// 			typedef Alloc	allocator_type;
 			
-			typedef typename allocator_type::reference			reference;
-			typedef typename allocator_type::const_reference	const_reference;
-			typedef typename allocator_type::pointer			pointer;
-			typedef typename allocator_type::const_pointer		const_pointer;
+// 			typedef typename allocator_type::reference			reference;
+// 			typedef typename allocator_type::const_reference	const_reference;
+// 			typedef typename allocator_type::pointer			pointer;
+// 			typedef typename allocator_type::const_pointer		const_pointer;
 			
-			typedef typename ft::Iterator<T>::difference_type	difference_type;
-			typedef typename ft::Iterator<T>::size_type			size_type;
-			typedef typename ft::ConstReverseIterator<T>		const_reverse_iterator;
-			typedef typename ft::ReverseIterator<T>				reverse_iterator;
-			typedef typename ft::ConstIterator<T>				const_iterator;
-			typedef typename ft::Iterator<T>					iterator;
+// 			typedef typename ft::Iterator<T>::difference_type	difference_type;
+// 			typedef typename ft::Iterator<T>::size_type			size_type;
+// 			typedef typename ft::ConstReverseIterator<T>		const_reverse_iterator;
+// 			typedef typename ft::ReverseIterator<T>				reverse_iterator;
+// 			typedef typename ft::ConstIterator<T>				const_iterator;
+// 			typedef typename ft::Iterator<T>					iterator;
 
-		public:
-			explicit Vector(const allocator_type& alloc = allocator_type()) :
-			_array(_alloc.allocate(0)),
-			_end(_array),
-			_size(0),
-			_capacity(0),
-			_alloc(alloc),
-			_endOfContainer(_array)
-			{
-				return ;
-			}
-			explicit Vector(size_type n, const value_type& val = value_type(),
-				const allocator_type& alloc = allocator_type()) :
-			_array(_alloc.allocate(n)),
-			_end(_array + n),
-			_size(n),
-			_capacity(n),
-			_alloc(alloc),
-			_endOfContainer(_array + n)
-			{
-				return ;
-			}
+// 		public:
+// 			explicit Vector(const allocator_type& alloc = allocator_type()) :
+// 			_array(_alloc.allocate(0)),
+// 			_end(_array),
+// 			_size(0),
+// 			_capacity(0),
+// 			_alloc(alloc),
+// 			_endOfContainer(_array)
+// 			{
+// 				return ;
+// 			}
+// 			explicit Vector(size_type n, const value_type& val = value_type(),
+// 				const allocator_type& alloc = allocator_type()) :
+// 			_array(_alloc.allocate(n)),
+// 			_end(_array + n),
+// 			_size(n),
+// 			_capacity(n),
+// 			_alloc(alloc),
+// 			_endOfContainer(_array + n)
+// 			{
+// 				return ;
+// 			}
 
-			template <class InputIterator>
-			Vector(InputIterator first, InputIterator last,
-				const allocator_type& alloc = allocator_type()) :
-			_array(_alloc.allocate(last - first)),
-			_end(_array + (last - first)),
-			_size(last - first),
-			_capacity(last - first),
-			_alloc(alloc),
-			_endOfContainer(_array + (last - first))
-			{
-				for (size_type i = 0; i < _size; i++)
-					_array[i] = *first++;
+// 			template <class InputIterator>
+// 			Vector(InputIterator first, InputIterator last,
+// 				const allocator_type& alloc = allocator_type()) :
+// 			_array(_alloc.allocate(last - first)),
+// 			_end(_array + (last - first)),
+// 			_size(last - first),
+// 			_capacity(last - first),
+// 			_alloc(alloc),
+// 			_endOfContainer(_array + (last - first))
+// 			{
+// 				for (size_type i = 0; i < _size; i++)
+// 					_array[i] = *first++;
 
-				return ;
-			}
+// 				return ;
+// 			}
 
-			Vector(const Vector& src) :
-			_array(_alloc.allocate(x._size)),
-			_end(_array + x._size),
-			_size(x._size),
-			_capacity(x._size),
-			_alloc(x._alloc),
-			_endOfContainer(_array + x._size)
-			{
-				for (size_type i = 0; i < _size; i++)
-					_array[i] = x._array[i];
+// 			Vector(const Vector& src) :
+// 			_array(_alloc.allocate(x._size)),
+// 			_end(_array + x._size),
+// 			_size(x._size),
+// 			_capacity(x._size),
+// 			_alloc(x._alloc),
+// 			_endOfContainer(_array + x._size)
+// 			{
+// 				for (size_type i = 0; i < _size; i++)
+// 					_array[i] = x._array[i];
 
-				return ;
-			}
+// 				return ;
+// 			}
 			
-			~Vector()
-			{
-				_alloc.deallocate(_array, _capacity);
+// 			~Vector()
+// 			{
+// 				_alloc.deallocate(_array, _capacity);
 
-				return ;
-			}
+// 				return ;
+// 			}
 
-			Vector& operator=(const Vector& src)
-			{
-				if (this != &x)
-				{
-					clear();
-					_alloc = src.allocate(src._size);
-					_array = _alloc.allocate(x._size);
-					_end = _array + x._size;
-					_size = 0;
-					_capacity = 0;
-					_endOfContainer = _array + x._size;
+// 			Vector& operator=(const Vector& src)
+// 			{
+// 				if (this != &x)
+// 				{
+// 					clear();
+// 					_alloc = src.allocate(src._size);
+// 					_array = _alloc.allocate(x._size);
+// 					_end = _array + x._size;
+// 					_size = 0;
+// 					_capacity = 0;
+// 					_endOfContainer = _array + x._size;
 					
-					for (size_type i = 0; i < _size; i++)
-						_array[i] = src._array[i];
-				}
+// 					for (size_type i = 0; i < _size; i++)
+// 						_array[i] = src._array[i];
+// 				}
 				
-				return *this;
-			}
+// 				return *this;
+// 			}
 
 			// iterator begin();
 
@@ -211,16 +210,16 @@ namespace ft
 			// void swap (vector<T,Alloc>& x, vector<T,Alloc>& y);
 
 			
-		private:
-			allocator_type	_alloc; // object that allocates elements
+		// private:
+		// 	allocator_type	_alloc; // object that allocates elements
 			
-			size_type       _capacity; // size of the storage space currently allocated for the array, expressed in terms of elements
-			size_type		_size; // number of elements in the array
+		// 	size_type       _capacity; // size of the storage space currently allocated for the array, expressed in terms of elements
+		// 	size_type		_size; // number of elements in the array
 			
-			pointer			_endOfContainer; // pointer to the end of the storage space currently allocated for the array
-			pointer			_array; //  pointer to the first element in the array
-			pointer			_end; // pointer to the last element in the array
-	};  
-};
+		// 	pointer			_endOfContainer; // pointer to the end of the storage space currently allocated for the array
+		// 	pointer			_array; //  pointer to the first element in the array
+		// 	pointer			_end; // pointer to the last element in the array
+// 	};  
+// };
 
 #endif

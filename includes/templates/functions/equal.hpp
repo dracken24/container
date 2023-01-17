@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   equal.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 20:19:35 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/16 18:57:47 by dracken24        ###   ########.fr       */
+/*   Created: 2023/01/16 18:50:19 by dracken24         #+#    #+#             */
+/*   Updated: 2023/01/16 18:51:56 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/container.hpp"
+#ifndef EQUAL_HPP
+# define EQUAL_HPP
 
-int main(void)
+# include <iostream>
+# include <iterator>
+# include <cstddef>
+
+namespace ft
 {
-	// int arr[5];
-	// arr[0] = 49;
-	// arr[1] = -8;
-	// arr[2] = 74;
-	// arr[3] = 336;
-	// arr[4] = 5;
-	// ft::Vector<int> v1(arr, arr + 5);
-	// ft::Vector<int>(5, 42);
-
-	return 0;
+	template <class InputIterator1, class InputIterator2>
+	bool equal(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2)
+	{
+		while (first1 != last1)
+		{
+			if (!(*first1 == *first2))
+				return false;
+			++first1;
+			++first2;
+		}
+		return true;
+	}
 }
+
+#endif
