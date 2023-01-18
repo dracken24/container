@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/17 23:03:00 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/17 23:09:56 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	while (input.compare("q") != 0 || input.compare("Q") != 0)
 	{
 		std::cout << std::endl;
-		std::cout << YELLOW << "Make a choice" << std::endl;
+		std::cout << MAGENTA << "Make a choice" << std::endl;
 		std::cout << "----------------------------------------" << GREEN  << std::endl;
 		std::cout << "For Stack tests, enter: 1" << GREEN << std::endl << std::endl;
 		std::cout << RED << "Enter: 'Q' for quit" << RESET << std::endl;
@@ -28,7 +28,7 @@ int	main(void)
 		
 		if (input.compare("1") == 0)
 			system("make stack");
-		if (input.compare("q") == 0 || input.compare("Q") == 0)
+		else if (input.compare("q") == 0 || input.compare("Q") == 0)
 			break ;
 		else
 			std::cout << RED << "Invalid input" << RESET << std::endl;
