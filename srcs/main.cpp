@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/17 23:09:56 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/17 23:14:38 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ int	main(void)
 	while (input.compare("q") != 0 || input.compare("Q") != 0)
 	{
 		std::cout << std::endl;
-		std::cout << MAGENTA << "Make a choice" << std::endl;
+		std::cout << MAGENTA <<  "----------------------------------------" << std::endl;
+		std::cout << "Make a choice" << std::endl;
 		std::cout << "----------------------------------------" << GREEN  << std::endl;
 		std::cout << "For Stack tests, enter: 1" << GREEN << std::endl << std::endl;
 		std::cout << RED << "Enter: 'Q' for quit" << RESET << std::endl;
+		
+		std::cout << "Choice: "; 
 		std::cin >> input;
 		std::cout << std::endl;
 		
