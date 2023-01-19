@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:54:50 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/16 18:55:10 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/18 19:04:40 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 namespace ft
 {
     template <class InputIterator1, class InputIterator2>
-    bool lexicographicalCompare(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, InputIterator2 last2)
+    bool lexicographical_compare(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, InputIterator2 last2)
     {
         while (first1 != last1)
         {

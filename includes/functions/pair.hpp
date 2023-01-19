@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:08:02 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/16 19:10:50 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/18 15:25:45 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,30 @@
 namespace ft
 {
 	template <class T1, class T2>
-	class pair
+	struct pair
 	{
-		public:
 			typedef T1 first_type;
 			typedef T2 second_type;
 
 			first_type first;
 			second_type second;
 
-			pair() : first(), second() {}
-			pair(const first_type& a, const second_type& b) : first(a), second(b) {}
+			pair() : first(), second()
+			{
+				return ;
+			}
+			
+			pair(const first_type& a, const second_type& b) : first(a), second(b)
+			{
+				return ;
+			}
+			
 			template <class U, class V>
-			pair(const pair<U, V>& pr) : first(pr.first), second(pr.second) {}
+			pair(const pair<U, V>& pr) : first(pr.first), second(pr.second)
+			{
+				return ;
+			}
+			
 			pair& operator=(const pair& pr)
 			{
 				if (this != &pr)
