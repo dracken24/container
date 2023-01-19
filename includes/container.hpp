@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/18 19:28:38 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/19 16:32:02 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #include "templates/Iterator.hpp"
 #include "templates/Vector.hpp"
 #include "templates/Stack.hpp"
+#include "templates/Map.hpp"
 
 // Other //
 
@@ -59,7 +60,7 @@
 void    randomAccessIteratorTestInt(void);
 void    randomAccessIteratorTestFloat(void);
 
-void	chooseContainerStackTests(void);
+void	chooseVectorTests(void);
 void	reverseIteratorTest(void);
 
 void	vectorTest(void);

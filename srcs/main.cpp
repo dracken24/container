@@ -6,22 +6,22 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/18 19:28:23 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/19 16:32:14 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/container.hpp"
 
-void	chooseContainerStackTests(void)
+void	chooseVectorTests(void)
 {
 	std::string input;
 	
 	while (input.compare("q") != 0 || input.compare("Q") != 0)
 	{
 		std::cout << std::endl;
-		std::cout << MAGENTA << "----------------------------------------" << std::endl;
-		std::cout << "Make a choice for Stack test" << std::endl;
-		std::cout << "----------------------------------------" << GREEN  << std::endl;
+		std::cout << MAGENTA << "-----------------------------------------" << std::endl;
+		std::cout << "|     Make a choice for Vector test     |" << std::endl;
+		std::cout << "-----------------------------------------" << GREEN  << std::endl;
 
 		std::cout << "For " << ITALIC << UNDERLINE << "Vector" << RESET << GREEN <<" tests, enter: 1" << std::endl;
 		// std::cout << "For " << ITALIC << UNDERLINE << "queue" << RESET << GREEN <<" tests, enter: 2" << std::endl << std::endl;
@@ -57,9 +57,9 @@ void	chooseIteratorTests(void)
 	while (input.compare("q") != 0 || input.compare("Q") != 0)
 	{
 		std::cout << std::endl;
-		std::cout << MAGENTA << "----------------------------------------" << std::endl;
-		std::cout << "Make a choice for Iterator test" << std::endl;
-		std::cout << "----------------------------------------" << GREEN  << std::endl;
+		std::cout << MAGENTA << "-----------------------------------------" << std::endl;
+		std::cout << "|    Make a choice for Iterator test    |" << std::endl;
+		std::cout << "-----------------------------------------" << GREEN  << std::endl;
 
 		std::cout << "For " << ITALIC << UNDERLINE << "random_access_iterator<int>" << RESET << GREEN <<" tests, enter: 1" << std::endl;
 		std::cout << "For " << ITALIC << UNDERLINE << "random_access_iterator<float>" << RESET << GREEN <<" tests, enter: 2" << std::endl << std::endl;
@@ -133,9 +133,9 @@ int	main(void)
 	while (input.compare("q") != 0 || input.compare("Q") != 0)
 	{
 		std::cout << std::endl;
-		std::cout << MAGENTA << "----------------------------------------" << std::endl;
-		std::cout << "Make a choice" << std::endl;
-		std::cout << "----------------------------------------" << GREEN  << std::endl;
+		std::cout << MAGENTA << "-----------------------------------------" << std::endl;
+		std::cout << "|            Make a choice              |" << std::endl;
+		std::cout << "-----------------------------------------" << GREEN  << std::endl;
 
 		std::cout << "For " << ITALIC << UNDERLINE << "Vector" << RESET << GREEN <<" tests, enter: 1" << std::endl;
 		std::cout << "For " << ITALIC << UNDERLINE << "Iterator" << RESET << GREEN <<" tests, enter: 2" << std::endl << std::endl;
@@ -149,7 +149,7 @@ int	main(void)
 		switch (input[0])
 		{
 			case '1':
-				chooseContainerStackTests();
+				chooseVectorTests();
 				break ;
 			case '2':
 				chooseIteratorTests();

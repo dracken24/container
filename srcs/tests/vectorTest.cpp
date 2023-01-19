@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:19:35 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/19 12:23:26 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/19 16:23:47 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	printStack(ft::Vector<int> *stack_FT, std::vector<int> *stack_STD, std::str
 {
 	static int i = 1;
 	
-	std::cout << YELLOW << "Test Vector #["<< RED << i << "]: " << YELLOW << str << std::endl;
-	std::cout << "----------------------------------------" << RESET  << std::endl;
+	std::cout << YELLOW << "Test Vector #["<< RED << i << YELLOW << "]: " << str << std::endl;
+	std::cout << "----------------------------------------------------------------" << RESET  << std::endl;
 	
 	std::cout << BLUE << "vector_FT.size(): " << stack_FT->size() << std::endl;
 	std::cout << "vector_FT.max_size(): " << stack_FT->max_size() << std::endl;
@@ -65,7 +65,7 @@ void	vectorTest(void)
 	// Test 2 //
 	vector_FT.resize(14);
 	vector_STD.resize(14);
-	printStack(&vector_FT, &vector_STD, "resize(24)");
+	printStack(&vector_FT, &vector_STD, "resize(14)");
 
 	// Test 3 //
 	vector_FT.push_back(4224);
@@ -100,7 +100,7 @@ void	vectorTest(void)
 	// Test 9 //
 	vector_FT.assign(5, 42);
 	vector_STD.assign(5, 42);
-	printStack(&vector_FT, &vector_STD, "assign(5, 100)");
+	printStack(&vector_FT, &vector_STD, "assign(5, 42)");
 
 	// Test 10 //
 	vector_FT.resize(3);
@@ -117,7 +117,7 @@ void	vectorTest(void)
 	vector_STD.clear();
 	printStack(&vector_FT, &vector_STD, "clear()");
 	
-	std::cout << GREEN << "---------------- END VECTOR TESTS ----------------" << RESET << std::endl << std::endl;
+	std::cout << GREEN << "---------------------- END VECTOR TESTS ----------------------" << RESET << std::endl << std::endl;
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
 
 }

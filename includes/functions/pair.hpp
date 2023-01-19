@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:08:02 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/18 15:25:45 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/19 12:50:10 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ namespace ft
 	pair<T1, T2> make_pair(T1 x, T2 y)
 	{
 		return (pair<T1, T2>(x, y));
-	}
+	}	
 }
 
 #endif

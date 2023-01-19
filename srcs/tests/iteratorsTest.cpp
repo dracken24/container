@@ -6,11 +6,13 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:27:24 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/18 19:10:24 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/19 16:31:12 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/container.hpp"
+
+// Int tests
 
 std::string convertPtrToString(int *ptr)
 {
@@ -114,6 +116,7 @@ void    randomAccessIteratorTestInt(void)
 }
 
 /********************************************************************************************************/
+// Float tests
 
 std::string convertPtrToStringF(float *ptr)
 {
