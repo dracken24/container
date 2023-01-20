@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 23:43:30 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/19 12:24:49 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/19 19:40:59 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ namespace ft
 			typedef typename allocator_type::size_type							size_type;                // size_t
 
 		public:
+		
 			explicit Vector(const allocator_type &alloc = allocator_type()) :
 			_array(NULL),
 			_size(0),

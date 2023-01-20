@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 08:09:40 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/19 12:11:30 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/19 16:38:16 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ namespace ft
 	class reverse_iterator
 	{
 		public:
-			typedef Iterator iterator_type;
+			typedef Iterator 												iterator_type;
+			
 			typedef typename iterator_traits<Iterator>::iterator_category	iterator_category;
 			typedef typename iterator_traits<Iterator>::value_type			value_type;
 			typedef typename iterator_traits<Iterator>::difference_type		difference_type;
@@ -252,6 +253,7 @@ namespace ft
 	}
 
 /***************************************** random_access_iterator **********************************************/
+	
 	template <typename T>
 	class random_access_iterator : public iterator<random_access_iterator_tag, T>
 	{

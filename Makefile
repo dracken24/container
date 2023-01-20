@@ -6,7 +6,7 @@
 #    By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/23 13:22:35 by nadesjar          #+#    #+#              #
-#    Updated: 2023/01/18 19:27:01 by dracken24        ###   ########.fr        #
+#    Updated: 2023/01/19 20:27:06 by dracken24        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ P_FT			= ./srcs/templates/functions/
 FILES			= $(P_SRCS)main.cpp \
 				$(P_TEST)vectorTest.cpp \
 				$(P_TEST)iteratorsTest.cpp \
-				$(P_TEST)functionsTest.cpp \
+				# $(P_TEST)functionsTest.cpp \
 
 OBJS			= $(patsubst $(P_SRCS)%.cpp, $(P_OBJS)%.o, $(FILES))
 
@@ -38,7 +38,6 @@ $(NAME): $(OBJS)
 
 $(P_OBJS)%.o:	$(P_SRCS)%.cpp
 	@mkdir -p $(P_OBJS)
-	@mkdir -p $(P_OBJS)class
 	@mkdir -p $(P_OBJS)tests
 	@$(CC) $(CFLAGS) -I. -c $< -o $@
 	@printf "$G■"

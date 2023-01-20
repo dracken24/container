@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/19 16:32:14 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/19 21:14:19 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	chooseVectorTests(void)
 		std::cout << std::endl;
 		std::cout << MAGENTA << "-----------------------------------------" << std::endl;
 		std::cout << "|     Make a choice for Vector test     |" << std::endl;
-		std::cout << "-----------------------------------------" << GREEN  << std::endl;
+		std::cout << "-----------------------------------------" << std::endl;
 
-		std::cout << "For " << ITALIC << UNDERLINE << "Vector" << RESET << GREEN <<" tests, enter: 1" << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Vector" << RESET << GREEN <<" tests, enter: " << MAGENTA << "1" << std::endl;
 		// std::cout << "For " << ITALIC << UNDERLINE << "queue" << RESET << GREEN <<" tests, enter: 2" << std::endl << std::endl;
 		std::cout << std::endl;
 		std::cout << RED << "Enter: 'Q' for return" << RESET << std::endl;
@@ -61,8 +61,10 @@ void	chooseIteratorTests(void)
 		std::cout << "|    Make a choice for Iterator test    |" << std::endl;
 		std::cout << "-----------------------------------------" << GREEN  << std::endl;
 
-		std::cout << "For " << ITALIC << UNDERLINE << "random_access_iterator<int>" << RESET << GREEN <<" tests, enter: 1" << std::endl;
-		std::cout << "For " << ITALIC << UNDERLINE << "random_access_iterator<float>" << RESET << GREEN <<" tests, enter: 2" << std::endl << std::endl;
+		std::cout << "For " << ITALIC << UNDERLINE << MAGENTA << "random_access_iterator<" << RESET \
+			<< BLUE << " int "<< GREEN << "> tests, enter: " << MAGENTA << "1" << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "random_access_iterator<" << RESET \
+			<< BLUE << " class " << GREEN << "> tests, enter: " << MAGENTA << "2" << std::endl << std::endl;
 		std::cout << std::endl;
 		std::cout << RED << "Enter: 'Q' for return" << RESET << std::endl;
 		
@@ -76,7 +78,7 @@ void	chooseIteratorTests(void)
 				randomAccessIteratorTestInt();
 				break ;
 			case '2':
-				randomAccessIteratorTestFloat();
+				randomAccessIteratorTestClass();
 				break ;
 			case 'q':
 			case 'Q':
@@ -87,44 +89,6 @@ void	chooseIteratorTests(void)
 		}
 	}
 }
-
-// void	choosefunctionsTest()
-// {
-// 	std::string input;
-	
-// 	while (input.compare("q") != 0 || input.compare("Q") != 0)
-// 	{
-// 		std::cout << std::endl;
-// 		std::cout << MAGENTA << "----------------------------------------" << std::endl;
-// 		std::cout << "Make a choice for Functions test" << std::endl;
-// 		std::cout << "----------------------------------------" << GREEN  << std::endl;
-
-// 		std::cout << "For " << ITALIC << UNDERLINE << "swap" << RESET << GREEN <<" tests, enter: 1" << std::endl;
-// 		std::cout << "For " << ITALIC << UNDERLINE << "iter_swap" << RESET << GREEN <<" tests, enter: 2" << std::endl << std::endl;
-// 		std::cout << std::endl;
-// 		std::cout << RED << "Enter: 'Q' for return" << RESET << std::endl;
-		
-// 		std::cout << "Choice: "; 
-// 		std::cin >> input;
-// 		std::cout << std::endl;
-
-// 		switch (input[0])
-// 		{
-// 			case '1':
-// 				swapTest();
-// 				break ;
-// 			case '2':
-// 				iter_swapTest();
-// 				break ;
-// 			case 'q':
-// 			case 'Q':
-// 				return ;
-// 			default:
-// 				std::cout << RED << "Wrong input" << RESET << std::endl;
-// 				break ;
-// 		}
-// 	}
-// }
 
 int	main(void)
 {
@@ -137,9 +101,11 @@ int	main(void)
 		std::cout << "|            Make a choice              |" << std::endl;
 		std::cout << "-----------------------------------------" << GREEN  << std::endl;
 
-		std::cout << "For " << ITALIC << UNDERLINE << "Vector" << RESET << GREEN <<" tests, enter: 1" << std::endl;
-		std::cout << "For " << ITALIC << UNDERLINE << "Iterator" << RESET << GREEN <<" tests, enter: 2" << std::endl << std::endl;
-		std::cout << "For " << ITALIC << UNDERLINE << "Functions" << RESET << GREEN <<" tests, enter: 5" << std::endl << std::endl;
+		std::cout << "For " << ITALIC << UNDERLINE << MAGENTA << "Vector" << RESET << GREEN <<" tests, enter:    " << MAGENTA << "1" << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Iterator" << RESET << GREEN <<" tests, enter:  " \
+			<< MAGENTA << "2" << std::endl << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Functions" << RESET << GREEN <<" tests, enter: " \
+			<< MAGENTA << "5" << std::endl << std::endl;
 		std::cout << RED << "Enter: 'Q' for quit" << RESET << std::endl;
 		
 		std::cout << "Choice: "; 
@@ -153,9 +119,6 @@ int	main(void)
 				break ;
 			case '2':
 				chooseIteratorTests();
-				break ;
-			// case '5':
-			// 	choosefunctionsTest();
 				break ;
 			case 'q':
 			case 'Q':

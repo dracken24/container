@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:28:54 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/19 13:09:56 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/19 19:18:16 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,165 +16,345 @@
 # include "../container.hpp"
 # include "../tree/rbTree.hpp"
 
-namespace ft {
+namespace ft
+{
 	
-	// template < class Key, class T, class Compare = std::less<Key>, class Alloc = std::allocator<ft::pair<const Key, T> > >
-	// class map
-	// {
+	template < class Key, class T, class Compare = std::less<Key>, class Alloc = std::allocator<ft::pair<const Key, T> > >
+	class map
+	{
+		// Define types //
 
-	// public:
-	// 	typedef T																mapped_type;
-	// 	typedef Key																key_type;
-	// 	typedef Alloc															allocator_type;
-	// 	typedef Compare															key_compare;
-	// 	typedef typename allocator_type::template rebind<value_type>::other		type_allocator;
-	// 	typedef ft::pair<const key_type, mapped_type>							value_type;
+	public:
+		typedef Key																key_type;
+		typedef T																mapped_type;
+		typedef ft::pair<const key_type, mapped_type>							value_type;
+		typedef Compare															key_compare;
+		typedef Alloc															allocator_type;
 		
-	// 	typedef ft::allocator_traits<type_allocator>							type_traits;
-	// 	typedef typename type_traits::const_pointer								const_pointer;
-	// 	typedef typename type_traits::pointer									pointer;
+		typedef typename allocator_type::template rebind<value_type>::other		type_allocator;
+		typedef ft::allocator_traits<type_allocator>							type_traits;
+		typedef typename type_traits::pointer									pointer;
+		typedef typename type_traits::const_pointer								const_pointer;
+		typedef value_type&														reference;
+		typedef const value_type&												const_reference;
 		
-	// 	typedef typename ft::iterator_traits<iterator>::difference_type			difference_type;
-	// 	typedef typename allocator_type::size_type								size_type;
-	// 	typedef const value_type&												const_reference;
-	// 	typedef value_type&														reference;
-
-	// class value_compare : public std::binary_function<value_type, value_type, bool>
-
-	// protected:
-	// 	key_compare comp;
-
-	// public:
-	// 	value_compare(key_compare c) :
-	// 	~value_compare()
-
-	// 	bool operator()(const value_type& x, const value_type& y)const
+		typedef typename allocator_type::size_type							size_type;
+		typedef typename ft::iterator_traits<pointer>::difference_type		difference_type;
 		
-	// 	bool operator()(const value_type& x, const key_type& y)const
-		
-	// 	bool operator()(const key_type& x, const value_type& y)const
-	// };
+		// Class member //
+		class value_compare : public std::binary_function<value_type, value_type, bool>
+		{
+			public:
+				value_compare(key_compare c) :
+				comp(c)
+				{
+					return ;
+				}
+				
+				~value_compare()
+				{
+					return ;
+				}
+				
+				bool operator()(const value_type &x, const value_type &y)const
+				{
+					return comp(x.first, y.first);
+				}
+				
+				bool operator()(const value_type &x, const key_type &y)const
+				{
+					return comp(x.first, y);
+				}
+				
+				bool operator()(const key_type &x, const value_type &y)const
+				{
+					return comp(x, y.first);
+				}
+			
+			protected:
+				key_compare comp;
+		};
 
-	// typedef typename ft::rbtree<value_type, key_type, value_compare, allocator_type>::const_iterator	const_iterator;
-	// typedef typename ft::rbtree<value_type, key_type, value_compare, allocator_type>::iterator			iterator;
-	// typedef ft::reverse_iterator<const_iterator>														const_reverse_iterator;
-	// typedef ft::reverse_iterator<iterator>        														reverse_iterator;
-
-	// private:
-	// 	key_compare     _key_comp;
-	// 	value_compare   _value_comp;
-	// 	ft::rbtree<value_type, key_type, value_compare, allocator_type>   _tree;
-
-	// public:
-	// 	explicit map(const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
-
-	// 	template <class InputIterator>
-	// 	map(InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
-
-	// 	map(const map& x) : 
-
-	// 	~map()
-
-	// 	map& operator=(const map& x)
-		
-
-	// 	// Iterators
-	// 	iterator begin()
-		
-	// 	const_iterator begin()const
-
-	// 	iterator end()
-		
-	// 	const_iterator end()const
-
-	// 	reverse_iterator rbegin()
-		
-	// 	const_reverse_iterator rbegin()const
-
-	// 	reverse_iterator rend()
-		
-	// 	const_reverse_iterator rend()const
-
-	// 	// Capacity
-	// 	bool empty()const
-
-	// 	size_type size()const
-
-	// 	size_type max_size()const
-
-	// 	// Element access
-	// 	mapped_type& operator[] (const key_type& k)
-
-	// 	mapped_type& at(const key_type& k)
-
-	// 	const mapped_type& at(const key_type& k)const
-
-	// 	// Modifiers
-	// 	ft::pair<iterator, bool> insert(const value_type& val)
-
-	// 	iterator insert(iterator position, const value_type& val)
-
-	// 	template <class InputIterator>
-	// 	void insert(InputIterator first, InputIterator last)
-
-	// 	void erase(iterator position)
-
-	// 	size_type erase(const key_type& k)
-
-	// 	void erase(iterator first, iterator last)
-
-	// 	void swap(map& x)
-
-	// 	void clear()
-
-	// 	// Observers
-	// 	key_compare key_comp()const
-
-	// 	value_compare value_comp()const
-
-	// 	// Operations
-	// 	iterator find(const key_type& k)
-		
-	// 	const_iterator find(const key_type& k)const
-
-	// 	size_type count(const key_type& k)const
-
-	// 	iterator lower_bound(const key_type& k)
-		
-	// 	const_iterator lower_bound(const key_type& k)const
-
-	// 	iterator upper_bound(const key_type& k)
-		
-	// 	const_iterator upper_bound(const key_type& k)const
-
-	// 	ft::pair<const_iterator, const_iterator> equal_range(const key_type& k)const
-		
-	// 	ft::pair<iterator, iterator> equal_range(const key_type& k)
-
-	// 	// Allocator
-	// 	allocator_type get_allocator()const
-	// };
-
-	// Non-member function overloads
-	// template <class Key, class T, class Compare, class Alloc>
-	// bool operator==(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+	/*********************************************************************************************************/
+		// Define iterators //
 	
-	// template <class Key, class T, class Compare, class Alloc>
-	// bool operator!=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
-	
-	// template <class Key, class T, class Compare, class Alloc>
-	// bool operator< (const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
-	
-	// template <class Key, class T, class Compare, class Alloc>
-	// bool operator<=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
-	
-	// template <class Key, class T, class Compare, class Alloc>
-	// bool operator> (const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
-	
-	// template <class Key, class T, class Compare, class Alloc>
-	// bool operator>=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs);
+		typedef typename ft::rbtree<value_type, key_type, value_compare, allocator_type>::const_iterator	const_iterator;
+		typedef typename ft::rbtree<value_type, key_type, value_compare, allocator_type>::iterator			iterator;
+		
+		typedef ft::reverse_iterator<const_iterator>														const_reverse_iterator;
+		typedef ft::reverse_iterator<iterator>        														reverse_iterator;
 
-	// template <class Key, class T, class Compare, class Alloc>
-	// void swap(map<Key, T, Compare, Alloc> &lhs, map<Key, T, Compare, Alloc> &rhs)
+		// Member functions //
+		public:
+			explicit map(const key_compare &comp = key_compare(),
+						const allocator_type &alloc = allocator_type()) :
+			_tree(comp, alloc)
+			{
+				return ;
+			}
+
+			template <class InputIterator>
+			map(InputIterator first, InputIterator last, const key_compare &comp = key_compare(),
+				const allocator_type &alloc = allocator_type()) :
+			_tree(comp, alloc)
+			{
+				_tree.insert(first, last);
+			}
+
+			map(const map &x) :
+			_tree(x._tree)
+			{
+				return ;
+			}
+
+			~map()
+			{
+				return ;
+			}
+
+			map& operator=(const map &x)
+			{
+				_tree = x._tree;
+				
+				return *this;
+			}
+			
+			// Iterators
+			iterator begin()
+			{
+				return _tree.begin();
+			}
+			
+			const_iterator begin() const
+			{
+				return _tree.begin();
+			}
+
+			iterator end()
+			{
+				return _tree.end();
+			}
+			
+			const_iterator end() const\
+			{
+				return _tree.end();
+			}
+
+			reverse_iterator rbegin()
+			{
+				return reverse_iterator(end());
+			}
+			
+			const_reverse_iterator rbegin() const
+			{
+				return const_reverse_iterator(end());
+			}
+
+			reverse_iterator rend()
+			{
+				return reverse_iterator(begin());
+			}
+			
+			const_reverse_iterator rend() const
+			{
+				return const_reverse_iterator(begin());
+			}
+
+			// Capacity
+			bool empty() const
+			{
+				return _tree.empty();
+			}
+
+			size_type size() const
+			{
+				return _tree.size();
+			}
+
+			size_type max_size() const
+			{
+				return _tree.max_size();
+			}
+
+			// Element access
+			mapped_type &operator[] (const key_type &k)
+			{
+				return _tree.insert(ft::make_pair(k, mapped_type())).first->second;
+			}
+
+			mapped_type &at(const key_type &k)
+			{
+				iterator it = find(k);
+				
+				if (it == end())
+					throw std::out_of_range("map::at");
+					
+				return it->second;
+			}
+
+			const mapped_type &at(const key_type &k) const
+			{
+				const_iterator it = find(k);
+				
+				if (it == end())
+					throw std::out_of_range("map::at");
+					
+				return it->second;
+			}
+
+			// Modifiers
+			ft::pair<iterator, bool> insert(const value_type &val)
+			{
+				return _tree.insert(val);
+			}
+
+			iterator insert(iterator position, const value_type &val)
+			{
+				return _tree.insert(position, val);
+			}
+
+			template <class InputIterator>
+			void insert(InputIterator first, InputIterator last)
+			{
+				_tree.insert(first, last);
+			}
+
+			void erase(iterator position)
+			{
+				_tree.erase(position);
+			}
+
+			size_type erase(const key_type &k)
+			{
+				return _tree.erase(k);
+			}
+
+			void erase(iterator first, iterator last)
+			{
+				_tree.erase(first, last);
+			}
+
+			void swap(map &x)
+			{
+				_tree.swap(x._tree);
+			}
+
+			void clear()
+			{
+				_tree.clear();
+			}
+
+			// Observers
+			key_compare key_comp() const
+			{
+				return _tree.key_comp();
+			}
+
+			value_compare value_comp() const
+			{
+				return _tree.value_comp();
+			}
+
+			// Operations
+			iterator find(const key_type &k)
+			{
+				return _tree.find(k);
+			}
+			
+			const_iterator find(const key_type &k) const
+			{
+				return _tree.find(k);
+			}
+
+			size_type count(const key_type &k) const
+			{
+				return _tree.count(k);
+			}
+
+			iterator lower_bound(const key_type &k)
+			{
+				return _tree.lower_bound(k);
+			}
+			
+			const_iterator lower_bound(const key_type& k) const
+			{
+				return _tree.lower_bound(k);
+			}
+
+			iterator upper_bound(const key_type &k)
+			{
+				return _tree.upper_bound(k);
+			}
+			
+			const_iterator upper_bound(const key_type &k) const
+			{
+				return _tree.upper_bound(k);
+			}
+
+			ft::pair<const_iterator, const_iterator> equal_range(const key_type &k) const
+			{
+				return _tree.equal_range(k);
+			}
+			
+			ft::pair<iterator, iterator> equal_range(const key_type &k)
+			{
+				return _tree.equal_range(k);
+			}
+
+			// Allocator
+			allocator_type get_allocator() const
+			{
+				return _tree.get_allocator();
+			}
+			
+		private:
+			value_compare   _value_comp;
+			key_compare     _key_comp;
+			
+			ft::rbtree<value_type, key_type, value_compare, allocator_type>   _tree;
+	};
+
+		// Non-member function overloads
+		template <class Key, class T, class Compare, class Alloc>
+		bool operator==(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+		{
+			return lhs._tree == rhs._tree;
+		}
+		
+		template <class Key, class T, class Compare, class Alloc>
+		bool operator!=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+		{
+			return lhs._tree != rhs._tree;
+		}
+		
+		template <class Key, class T, class Compare, class Alloc>
+		bool operator< (const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+		{
+			return lhs._tree < rhs._tree;
+		}
+		
+		template <class Key, class T, class Compare, class Alloc>
+		bool operator<=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+		{
+			return lhs._tree <= rhs._tree;
+		}
+		
+		template <class Key, class T, class Compare, class Alloc>
+		bool operator> (const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+		{
+			return lhs._tree > rhs._tree;
+		}
+		
+		template <class Key, class T, class Compare, class Alloc>
+		bool operator>=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+		{
+			return lhs._tree >= rhs._tree;
+		}
+
+		template <class Key, class T, class Compare, class Alloc>
+		void swap(map<Key, T, Compare, Alloc> &lhs, map<Key, T, Compare, Alloc> &rhs)
+		{
+			lhs.swap(rhs);
+		}
 };
 #endif
