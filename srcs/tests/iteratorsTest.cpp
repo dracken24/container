@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:27:24 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/19 22:30:21 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/20 00:28:13 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ void    randomAccessIteratorTestInt(void)
 	std::cout << std::boolalpha;
 	
 	std::cout << std::endl;
-	std::cout << RED << "/************************" << GREEN << " random_access_iterator INT " << RED << "************************/" << RESET << std::endl;
+	std::cout << RED << "/************************" << GREEN << " random_access_iterator INT " << \
+		RED << "************************/" << RESET << std::endl;
 	std::cout << std::endl;
 	std::cout << RED << "----------------------------------------------------------------" << RESET  << std::endl;
 	std::cout << std::endl;
@@ -109,7 +110,7 @@ void    randomAccessIteratorTestInt(void)
 	std::cout << BLUE << "it != it2 = " << MAGENTA << (it != it2) << RESET << std::endl;
 	std::cout << std::endl;
 	
-		std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
+	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
 	std::cout << GREEN << "------------ END TESTS random_access_iterator INT -------------" << RESET << std::endl << std::endl;
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
 }
