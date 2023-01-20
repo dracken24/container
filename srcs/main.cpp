@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/19 21:14:19 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/19 22:29:15 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	chooseVectorTests(void)
 		switch (input[0])
 		{
 			case '1':
-				vectorTest();
+				vectorTestint();
 				break;
 			// case '2':
 			// 	queueTest();
@@ -61,10 +61,10 @@ void	chooseIteratorTests(void)
 		std::cout << "|    Make a choice for Iterator test    |" << std::endl;
 		std::cout << "-----------------------------------------" << GREEN  << std::endl;
 
-		std::cout << "For " << ITALIC << UNDERLINE << MAGENTA << "random_access_iterator<" << RESET \
+		std::cout << "For " << ITALIC << UNDERLINE << MAGENTA << "random_access_iterator" << RESET << GREEN "<" \
 			<< BLUE << " int "<< GREEN << "> tests, enter: " << MAGENTA << "1" << std::endl;
-		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "random_access_iterator<" << RESET \
-			<< BLUE << " class " << GREEN << "> tests, enter: " << MAGENTA << "2" << std::endl << std::endl;
+		// std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "random_access_iterator<" << RESET
+		// 	<< BLUE << " class " << GREEN << "> tests, enter: " << MAGENTA << "2" << std::endl << std::endl;
 		std::cout << std::endl;
 		std::cout << RED << "Enter: 'Q' for return" << RESET << std::endl;
 		
@@ -77,8 +77,8 @@ void	chooseIteratorTests(void)
 			case '1':
 				randomAccessIteratorTestInt();
 				break ;
-			case '2':
-				randomAccessIteratorTestClass();
+			// case '2':
+			// 	randomAccessIteratorTestClass();
 				break ;
 			case 'q':
 			case 'Q':

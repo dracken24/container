@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:19:35 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/19 16:23:47 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/19 22:27:35 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ void	printStack(ft::Vector<int> *stack_FT, std::vector<int> *stack_STD, std::str
 	i++;
 }
 
-void	vectorTest(void)
+void	vectorTestint(void)
 {	
 	std::cout << std::boolalpha;
 	
 	std::cout << std::endl;
-	std::cout << RED << "/*******************************" << GREEN << " Vector " << RED << "*******************************/" << RESET << std::endl;
+	std::cout << RED << "/*******************************" << GREEN << " Vector<int> " << RED << "*******************************/" << RESET << std::endl;
 	std::cout << std::endl;
 
 	int		myints[] = {75, 223, 65, 42, 113};
@@ -117,7 +117,7 @@ void	vectorTest(void)
 	vector_STD.clear();
 	printStack(&vector_FT, &vector_STD, "clear()");
 	
-	std::cout << GREEN << "---------------------- END VECTOR TESTS ----------------------" << RESET << std::endl << std::endl;
+	std::cout << GREEN << "--------------------- END VECTOR TESTS<int> --------------------" << RESET << std::endl << std::endl;
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
 
 }

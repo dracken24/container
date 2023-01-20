@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/19 21:01:27 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/19 22:26:47 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,21 @@
 
 // Class tests //
 
+typedef struct Vector2
+{
+	int x;
+	int y;
+}	Vector2;
+
 // template <typename T>
 class A
 {
 	public:
 		A(void) : _nbr(0) {}
+
+		A(int nbr, Vector2 vec) : _nbr(nbr), _vec(vec) {}
 		
-		A(const A &src) : _nbr(src._nbr) 
+		A(const A &src) : _nbr(src._nbr), _vec(src._vec)
 		{
 			*this = src;
 		}
@@ -75,7 +83,8 @@ class A
 
 		A &operator=(const A &rhs)
 		{
-			(void)rhs;
+			_nbr = rhs._nbr;
+			_vec = rhs._vec;
 			return *this;
 		}
 		
@@ -83,11 +92,27 @@ class A
 		{
 			_nbr = nbr;
 		}
+		
+		void setVec(Vector2 vec)
+		{
+			_vec = vec;
+		}
 
 		int getNbr(void) const
 		{
 			return _nbr;
 		}
+
+		int getVecX(void) const
+		{
+			return _vec.x;
+		}
+
+		int getVecY(void) const
+		{
+			return _vec.y;
+		}
+		
 	// Operators Overload //
 		A	&operator++(void)
 		{
@@ -140,7 +165,8 @@ class A
 		}
 
 	private:
-		int _nbr;
+		int 	_nbr;
+		Vector2	_vec;
 };
 
 template <typename T>
@@ -236,6 +262,6 @@ void    randomAccessIteratorTestInt(void);
 void	chooseVectorTests(void);
 void	reverseIteratorTest(void);
 
-void	vectorTest(void);
+void	vectorTestint(void);
 
 #endif
