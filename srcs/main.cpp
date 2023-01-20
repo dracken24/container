@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/20 00:26:04 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/20 14:46:45 by nadesjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	chooseVectorTests(void)
 
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Vector" << RESET \
 			<< GREEN <<" tests, enter: " << MAGENTA << "1" << std::endl;
-		// std::cout << "For " << ITALIC << UNDERLINE << "queue" << RESET << GREEN \
-			<<" tests, enter: 2" << std::endl << std::endl;
+		// std::cout << "For " << ITALIC << UNDERLINE << "queue" << RESET << GREEN 
+			// <<" tests, enter: 2" << std::endl << std::endl;
 		std::cout << std::endl;
 		std::cout << RED << "Enter: 'Q' for return" << RESET << std::endl;
 		
@@ -65,8 +65,8 @@ void	chooseIteratorTests(void)
 
 		std::cout << "For " << ITALIC << UNDERLINE << MAGENTA << "random_access_iterator" << RESET \
 			<< GREEN "<" << BLUE << " int "<< GREEN << "> tests, enter: " << MAGENTA << "1" << std::endl;
-		// std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "random_access_iterator<" << RESET
-		// 	<< BLUE << " class " << GREEN << "> tests, enter: " << MAGENTA << "2" << std::endl << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "random_access_iterator<" << RESET \
+			<< BLUE << " class " << GREEN << "> tests, enter: " << MAGENTA << "2" << std::endl << std::endl;
 		std::cout << std::endl;
 		std::cout << RED << "Enter: 'Q' for return" << RESET << std::endl;
 		
