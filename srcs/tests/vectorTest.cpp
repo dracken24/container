@@ -6,14 +6,15 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:19:35 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/20 22:45:19 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/21 13:40:26 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/container.hpp"
+#include <vector>
 
 template <typename T>
-void	printStack(ft::Vector<T> *stack_FT, std::vector<T> *stack_STD,
+void	printStack(ft::vector<T> *stack_FT, std::vector<T> *stack_STD,
 					std::string str, std::string type, int reset)
 {
 	static int i = 1;
@@ -64,8 +65,8 @@ void	vectorTestint(void)
 		<< RESET << std::endl << std::endl;
 	
 	// Init vector //
-	ft::Vector<int>		vector_FT(myints, myints + 5);
-	ft::Vector<int>		vector_FT2(myints2, myints2 + 5);
+	ft::vector<int>		vector_FT(myints, myints + 5);
+	ft::vector<int>		vector_FT2(myints2, myints2 + 5);
 	std::vector<int>	vector_STD(myints, myints + 5);
 	std::vector<int>	vector_STD2(myints2, myints2 + 5);
 	
@@ -153,8 +154,8 @@ void	vectorTestDouble(void)
 		<< RESET << std::endl << std::endl;
 	
 	// Init vector //
-	ft::Vector<double>		vector_FT(myints, myints + 5);
-	ft::Vector<double>		vector_FT2(myints2, myints2 + 5);
+	ft::vector<double>		vector_FT(myints, myints + 5);
+	ft::vector<double>		vector_FT2(myints2, myints2 + 5);
 	std::vector<double>	vector_STD(myints, myints + 5);
 	std::vector<double>	vector_STD2(myints2, myints2 + 5);
 	
@@ -242,8 +243,8 @@ void	vectorTestString(void)
 		<< RESET << std::endl << std::endl;
 	
 	// Init vector //
-	ft::Vector<std::string>		vector_FT(myStrings, myStrings + 6);
-	ft::Vector<std::string>		vector_FT2(myStrings2, myStrings2 + 9);
+	ft::vector<std::string>		vector_FT(myStrings, myStrings + 6);
+	ft::vector<std::string>		vector_FT2(myStrings2, myStrings2 + 9);
 	std::vector<std::string>	vector_STD(myStrings, myStrings + 6);
 	std::vector<std::string>	vector_STD2(myStrings2, myStrings2 + 9);
 	
@@ -316,7 +317,7 @@ void	vectorTestString(void)
 /****************************************************************************************************/
 
 template <typename T>
-void	printStructStack(ft::Vector<T> *vector_FT, std::vector<T> *vector_STD,
+void	printStructStack(ft::vector<T> *vector_FT, std::vector<T> *vector_STD,
 						std::string str, std::string type, int nbr, int reset)
 {
 	static int		i = 1;
@@ -334,7 +335,6 @@ void	printStructStack(ft::Vector<T> *vector_FT, std::vector<T> *vector_STD,
 		std::cout << "                 or" << std::endl;
 		std::cout << "Press enter to continue to next test" << std::endl;
 		
-		// std::cin >> input;
 		std::getline(std::cin, input);
 		if (input == "A" || input == "a")
 			ct = 0;
@@ -411,8 +411,8 @@ void	vectorTestStruct(void)
 		<< RESET << std::endl << std::endl;
 	
 	// Init vector //
-	ft::Vector<StructA>		vector_FT(myStruct, myStruct + 5);
-	ft::Vector<StructA>		vector_FT2(myStruct2, myStruct2 + 9);
+	ft::vector<StructA>		vector_FT(myStruct, myStruct + 5);
+	ft::vector<StructA>		vector_FT2(myStruct2, myStruct2 + 9);
 	std::vector<StructA>	vector_STD(myStruct, myStruct + 5);
 	std::vector<StructA>	vector_STD2(myStruct2, myStruct2 + 9);
 
@@ -513,10 +513,10 @@ void	vectorTestClass(void)
 		<< RESET << std::endl << std::endl;
 	
 	// Init vector //
-	ft::Vector<A>		vector_FT(myStruct, myStruct + 5);
-	ft::Vector<A>		vector_FT2(myStruct2, myStruct2 + 9);
-	std::vector<A>	vector_STD(myStruct, myStruct + 5);
-	std::vector<A>	vector_STD2(myStruct2, myStruct2 + 9);
+	ft::vector<A>		vector_FT(myStruct, myStruct + 5);
+	ft::vector<A>		vector_FT2(myStruct2, myStruct2 + 9);
+	std::vector<A>		vector_STD(myStruct, myStruct + 5);
+	std::vector<A>		vector_STD2(myStruct2, myStruct2 + 9);
 
 	A	tmp = A("Banana", 27, (Vector2){12, 14});
 	A	tmp2 = A("Encore", 11, (Vector2){55, 55});

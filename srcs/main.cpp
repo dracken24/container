@@ -6,11 +6,99 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/20 22:44:18 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/21 14:28:29 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/container.hpp"
+
+void	chooseMapTests(void)
+{
+	std::string input;
+	
+	while (input.compare("q") != 0 || input.compare("Q") != 0)
+	{
+		std::cout << std::endl;
+		std::cout << MAGENTA << "----------------------------------------" << std::endl;
+		std::cout << "|      Make a choice for Map test      |" << std::endl;
+		std::cout << "----------------------------------------" << std::endl << std::endl;
+
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map" << RESET << GREEN << "<" \
+			<< BLUE << " int " << GREEN <<"> tests, enter: " << MAGENTA << "1" << std::endl;
+
+		std::cout << std::endl;
+		std::cout << RED << "Enter: 'Q' for return" << RESET << std::endl;
+		
+		std::cout << "Choice: "; 
+		std::cin >> input;
+		std::cout << std::endl;
+
+		switch (input[0])
+		{
+			case '1':
+				mapTestInt();
+				break;
+			case 'q':
+			case 'Q':
+				return;
+			default:
+				std::cout << RED << "Wrong input!" << RESET << std::endl;
+				break;
+		}
+	}
+}
+
+void	chooseStackTests(void)
+{
+	std::string input;
+	
+	while (input.compare("q") != 0 || input.compare("Q") != 0)
+	{
+		std::cout << std::endl;
+		std::cout << MAGENTA << "----------------------------------------" << std::endl;
+		std::cout << "|     Make a choice for Stack test     |" << std::endl;
+		std::cout << "----------------------------------------" << std::endl << std::endl;
+
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Stack" << RESET << GREEN << "<" \
+			<< BLUE << " int " << GREEN <<"> tests,    enter: " << MAGENTA << "1" << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Stack" << RESET << GREEN << "<" \
+			<< BLUE << " float " << GREEN <<"> tests,  enter: " << MAGENTA << "2" << std::endl << std::endl;
+			
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Stack" << RESET << GREEN << "<" \
+			<< BLUE << " struct " << GREEN <<"> tests, enter: " << MAGENTA << "3" << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Stack" << RESET << GREEN << "<" \
+			<< BLUE << " class " << GREEN <<"> tests,  enter: " << MAGENTA << "4" << std::endl;
+
+		std::cout << std::endl;
+		std::cout << RED << "Enter: 'Q' for return" << RESET << std::endl;
+		
+		std::cout << "Choice: "; 
+		std::cin >> input;
+		std::cout << std::endl;
+
+		switch (input[0])
+		{
+			case '1':
+				stackIntTest();
+				break;
+			case '2':
+				stackFloatTest();
+				break;
+			case '3':
+				stackStructTest();
+				break;
+			case '4':
+				stackClassTest();
+				break;
+			case 'q':
+			case 'Q':
+				return;
+			default:
+				std::cout << RED << "Wrong input!" << RESET << std::endl;
+				break;
+		}
+	}
+}
 
 void	chooseVectorTests(void)
 {
@@ -33,7 +121,7 @@ void	chooseVectorTests(void)
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Vector" << RESET << GREEN << "<" \
 			<< BLUE << " struct " << GREEN <<"> tests, enter: " << MAGENTA << "4" << std::endl;
 			std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Vector" << RESET << GREEN << "<" \
-			<< BLUE << " class " << GREEN <<"> tests, enter: " << MAGENTA << "5" << std::endl;
+			<< BLUE << " class " << GREEN <<"> tests,  enter: " << MAGENTA << "5" << std::endl;
 
 		std::cout << std::endl;
 		std::cout << RED << "Enter: 'Q' for return" << RESET << std::endl;
@@ -127,8 +215,13 @@ int	main(void)
 
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Iterator" << RESET \
 			<< GREEN <<" tests, enter:  " << MAGENTA << "1" << std::endl << std::endl;
+			
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Vector" << RESET << GREEN \
-			<<" tests,   enter:  " << MAGENTA << "2" << std::endl << std::endl;
+			<<" tests,   enter:  " << MAGENTA << "2" << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Stack" << RESET << GREEN \
+			<<" tests,    enter:  " << MAGENTA << "3" << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map" << RESET << GREEN \
+			<<" tests,      enter:  " << MAGENTA << "4" << std::endl << std::endl;
 
 		std::cout << RED << "Enter: 'Q' for quit" << RESET << std::endl;
 		
@@ -143,6 +236,12 @@ int	main(void)
 				break ;
 			case '2':
 				chooseVectorTests();
+				break ;
+			case '3':
+				chooseStackTests();
+				break ;
+			case '4':
+				chooseMapTests();
 				break ;
 			case 'q':
 			case 'Q':

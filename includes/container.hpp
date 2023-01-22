@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/20 21:55:22 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/21 16:39:15 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@
 #include "templates/Vector.hpp"
 #include "templates/Stack.hpp"
 #include "templates/Map.hpp"
-
-// Tree //
-# include "tree/rbTree.hpp"
 
 // Other //
 
@@ -53,10 +50,10 @@
 #include <sstream>
 #include <stack>
 #include <assert.h>
-#include <vector>
 #include <cstddef>
 #include <iterator>
 #include <memory>
+#include <map>
 
 // Class tests //
 
@@ -120,7 +117,7 @@ class A
 		}
 
 	public:
-		int 		_nbr; // = 4 bits
+		int 		_nbr;
 		Vector2		_vec;
 		std::string _str;
 };
@@ -167,5 +164,14 @@ void	vectorTestString(void);
 void	vectorTestDouble(void);
 void	vectorTestClass(void);
 void	vectorTestint(void);
+
+// Stack Tests //
+void    stackStructTest(void);
+void    stackClassTest(void);
+void    stackFloatTest(void);
+void    stackIntTest(void);
+
+// Map Tests //
+void	mapTestInt();
 
 #endif
