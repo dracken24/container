@@ -6,12 +6,11 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 08:09:40 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/19 16:38:16 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/23 12:30:49 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITERATOR_HPP
-# define ITERATOR_HPP
+#pragma once
 
 # include <cstddef>
 # include <iostream>
@@ -453,4 +452,3 @@ namespace ft
 		return random_access_iterator<T1>(it.base() + n);
 	}
 };
-#endif

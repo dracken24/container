@@ -6,12 +6,11 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:28:54 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/22 10:46:17 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/23 12:31:04 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_HPP
-# define MAP_HPP
+#pragma once
 
 # include "../container.hpp"
 # include "mapIterator.hpp"
@@ -599,5 +598,3 @@ namespace ft
 		lhs.swap(rhs);
 	}
 };
-
-#endif

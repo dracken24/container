@@ -6,12 +6,11 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:54:50 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/18 19:04:40 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/23 12:30:17 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXICOGRAPHICALCOMPARE_HPP
-# define LEXICOGRAPHICALCOMPARE_HPP
+#pragma once
 
 # include <iostream>
 # include <iterator>
@@ -34,5 +33,3 @@ namespace ft
         return (first2 != last2);
     }
 }
-
-#endif

@@ -6,12 +6,11 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:50:19 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/16 18:51:56 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/23 12:29:51 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EQUAL_HPP
-# define EQUAL_HPP
+#pragma once
 
 # include <iostream>
 # include <iterator>
@@ -32,5 +31,3 @@ namespace ft
 		return true;
 	}
 }
-
-#endif

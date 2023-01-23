@@ -6,12 +6,11 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 16:58:40 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/21 23:21:50 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/23 12:31:16 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAPITERATOR_HPP
-# define MAPITERATOR_HPP
+#pragma once
 
 # include "../functions/pair.hpp"
 
@@ -470,5 +469,3 @@ namespace ft
 
 	
 };
-
-#endif

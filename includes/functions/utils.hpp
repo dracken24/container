@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enableIf.hpp                                       :+:      :+:    :+:   */
+/*   utils.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 19:11:17 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/23 12:29:40 by dracken24        ###   ########.fr       */
+/*   Created: 2023/01/23 11:44:57 by dracken24         #+#    #+#             */
+/*   Updated: 2023/01/23 13:52:47 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+# pragma once
+
+#include "../templates/Iterator.hpp"
+
+// static class nullptr_t
+// {
+// 	public:
+// 		template<class T>
+// 		operator T*() const { return (0); }
+
+// 		template<class C, class T>
+// 		operator T C::*() const { return (0); }
+
+// 	private:
+// 		void operator&() const;
+
+// } u_nullptr = {};
 
 namespace ft
 {
-	template <bool B, class T = void>
-	struct enable_if
+	template <typename T>
+	void	swap(T &a, T &b)
 	{
-
+		T tmp = a;
+		a = b;
+		b = tmp;
 	};
-
-	template <class T>
-	struct enable_if<true, T>
-	{
-		typedef T type;
-	};
-}
+};

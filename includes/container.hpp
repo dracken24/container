@@ -6,12 +6,11 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/21 16:39:15 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/23 12:32:02 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTAINER_HPP
-# define CONTAINER_HPP
+#pragma once
 
 // For the sake of the project, I'm including all the files here.
 
@@ -173,5 +172,3 @@ void    stackIntTest(void);
 
 // Map Tests //
 void	mapTestInt();
-
-#endif

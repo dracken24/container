@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 23:49:34 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/22 11:56:11 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/23 14:25:22 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ template <typename T>
 void	printStackClass(ft::stack<T> stackFT, std::stack<T> stackSTD, std::string str,
 						std::string type, int i, int reset)
 {
-		static int		ct = 1;
+	static int		ct = 1;
 	std::string		input = "";
 
 	if (ct == 1)
@@ -197,10 +197,11 @@ void	printStackClass(ft::stack<T> stackFT, std::stack<T> stackSTD, std::string s
 		<< MAGENTA << i << YELLOW << "]: " << str << std::endl;
 	std::cout << "----------------------------------------" << RESET  << std::endl;
 	
-	std::cout << BLUE << "ft::Stack size     : " << MAGENTA << stackFT.size() << std::endl << std::endl;
+	std::cout << BLUE << "ft::Stack size     : " << MAGENTA << stackFT.size() << std::endl;
+	std::cout << GREEN << "std::Stack size    : " << MAGENTA << stackSTD.size() << std::endl << std::endl;
 	
 	size_t k = stackFT.size() - 1;
-	while (!stackFT.empty())
+	while (!stackFT.empty() || !stackSTD.empty())
 	{
 		T tmp = stackFT.top();
 
@@ -215,19 +216,9 @@ void	printStackClass(ft::stack<T> stackFT, std::stack<T> stackSTD, std::string s
 			<< BLUE << "  vec2.y: " << MAGENTA << tmp._vec.y << RESET << std::endl;
 		std::cout << YELLOW << "----------------------------------------------------------------" \
 			<< RESET << std::endl << std::endl;
-			
 		stackFT.pop();
-		k--;
-	}
-	std::cout << std::endl << std::endl;
-	
-	std::cout << GREEN << "std::Stack size    : " << MAGENTA << stackSTD.size() << std::endl << std::endl;
 
-	k = stackSTD.size() - 1;
-	while (!stackSTD.empty())
-	{
-		T tmp = stackSTD.top();
-
+		tmp = stackSTD.top();
 		std::cout << GREEN << "Place in array #: " << CYAN << k << std::endl << std::endl;
 			
 		std::cout << GREEN << "std::Stack<" << MAGENTA << type << GREEN"> nbr:        " \
@@ -238,11 +229,12 @@ void	printStackClass(ft::stack<T> stackFT, std::stack<T> stackSTD, std::string s
 			<< MAGENTA << tmp._vec.x \
 			<< GREEN << "  vec2.y: " << MAGENTA << tmp._vec.y << RESET << std::endl;
 		std::cout << YELLOW << "----------------------------------------------------------------" \
-			<< RESET << std::endl << std::endl;
-			
+			<< RESET << std::endl << std::endl;	
 		stackSTD.pop();
+		
 		k--;
 	}
+	
 	std::cout << RESET << std::endl << std::endl;
 }
 
@@ -288,24 +280,23 @@ void    stackStructTest(void)
 	}
 	for (int i = 0; i < 9; i++)
 	{
-		// stackFT2.push(myStruct2[i]);
+		stackFT2.push(myStruct2[i]);
 		stackSTD2.push(myStruct2[i]);
 	}
-
 	printStackClass(stackFT, stackSTD, "Init stack", "struct", 1, 0);
 
-	// // Test 2: pop() //
-	// for (int i = 0; i < 2; i++)
-	// {
-	// 	stackFT.pop();
-	// 	stackSTD.pop();
-	// }
-	// printStackClass(stackFT, stackSTD, "2 * pop()", "struct", 2, 0);
+	// Test 2: pop() //
+	for (int i = 0; i < 2; i++)
+	{
+		stackFT.pop();
+		stackSTD.pop();
+	}
+	printStackClass(stackFT, stackSTD, "2 * pop()", "struct", 2, 0);
 
-	// // Test 3: stack1 = stack2 //
-	// stackFT = stackFT2;
-	// stackSTD = stackSTD2;
-	// printStackClass(stackFT, stackSTD, "stack1 = stack2", "struct", 3, 1);
+	// Test 3: stack1 = stack2 //
+	stackFT = stackFT2;
+	stackSTD = stackSTD2;
+	printStackClass(stackFT, stackSTD, "stack1 = stack2", "struct", 3, 1);
 
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
 	std::cout << GREEN << "------------ END TESTS Stack< struct > -------------" << RESET << std::endl << std::endl;
