@@ -6,11 +6,13 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 23:43:30 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/23 14:50:46 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/23 15:04:04 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
+#include "../functions/utils.hpp"
 
 namespace ft
 {

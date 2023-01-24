@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/23 12:32:02 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/23 15:02:58 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 // For the sake of the project, I'm including all the files here.
 
 // Functions //
-#include "functions/lexicographicalCompare.hpp"
 #include "functions/isIntegral.hpp"
-#include "functions/enableIf.hpp"
-#include "functions/equal.hpp"
 #include "functions/pair.hpp"
 
 // Containers //

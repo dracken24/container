@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 16:58:40 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/23 12:31:16 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/23 18:22:53 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,456 +16,471 @@
 
 namespace ft
 {
-	template <class T>
-	struct Node
+	template <bool isConst, typename isFalse, typename isTrue>
+	struct chooseConst {};
+
+	template <typename isFalse, typename isTrue>
+	struct chooseConst<false, isFalse, isTrue>
 	{
-		T		data;
-		Node	*left;
-		Node	*right;
+		typedef isFalse type;
+	};
+
+	template <typename isFalse, typename isTrue>
+	struct chooseConst<true, isFalse, isTrue>
+	{
+		typedef isTrue type;
 	};
 	
-	template <class Key, class T>
-	struct BNode
+	template <class Key, class T, class Compare, typename Node, bool B>
+	class map_iterator
 	{
-		ft::pair<Key, T> pair;
+		public:
 		
-		BNode	*left;
-		BNode	*right;
-		BNode	*parent;
+			typedef T												mapped_type;
+			typedef Key												key_type;
+			typedef Compare											key_compare;
+			
+			typedef size_t											size_type;
+			typedef long int										difference_type;
+			typedef ft::pair<const key_type, mapped_type>			value_type;
+			
+			typedef typename chooseConst<B, value_type&, const value_type &>::type		reference;
+			typedef typename chooseConst<B, value_type*, const value_type *>::type		pointer;
+			typedef Node*																nodePtr;
+
+
+		public:
+
+			map_iterator(nodePtr node = 0, nodePtr lastElem = 0, 
+						const key_compare &comp = key_compare()) :
+			_node(node),
+			_lastElem(lastElem),
+			_comp(comp)
+			{}
 		
-		bool	end;
+			map_iterator(const map_iterator<Key, T, Compare, Node, false> &copy)
+			{
+				_node = copy.getNode();
+				_lastElem = copy.getLastElem();
+				_comp = copy.getCompare();
+			}
+			
+			~map_iterator()
+			{}
+
+			map_iterator &operator=(const map_iterator &assign)
+			{
+				if (this != &assign)
+				{
+					_node = assign._node;
+					_lastElem = assign._lastElem;
+					_comp = assign._comp;
+				}
+				
+				return (*this);
+			}
+
+			nodePtr getNode() const
+			{
+				return _node;
+			}
+			
+			nodePtr getLastElem() const
+			{
+				return _lastElem;
+			}
+
+			key_compare getCompare() const
+			{
+				return _comp;
+			}
+
+			reference operator*() const
+			{
+				return (_node->content);
+			}
+
+			pointer operator->() const
+			{
+				return (&_node->content);
+			}
+
+			map_iterator &operator++()
+			{
+				nodePtr previousNode = _node;
+				
+				if (_node == _lastElem)
+				{
+					_node = _lastElem->right;
+					return (*this);
+				}
+				while (_node != _lastElem && !_comp(previousNode->content.first, _node->content.first))
+				{ 
+					if (_node->right && (_node->right == _lastElem || 
+							_comp(previousNode->content.first, _node->right->content.first)))
+					{
+						Node	*tmp = 0;
+						
+						_node = _node->right;
+						if (_node != _lastElem && (tmp = searchMinNode(_node)))
+							_node = tmp;
+					}
+					else
+						_node = _node->parent;
+				}
+				return (*this);
+			}
+
+			map_iterator operator++(int)
+			{
+				map_iterator res(*this);
+
+				if (_node == _lastElem)
+				{
+					_node = _lastElem->right;
+					return (res);
+				}
+				
+				while (_node != _lastElem && !_comp(res->first, _node->content.first))
+				{
+					if (_node->right && (_node->right == _lastElem || 
+							_comp(res->first, _node->right->content.first)))
+					{
+						_node = _node->right;
+						
+						Node	*tmp = 0;
+						if (_node != _lastElem && (tmp = searchMinNode(_node)))
+							_node = tmp;
+					}
+					else
+						_node = _node->parent;
+				}
+				
+				return (res);
+			}
+
+			map_iterator &operator--()
+			{
+				nodePtr previousNode = _node;
+
+				if (_node == _lastElem)
+				{
+					_node = _lastElem->left;
+					return (*this);
+				}
+
+				while (_node != _lastElem && !_comp(_node->content.first, previousNode->content.first))
+				{
+					if (_node->left && (_node->left == _lastElem || 
+							_comp(_node->left->content.first, previousNode->content.first)))
+					{
+						_node = _node->left;
+						
+						Node	*tmp = 0;
+						if (_node != _lastElem && (tmp = searchMaxNode(_node)))
+							_node = tmp;
+					}
+					else
+						_node = _node->parent;
+				}
+
+				return (*this);
+			}
+
+			map_iterator operator--(int)
+			{
+				map_iterator res(*this);
+
+				if (_node == _lastElem)
+				{
+					_node = _lastElem->left;
+					return (res);
+				}
+				
+				while (_node != _lastElem && !_comp(_node->content.first, res->first))
+				{
+					if (_node->left && (_node->left == _lastElem || 
+							_comp(_node->left->content.first, res->first)))
+					{
+						Node	*tmp = 0;
+						
+						_node = _node->left;
+						if (_node != _lastElem && (tmp = searchMaxNode(_node)))
+							_node = tmp;
+					}
+					else
+						_node = _node->parent;
+				}
+				
+				return (res);
+			}
+
+			bool operator==(const map_iterator &it) const
+			{
+				return (it._node == _node);
+			}
+			
+			bool operator!=(const map_iterator &it) const
+			{
+				return (it._node != _node);
+			}
+			
+		// Member functions
+		private:
+
+			Node *searchMaxNode(Node *root)
+			{
+				if (root && root != _lastElem && root->right && root->right != _lastElem)
+				
+					return searchMaxNode(root->right);
+				return root;
+			}
+
+			Node *searchMinNode(Node *root)
+			{
+				if (root && root != _lastElem && root->left && root->left != _lastElem)
+					return searchMinNode(root->left);
+					
+				return root;
+			}
+			
+		private:
+
+			nodePtr         _node;      // Pointer to a binary tree's node
+			nodePtr         _lastElem;  // Pointer to the dummy node of binary tree
+			key_compare     _comp;      // Comparison object used to sort the binary tree
 	};
-	
-	template <class K, class T>
-	class MapIterator
+
+	template<class Key, class T, class Compare, typename Node, bool B>
+	class rev_map_iterator
 	{
 		public:
-			typedef ft::pair<K, T>		value_type;
-			typedef ft::pair<K, T>&		reference;
-			typedef BNode<K, T>*		pointer;
+		
+			typedef Key                                             key_type;
+			typedef Compare                                         key_compare;
+			typedef T                                               mapped_type;
+			
+			typedef ft::pair<const key_type, mapped_type>           value_type;
+			typedef long int                                        difference_type;
+			typedef size_t                                          size_type;
+			
+			typedef typename chooseConst<B, value_type&, const value_type&>::type       reference;
+			typedef typename chooseConst<B, value_type*, const value_type*>::type       pointer;
+			typedef Node*                                                               nodePtr;
+			
+
 
 		public:
-			MapIterator(void)
-			: _ptr(0) {};
+		
+			rev_map_iterator(nodePtr node = 0, nodePtr lastElem = 0,
+							const key_compare& comp = key_compare()) :
+			_node(node),
+			_lastElem(lastElem),
+			_comp(comp)
+			{}
+		
+			rev_map_iterator(const rev_map_iterator<Key, T, Compare, Node, false> &copy)
+			{
+				_node = copy.getNonConstNode();
+				_lastElem = copy.getNonConstLastElem();
+				_comp = copy.getCompare();
+			}
 			
-			MapIterator(const pointer ptr)
-			: _ptr(ptr) {};
-			
-			MapIterator(const MapIterator &other)
-			: _ptr(other._ptr) {};
+			explicit rev_map_iterator(map_iterator<Key, T, Compare, Node, false> copy)
+			{
+				--copy;
+				_node = copy.getNonConstNode();
+				_lastElem = copy.getNonConstLastElem();
+				_comp = copy.getCompare();
+			}
 
-			~MapIterator(void) {};
-			
-			MapIterator &operator=(const MapIterator &other)
+			~rev_map_iterator()
+			{}
+
+			rev_map_iterator& operator=(const rev_map_iterator& assign)
 			{
-				if (this != &other)
-					_ptr = other._ptr;
-				
+				if (this != &assign)
+				{
+					_node = assign._node;
+					_lastElem = assign._lastElem;
+					_comp = assign._comp;
+				}
 				return (*this);
 			}
+
+			// Getters //
 			
-			pointer node(void)
+			nodePtr getNonConstNode() const
 			{
-				return (_ptr);
+				return _node;
+			}
+
+			nodePtr getNonConstLastElem() const
+			{
+				return _lastElem;
+			}
+
+			key_compare getCompare() const
+			{
+				return _comp;
+			}
+
+			reference operator*() const
+			{
+				return (_node->content);
 			}
 			
-			value_type &operator*(void)
+			pointer operator->() const
 			{
-				return (_ptr->pair);
+				return (&_node->content);
 			}
-			
-			value_type *operator->(void)
+
+			rev_map_iterator& operator++()
 			{
-				return (&(_ptr->pair));
-			}
-			
-			bool operator==(const MapIterator<K, T> &other)
-			{
-				return (_ptr == other._ptr);
-			}
-			
-			bool operator!=(const MapIterator<K, T> &other)
-			{
-				return (_ptr != other._ptr);
-			}
-			
-			bool operator>(const MapIterator<K, T> &other)
-			{
-				return (_ptr > other._ptr);
-			}
-			
-			bool operator<(const MapIterator<K, T> &other)
-			{
-				return (_ptr < other._ptr);
-			}
-			
-			bool operator>=(const MapIterator<K, T> &other)
-			{
-				return (_ptr >= other._ptr);
-			}
-			
-			bool operator<=(const MapIterator<K, T> &other)
-			{
-				return (_ptr <= other._ptr);
-			}
-			
-			MapIterator &operator++(void)
-			{
-				_ptr = _ptr->right;
-				
+				nodePtr previousNode = _node;
+
+				if (_node == _lastElem)
+				{
+					_node = _lastElem->left;
+					return (*this);
+				}
+
+				while (_node != _lastElem && !_comp(_node->content.first, previousNode->content.first))
+				{
+					if (_node->left && (_node->left == _lastElem || 
+							_comp(_node->left->content.first, previousNode->content.first)))
+					{
+						Node* tmp = 0;
+						
+						_node = _node->left;
+						if (_node != _lastElem && (tmp = searchMaxNode(_node)))
+							_node = tmp;
+					}
+					else
+						_node = _node->parent;
+				}
+
 				return (*this);
 			}
-			
-			MapIterator &operator--(void)
+
+			rev_map_iterator operator++(int)
 			{
-				_ptr = _ptr->left;
+				rev_map_iterator res(*this);
+
+				if (_node == _lastElem)
+				{
+					_node = _lastElem->left;
+					return (res);
+				}
 				
+				while (_node != _lastElem && !_comp(_node->content.first, res->first))
+				{
+					if (_node->left && (_node->left == _lastElem || 
+							_comp(_node->left->content.first, res->first)))
+					{
+						Node	*tmp = 0;
+						
+						_node = _node->left;
+						if (_node != _lastElem && (tmp = searchMaxNode(_node)))
+							_node = tmp;
+					}
+					else
+						_node = _node->parent;
+				}
+				
+				return (res);
+			}
+
+			rev_map_iterator &operator--()
+			{
+				nodePtr previousNode = _node;
+
+				if (_node == _lastElem)
+				{
+					_node = _lastElem->right;
+					return (*this);
+				}
+
+				while (_node != _lastElem && !_comp(previousNode->content.first, _node->content.first))
+				{ 
+					if (_node->right && (_node->right == _lastElem || 
+							_comp(previousNode->content.first, _node->right->content.first)))
+					{
+						Node	*tmp = 0;
+						
+						_node = _node->right;
+						if (_node != _lastElem && (tmp = searchMinNode(_node)))
+							_node = tmp;
+					}
+
+					else
+						_node = _node->parent;
+				}
 				return (*this);
 			}
-			
-			MapIterator operator++(int)
+
+			rev_map_iterator operator--(int)
 			{
-				MapIterator tmp(*this);
-				_ptr = _ptr->right;
+				rev_map_iterator res(*this);
+
+				if (_node == _lastElem)
+				{
+					_node = _lastElem->right;
+					return (res);
+				}
 				
-				return (tmp);
+				while (_node != _lastElem && !_comp(res->first, _node->content.first))
+				{
+					if (_node->right && (_node->right == _lastElem || 
+							_comp(res->first, _node->right->content.first)))
+					{
+						_node = _node->right;
+						
+						Node	*tmp = 0;
+						if (_node != _lastElem && (tmp = searchMinNode(_node)))
+							_node = tmp;
+					}
+					else
+						_node = _node->parent;
+				}
+				
+				return (res);
+			}
+
+			bool operator==(const rev_map_iterator &it) const
+			{
+				return (it._node == _node);
 			}
 			
-			MapIterator operator--(int)
+			bool operator!=(const rev_map_iterator &it) const
 			{
-				MapIterator tmp(*this);
-				_ptr = _ptr->left;
-				
-				return (tmp);
+				return (it._node != _node);
+			}
+
+		// Member functions
+		private:
+
+			Node *searchMaxNode(Node *root)
+			{
+				if (root && root != _lastElem && root->right && root->right != _lastElem)
+					return searchMaxNode(root->right);
+					
+				return root;
+			}
+
+			Node *searchMinNode(Node *root)
+			{
+
+				if (root && root != _lastElem && root->left && root->left != _lastElem)
+					return searchMinNode(root->left);
+					
+				return root;
 			}
 		
-		protected:
-			pointer _ptr;
+		private:
+
+			nodePtr         _node;      // Pointer to a binary tree's node
+			nodePtr         _lastElem;  // Pointer to the dummy node of binary tree
+			key_compare     _comp;      // Comparison object used to sort the binary tree
 	};
-
-	template <class K, class T>
-	class MapConstIterator
-	{
-		public:
-			typedef ft::pair<K, T>		value_type;
-			typedef ft::pair<K, T>&		reference;
-			typedef ft::pair<K, T>*		pointer;
-			typedef BNode<K, T>*		node_pointer;
-
-		public:
-			MapConstIterator(void)
-			: _ptr(0) {};
-			
-			MapConstIterator(const pointer ptr)
-			: _ptr(ptr) {};
-			
-			MapConstIterator(const MapConstIterator &other)
-			: _ptr(other._ptr) {};
-
-			~MapConstIterator(void) {};
-			
-			MapConstIterator &operator=(const MapConstIterator &other)
-			{
-				if (this != &other)
-					_ptr = other._ptr;
-				
-				return (*this);
-			}
-			
-			pointer node(void)
-			{
-				return (_ptr);
-			}
-			
-			value_type &operator*(void)
-			{
-				return (_ptr->pair);
-			}
-			
-			value_type *operator->(void)
-			{
-				return (&(_ptr->pair));
-			}
-			
-			bool operator==(const MapConstIterator<K, T> &other)
-			{
-				return (_ptr == other._ptr);
-			}
-			
-			bool operator!=(const MapConstIterator<K, T> &other)
-			{
-				return (_ptr != other._ptr);
-			}
-			
-			bool operator>(const MapConstIterator<K, T> &other)
-			{
-				return (_ptr > other._ptr);
-			}
-			
-			bool operator<(const MapConstIterator<K, T> &other)
-			{
-				return (_ptr < other._ptr);
-			}
-			
-			bool operator>=(const MapConstIterator<K, T> &other)
-			{
-				return (_ptr >= other._ptr);
-			}
-			
-			bool operator<=(const MapConstIterator<K, T> &other)
-			{
-				return (_ptr <= other._ptr);
-			}
-			
-			MapConstIterator &operator++(void)
-			{
-				_ptr = _ptr->right;
-				
-				return (*this);
-			}
-			
-			MapConstIterator &operator--(void)
-			{
-				_ptr = _ptr->left;
-				
-				return (*this);
-			}
-			
-			MapConstIterator operator++(int)
-			{
-				MapConstIterator tmp(*this);
-				_ptr = _ptr->right;
-				
-				return (tmp);
-			}
-
-			MapConstIterator operator--(int)
-			{
-				MapConstIterator tmp(*this);
-				_ptr = _ptr->left;
-				
-				return (tmp);
-			}
-
-		protected:
-			pointer _ptr;
-	};
-
-	template <class K, class T>
-	class MapReverseIterator
-	{
-		public:
-			typedef ft::pair<K, T>		value_type;
-			typedef ft::pair<K, T>&		reference;
-			typedef BNode<K, T>*		pointer;
-
-		public:
-			MapReverseIterator(void)
-			: _ptr(0) {};
-			
-			MapReverseIterator(const pointer ptr)
-			: _ptr(ptr) {};
-			
-			MapReverseIterator(const MapReverseIterator &other)
-			: _ptr(other._ptr) {};
-
-			~MapReverseIterator(void) {};
-			
-			MapReverseIterator &operator=(const MapReverseIterator &other)
-			{
-				if (this != &other)
-					_ptr = other._ptr;
-				
-				return (*this);
-			}
-			
-			pointer node(void)
-			{
-				return (_ptr);
-			}
-			
-			value_type &operator*(void)
-			{
-				return (_ptr->pair);
-			}
-			
-			value_type *operator->(void)
-			{
-				return (&(_ptr->pair));
-			}
-			
-			bool operator==(const MapReverseIterator<K, T> &other)
-			{
-				return (_ptr == other._ptr);
-			}
-			
-			bool operator!=(const MapReverseIterator<K, T> &other)
-			{
-				return (_ptr != other._ptr);
-			}
-			
-			bool operator>(const MapReverseIterator<K, T> &other)
-			{
-				return (_ptr > other._ptr);
-			}
-			
-			bool operator<(const MapReverseIterator<K, T> &other)
-			{
-				return (_ptr < other._ptr);
-			}
-			
-			bool operator>=(const MapReverseIterator<K, T> &other)
-			{
-				return (_ptr >= other._ptr);
-			}
-			
-			bool operator<=(const MapReverseIterator<K, T> &other)
-			{
-				return (_ptr <= other._ptr);
-			}
-			
-			MapReverseIterator &operator++(void)
-			{
-				_ptr = _ptr->left;
-				
-				return (*this);
-			}
-			
-			MapReverseIterator &operator--(void)
-			{
-				_ptr = _ptr->right;
-				
-				return (*this);
-			}
-			
-			MapReverseIterator operator++(int)
-			{
-				MapReverseIterator tmp(*this);
-				_ptr = _ptr->left;
-				
-				return (tmp);
-			}
-
-			MapReverseIterator operator--(int)
-			{
-				MapReverseIterator tmp(*this);
-				_ptr = _ptr->right;
-				
-				return (tmp);
-			}
-
-		protected:
-			pointer _ptr;
-	};
-
-	template <class K, class T>
-	class MapConstReverseIterator
-	{
-		public:
-			typedef ft::pair<K, T>		value_type;
-			typedef ft::pair<K, T>&		reference;
-			typedef ft::pair<K, T>*		pointer;
-			typedef BNode<K, T>*		node_pointer;
-
-		public:
-			MapConstReverseIterator(void)
-			: _ptr(0) {};
-			
-			MapConstReverseIterator(const pointer ptr)
-			: _ptr(ptr) {};
-			
-			MapConstReverseIterator(const MapConstReverseIterator &other)
-			: _ptr(other._ptr) {};
-
-			~MapConstReverseIterator(void) {};
-			
-			MapConstReverseIterator &operator=(const MapConstReverseIterator &other)
-			{
-				if (this != &other)
-					_ptr = other._ptr;
-				
-				return (*this);
-			}
-			
-			pointer node(void)
-			{
-				return (_ptr);
-			}
-			
-			value_type &operator*(void)
-			{
-				return (_ptr->pair);
-			};
-			
-			value_type *operator->(void)
-			{
-				return (&(_ptr->pair));
-			}
-			
-			bool operator==(const MapConstReverseIterator<K, T> &other)
-			{
-				return (_ptr == other._ptr);
-			}
-			
-			bool operator!=(const MapConstReverseIterator<K, T> &other)
-			{
-				return (_ptr != other._ptr);
-			}
-			
-			bool operator>(const MapConstReverseIterator<K, T> &other)
-			{
-				return (_ptr > other._ptr);
-			}
-			
-			bool operator<(const MapConstReverseIterator<K, T> &other)
-			{
-				return (_ptr < other._ptr);
-			}
-			
-			bool operator>=(const MapConstReverseIterator<K, T> &other)
-			{
-				return (_ptr >= other._ptr);
-			}
-			
-			bool operator<=(const MapConstReverseIterator<K, T> &other)
-			{
-				return (_ptr <= other._ptr);
-			}
-			
-			MapConstReverseIterator &operator++(void)
-			{
-				_ptr = _ptr->left;
-				
-				return (*this);
-			}
-			
-			MapConstReverseIterator &operator--(void)
-			{
-				_ptr = _ptr->right;
-				
-				return (*this);
-			}
-
-			MapConstReverseIterator operator++(int)
-			{
-				MapConstReverseIterator tmp(*this);
-				_ptr = _ptr->left;
-				
-				return (tmp);
-			}
-
-			MapConstReverseIterator operator--(int)
-			{
-				MapConstReverseIterator tmp(*this);
-				_ptr = _ptr->right;
-				
-				return (tmp);
-			}
-
-		protected:
-			pointer _ptr;
-	};
-
-
-	
 };

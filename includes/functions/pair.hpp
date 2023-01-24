@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:08:02 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/23 12:30:34 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/23 16:50:07 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,32 @@
 namespace ft
 {
 	template <class T1, class T2>
-	struct pair
+	class pair
 	{
-		typedef T1	first_type;
-		typedef T2	second_type;
-		
-		T1	first;
-		T2	second;
-		
-		pair(void)
-		: first(), second() {};
-		
-		pair(const T1 &x, const T2 &y)
-		: first(x), second(y) {};
-		
-		template <class U, class V>
-		pair(const pair<U, V> &other)
-		: first(other.first), second(other.second) {};
-		
-		pair &operator=(const pair &other)
-		{
-			if (this != &other)
-			{
-				first = other.first;
-				second = other.second;
-			}
+		public:
+			pair() : first(), second() {};
+
+			pair(const T1& a, const T2& b) : first(a), second(b) {};
 			
-			return (*this);
-		};
+			pair(const pair<T1, T2>& copy) : first(copy.first), second(copy.second) {};
+
+			template <typename U, typename V>
+			pair(const pair<U, V>& copy) : first(copy.first), second(copy.second) {};
+
+			~pair() {};
+		
+			pair& operator=(const pair& assign)
+			{
+				if (this != &assign)
+				{
+					first = assign.first;
+					second = assign.second;
+				}
+				return (*this);
+			}
+
+			T1 first;
+			T2 second;
 	};
 	
 	template <class T1, class T2>

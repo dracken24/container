@@ -6,15 +6,15 @@
 #    By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/23 13:22:35 by nadesjar          #+#    #+#              #
-#    Updated: 2023/01/21 12:56:38 by dracken24        ###   ########.fr        #
+#    Updated: 2023/01/23 14:55:03 by dracken24        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 P_OBJS 			= ./objs/
-P_SRCS			= ./srcs/
-P_TEST			= ./srcs/tests/
-P_CLASS			= ./srcs/templates/
-P_FT			= ./srcs/templates/functions/
+P_SRCS			= ./myTests/
+P_TEST			= ./myTests/tests/
+P_CLASS			= ./myTests/templates/
+P_FT			= ./myTests/templates/functions/
 
 FILES			= $(P_SRCS)main.cpp \
 				$(P_TEST)vectorTest.cpp \
