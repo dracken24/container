@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Iterator.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 08:09:40 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/23 12:30:49 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/24 19:36:22 by nadesjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,32 @@
 
 namespace ft
 {
-	class input_iterator_tag 
-	{
+	// class input_iterator_tag 
+	// {
 
-	};
+	// };
 	
-	class output_iterator_tag
-	{
+	// class output_iterator_tag
+	// {
 
-	};
+	// };
 	
-	class forward_iterator_tag       : public input_iterator_tag
-	{
+	// class forward_iterator_tag       : public input_iterator_tag
+	// {
 
-	};
+	// };
 	
-	class bidirectional_iterator_tag : public forward_iterator_tag
-	{
+	// class bidirectional_iterator_tag : public forward_iterator_tag
+	// {
 
-	};
+	// };
 
-	class random_access_iterator_tag : public bidirectional_iterator_tag
+	// class random_access_iterator_tag : public bidirectional_iterator_tag
+	// {
+		
+	// };
+
+	class random_access_iterator_tag
 	{
 		
 	};
