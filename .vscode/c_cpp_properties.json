@@ -3,7 +3,8 @@
         {
             "name": "linux-gcc-x64",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/test/srcs"
             ],
             "compilerPath": "/usr/bin/c++",
             "cStandard": "${default}",

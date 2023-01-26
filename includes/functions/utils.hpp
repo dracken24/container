@@ -6,13 +6,15 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:44:57 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/23 15:02:38 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/26 13:26:21 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # pragma once
 
 #include "../templates/Iterator.hpp"
+#include "isIntegral.hpp"
+#include "pair.hpp"
 
 namespace ft
 {

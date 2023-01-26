@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:28:54 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/23 20:40:12 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/26 13:39:27 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,11 +170,15 @@ namespace ft
 			iterator end()
 			{
 				return iterator(_lastElem, _lastElem, _comp);
+				
+				// return iterator(_lastElem);
 			}
 
 			const_iterator end() const
 			{
 				return const_iterator(_lastElem, _lastElem, _comp);
+
+				// return const_iterator(_lastElem);
 			}
 
 			reverse_iterator rbegin()
@@ -272,8 +276,7 @@ namespace ft
 			}
 			
 			template <class InputIterator>
-			void insert (InputIterator first, InputIterator last,
-						typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0)
+			void insert (InputIterator first, InputIterator last)
 			{
 				while (first != last)
 					insert(*first++);
