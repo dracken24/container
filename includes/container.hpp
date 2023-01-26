@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/23 15:02:58 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/26 14:25:11 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,4 +168,5 @@ void    stackFloatTest(void);
 void    stackIntTest(void);
 
 // Map Tests //
+void	mapTestString();
 void	mapTestInt();

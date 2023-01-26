@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/21 14:28:29 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/26 14:47:05 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	chooseMapTests(void)
 		std::cout << "----------------------------------------" << std::endl << std::endl;
 
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map" << RESET << GREEN << "<" \
-			<< BLUE << " int " << GREEN <<"> tests, enter: " << MAGENTA << "1" << std::endl;
+			<< BLUE << " int " << GREEN <<"> tests,    enter: " << MAGENTA << "1" << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map" << RESET << GREEN << "<" \
+			<< BLUE << " string " << GREEN <<"> tests, enter: " << MAGENTA << "2" << std::endl;
 
 		std::cout << std::endl;
 		std::cout << RED << "Enter: 'Q' for return" << RESET << std::endl;
@@ -37,6 +39,9 @@ void	chooseMapTests(void)
 		{
 			case '1':
 				mapTestInt();
+				break;
+			case '2':
+				mapTestString();
 				break;
 			case 'q':
 			case 'Q':

@@ -78,7 +78,8 @@
     "list": "cpp",
     "map": "cpp",
     "set": "cpp",
-    "climits": "cpp"
+    "climits": "cpp",
+    "csignal": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
