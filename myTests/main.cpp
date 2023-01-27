@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/26 22:56:48 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/26 23:06:36 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,12 +266,15 @@ int	main(void)
 				break ;
 			case 'q':
 			case 'Q':
+			{
+				std::cout << "\e[1;1H\e[2J";
 				return (0);
+			}
 			default:
 				std::cout << RED << "Invalid input" << RESET << std::endl;
 		}
 		
 	}
-		
+	
 	return (0);
 }
