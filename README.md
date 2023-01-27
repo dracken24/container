@@ -296,3 +296,7 @@ https://www.simplilearn.com/tutorials/cpp-tutorial/cpp-vector
 - [x] template <class T, class Container> bool operator<= (const queue<T,Container>& lhs, const queue<T,Container>& rhs);
 - [x] template <class T, class Container> bool operator> (const queue<T,Container>& lhs, const queue<T,Container>& rhs);
 - [x] template <class T, class Container> bool operator>= (const queue<T,Container>& lhs, const queue<T,Container>& rhs);
+
+
+
+https://cs.brown.edu/people/jwicks/libstdc++/html_user/classstd_1_1map.html

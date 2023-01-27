@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:47:12 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/26 15:20:01 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/26 19:21:44 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,6 +240,8 @@ void	mapTestInt()
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
 }
 
+/**************************************************************************************************************************/
+
 void	mapTestString()
 {
 	std::cout << std::boolalpha;
@@ -454,6 +456,325 @@ void	mapTestString()
 	ftMap.clear();
 	stdMap.clear();
 	printMap(ftMap, stdMap, 17, "clear()");
+
+	std::cout << std::endl << std::endl;
+	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
+	std::cout << GREEN << "------------------------ END TESTS MAP -------------------------" << RESET << std::endl << std::endl;
+	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
+}
+
+/****************************************************************************************************************************/
+
+template <typename T, typename U>
+void	printClassMap(ft::map<T, U> map_FT, std::map<T, U> map_STD,
+						std::string str, std::string type, int nbr, int reset)
+{
+	static int		i = nbr;
+	static int		ct = 1;
+	std::string		input = "";
+
+	if (reset == 1)
+	{
+		i = nbr;
+		ct = 1;
+	}
+	else if (reset == -1)
+		i = nbr;
+		
+	if (ct == 1)
+	{
+		std::cout << "       Press 'A' to all tests" << std::endl;
+		std::cout << "                 or" << std::endl;
+		std::cout << "Press enter to continue to next test" << std::endl;
+		
+		std::getline(std::cin, input);
+		if (input == "A" || input == "a")
+			ct = 0;
+	}
+
+	std::cout << YELLOW << "ft::map:< " << MAGENTA << type << YELLOW << " >" << std::endl << std::endl;
+	std::cout << RED << "----------------------------------------------------------------" 
+		<< RESET << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << BLUE << type << YELLOW << "#[" << MAGENTA << i
+		<< YELLOW << "]: " << str << std::endl << std::endl;
+	std::cout << "----------------------------------------------------------------" 
+		<< RESET << std::endl << std::endl;
+	
+	
+	int j = 0;
+	typename std::map<T, U>::iterator itStd = map_STD.begin();
+	for (typename ft::map<T, U>::iterator it = map_FT.begin(); it != map_FT.end(); it++)
+	{
+		std::cout << YELLOW << "Place in array: " << MAGENTA << "[" << j << "] " << std::endl << std::endl;
+		
+		A	a = it->second;
+		std::cout << BLUE << "ft: KEY: " << MAGENTA << "[" << BLUE << it->first << MAGENTA << "] " << std::endl << std::endl;
+		std::cout << BLUE << "ft: nbr : " << MAGENTA << a.getNbr() << std::endl;
+		std::cout << BLUE << "ft: name: " << MAGENTA << a.getStr() << std::endl;
+		std::cout << BLUE << "ft: pos : " << MAGENTA << a.getVecX() << " " << a.getVecY() << std::endl;
+		std::cout << std::endl;
+		
+		std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
+
+		a = itStd->second;
+		std::cout << GREEN << "std: KEY: " << MAGENTA << "[" << BLUE << it->first << MAGENTA << "] " << std::endl << std::endl;
+		std::cout << GREEN << "std: nbr : " << MAGENTA << a.getNbr() << std::endl;
+		std::cout << GREEN << "std: name: " << MAGENTA << a.getStr() << std::endl;
+		std::cout << GREEN << "std: pos : " << MAGENTA << a.getVecX() << " " << a.getVecY() << std::endl;
+		std::cout << std::endl;
+
+		std::cout << RED << "----------------------------------------------------------------" 
+			<< RESET << std::endl << std::endl;
+		
+		itStd++;
+		j++;
+	}
+		
+	std::cout << BLUE << "----------------------------------------------------------------" 
+			<< RESET << std::endl << std::endl << std::endl;
+	i++;
+}
+
+void	printOneClass(typename ft::map<int, A>::iterator ftIt, typename std::map<int, A>::iterator stdIt, std::string str, std::string type, int nbr)
+{
+	std::cout << YELLOW << "ft::map:< " << MAGENTA << type << YELLOW << " >" << std::endl << std::endl;
+	std::cout << RED << "----------------------------------------------------------------" 
+		<< RESET << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << BLUE << type << YELLOW << "#[" << MAGENTA << nbr
+		<< YELLOW << "]: " << str << std::endl << std::endl;
+	std::cout << "----------------------------------------------------------------" 
+		<< RESET << std::endl << std::endl;
+	
+	A	a = ftIt->second;
+	std::cout << BLUE << "ft: KEY: " << MAGENTA << "[" << BLUE << ftIt->first << MAGENTA << "] " << std::endl << std::endl;
+	std::cout << BLUE << "ft: nbr : " << MAGENTA << a.getNbr() << std::endl;
+	std::cout << BLUE << "ft: name: " << MAGENTA << a.getStr() << std::endl;
+	std::cout << BLUE << "ft: pos X: " << MAGENTA << a.getVecX() << BLUE << "  Pos Y:" << MAGENTA << a.getVecY() << std::endl;
+	std::cout << std::endl;
+
+	std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
+
+	A	b = stdIt->second;
+	std::cout << GREEN << "std: KEY: " << MAGENTA << "[" << BLUE << stdIt->first << MAGENTA << "] " << std::endl << std::endl;
+	std::cout << GREEN << "std: nbr : " << MAGENTA << b.getNbr() << std::endl;
+	std::cout << GREEN << "std: name: " << MAGENTA << b.getStr() << std::endl;
+	std::cout << GREEN << "std: pos X: " << MAGENTA << b.getVecX() << GREEN << "  Pos Y:" << MAGENTA << b.getVecY() << std::endl;
+	std::cout << std::endl << std::endl;
+}
+
+void	mapTestClass()
+{
+	std::cout << std::boolalpha;
+	std::cout << RED << "/**************************" << GREEN << " MAP CLASS " << \
+		RED << "**************************/" << RESET << std::endl << std::endl;
+
+	std::string		buffer;
+
+	A	map[] = 
+	{
+		A("Monkey", 24, (Vector2){24, 48}),
+		A("Unicorn", 42, (Vector2){42, 84}),
+		A("Pony", 96, (Vector2){96, 192}),
+		A("Zombie", 666, (Vector2){666, 1332}),
+		A("Squirrel", 77, (Vector2){777, 154}),
+	};
+
+	A	map2[] = 
+	{
+		A("Bob", 33, (Vector2){37, 52}),
+		A("Tony", 69, (Vector2){69, 138}),
+		A("Henry", 196, (Vector2){96, 192}),
+		A("Clamelie", 228, (Vector2){258, 456}),
+		A("Chuck Noris", 420, (Vector2){421, 840}),
+		A("Banana", 24, (Vector2){24, 48}),
+	};
+
+
+	ft::map<int, A>	ftMap;
+	ft::map<int, A>	ftMap2;
+	std::map<int, A>	stdMap;
+	std::map<int, A>	stdMap2;
+
+
+	ftMap.insert(ft::make_pair(34, map[0]));
+	ftMap.insert(ft::make_pair(42, map[1]));
+	ftMap.insert(ft::make_pair(96, map[2]));
+	ftMap.insert(ft::make_pair(666, map[3]));
+	ftMap.insert(ft::make_pair(77, map[4]));
+	
+	stdMap.insert(std::make_pair(34, map[0]));
+	stdMap.insert(std::make_pair(42, map[1]));
+	stdMap.insert(std::make_pair(96, map[2]));
+	stdMap.insert(std::make_pair(666, map[3]));
+	stdMap.insert(std::make_pair(77, map[4]));
+	
+	ftMap2.insert(ft::make_pair(33, map2[0]));
+	ftMap2.insert(ft::make_pair(69, map2[1]));
+	ftMap2.insert(ft::make_pair(196, map2[2]));
+	ftMap2.insert(ft::make_pair(628, map2[3]));
+	ftMap2.insert(ft::make_pair(420, map2[4]));
+	ftMap2.insert(ft::make_pair(24, map2[5]));
+	
+	stdMap2.insert(std::make_pair(33, map2[0]));
+	stdMap2.insert(std::make_pair(69, map2[1]));
+	stdMap2.insert(std::make_pair(196, map2[2]));
+	stdMap2.insert(std::make_pair(628, map2[3]));
+	stdMap2.insert(std::make_pair(420, map2[4]));
+	stdMap2.insert(std::make_pair(24, map2[5]));
+	
+
+	
+
+	// Test 1: init // good
+	printClassMap(ftMap, stdMap,"Init", "Class", 1, 1);
+	printClassMap(ftMap2, stdMap2,"Init for change" , "Class", 1, 1);
+
+	// Test 2: insert // good
+	ftMap.insert(ftMap2.begin(), ftMap2.end());
+	stdMap.insert(stdMap2.begin(), stdMap2.end());
+	printClassMap(ftMap, stdMap,"Insert(Map2.begin(), Map2.end())", "Class", 2, 0);
+
+	// Test 3: erase // good
+	ftMap.erase(ftMap.begin());
+	stdMap.erase(stdMap.begin());
+	printClassMap(ftMap, stdMap, "Erase(begin())", "Class", 3, 0);
+
+	// Test 4: swap // good
+	ftMap.swap(ftMap2);
+	stdMap.swap(stdMap2);
+	printClassMap(ftMap, stdMap, "Swap(Map2)", "Class", 4, 0);
+	
+	
+	// Test 5: find(5)
+	ft::map<int, A>::iterator ftIt = ftMap.find(5);
+	std::map<int, A>::iterator stdIt = stdMap.find(5);
+	std::cout << RED << "----------------------------------------------------------------"
+		<< RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 5 << YELLOW << "]: " << "ft::map: " << "Find(5)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << BLUE << ftIt->first << MAGENTA "] ";
+	std::cout << std::endl;
+	std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 5 << YELLOW << "]: " << "std::map: " << "Find(5)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << GREEN << stdIt->first << MAGENTA "] ";
+	std::cout << std::endl;
+	
+	// printClassMap(ftMap, stdMap, "ftMap.find(5)", "Class", 5, 0);
+
+	
+	// Test 6: find(420) // good
+	ftIt = ftMap.find(420);
+	stdIt = stdMap.find(420);
+	
+	printOneClass(ftIt, stdIt, "Find(420)", "Class", 6);
+
+
+	// Test 7: count 5 // good
+	int ftCount = ftMap.count(5);
+	int stdCount = stdMap.count(5);
+	
+	std::cout << RED << "----------------------------------------------------------------"
+		<< RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 7 << YELLOW << "]: " << "ft::map: " << "Count(5)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << BLUE << ftCount << MAGENTA << "]" << std::endl;
+	std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 7 << YELLOW << "]: " << "std::map: " << "Count(5)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << GREEN << stdCount << MAGENTA << "]" << std::endl << std::endl;
+
+
+	// Test 8: count 277 // good
+	ftCount = ftMap.count(420);
+	stdCount = stdMap.count(420);
+	
+	std::cout << RED << "----------------------------------------------------------------"
+		<< RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 8 << YELLOW << "]: " << "ft::map: " << "Count(420)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << BLUE << ftCount << MAGENTA << "]" << std::endl;
+	std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 8 << YELLOW << "]: " << "std::map: " << "Count(420)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << GREEN << stdCount << MAGENTA << "]" << std::endl;
+
+
+	// Test 9: lower_bound // good
+	ftIt = ftMap.lower_bound(5);
+	stdIt = stdMap.lower_bound(5);
+	std::cout << RED << "----------------------------------------------------------------"
+		<< RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 9 << YELLOW << "]: " << "ft::map: " << "lower_bound(5)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << BLUE << ftIt->first << MAGENTA "] ";
+	std::cout << std::endl;
+	std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 9 << YELLOW << "]: " << "std::map: " << "lower_bound(5)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << GREEN << stdIt->first << MAGENTA "] ";
+	std::cout << std::endl;
+
+	// Test 10: lower_bound // good
+	ftIt = ftMap.lower_bound(420);
+	stdIt = stdMap.lower_bound(420);
+
+	printOneClass(ftIt, stdIt, "lower_bound(420)", "Class", 10);
+
+
+	// Test 11: upper_bound
+	ftIt = ftMap.upper_bound(5);
+	stdIt = stdMap.upper_bound(5);
+
+	printOneClass(ftIt, stdIt, "upper_bound(5)", "Class", 11);
+	
+
+	// Test 12: upper_bound
+	ftIt = ftMap.upper_bound(420);
+	stdIt = stdMap.upper_bound(420);
+
+	printOneClass(ftIt, stdIt, "upper_bound(420)", "Class", 12);
+	
+	
+	// Test 13: equal_range(5)
+	ft::pair<ft::map<int, A>::iterator, ft::map<int, A>::iterator> ftPair = ftMap.equal_range(5);
+	std::pair<std::map<int, A>::iterator, std::map<int, A>::iterator> stdPair = stdMap.equal_range(5);
+	std::cout << RED << "----------------------------------------------------------------"
+		<< RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 13 << YELLOW << "]: " << "ft::map: " << "Equal_range(5)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << BLUE << ftPair.first->first << MAGENTA "] ";
+	std::cout << std::endl;
+	std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 13 << YELLOW << "]: " << "std::map: " << "Equal_range(5)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << GREEN << stdPair.first->first << MAGENTA "] ";
+	std::cout << std::endl;
+
+
+	// Test 14: equal_range
+	ftPair = ftMap.equal_range(420);
+	stdPair = stdMap.equal_range(420);
+
+	printOneClass(ftMap.find(420), stdMap.find(420), "upper_bound(420)", "Class", 14);
+	
+	std::cout << GREEN << "----------------------------------------------------------------"
+		<< RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 14 << YELLOW << "]: " << "ft::map: " << "Equal_range(420)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << BLUE << ftPair.first->first << MAGENTA "] ";
+	std::cout << std::endl;
+	std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 14 << YELLOW << "]: " << "std::map: " << "Equal_range(420)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << GREEN << stdPair.first->first << MAGENTA "] ";
+	std::cout << std::endl;
+
+
+	printClassMap(ftMap, stdMap, "Print Map", "Class", 0, -1);
+
+	// Test 15: erase(5)
+	ftMap.erase(5);
+	stdMap.erase(5);
+	printClassMap(ftMap, stdMap, "erase(5)", "Class", 15, -1);
+
+	// Test 16: erase(420)
+	ftMap.erase(420);
+	stdMap.erase(420);
+	printClassMap(ftMap, stdMap, "erase(420)", "Class", 16, 0);
+
+	// Test 17: clear()
+	ftMap.clear();
+	stdMap.clear();
+	printClassMap(ftMap, stdMap, "clear()", "Class", 17, 0);
 
 	std::cout << std::endl << std::endl;
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;

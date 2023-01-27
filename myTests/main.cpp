@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/26 14:47:05 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/26 15:25:52 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void	chooseMapTests(void)
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map" << RESET << GREEN << "<" \
 			<< BLUE << " int " << GREEN <<"> tests,    enter: " << MAGENTA << "1" << std::endl;
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map" << RESET << GREEN << "<" \
-			<< BLUE << " string " << GREEN <<"> tests, enter: " << MAGENTA << "2" << std::endl;
+			<< BLUE << " string " << GREEN <<"> tests, enter: " << MAGENTA << "2" << std::endl << std::endl;
+
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map" << RESET << GREEN << "<" \
+			<< BLUE << " class " << GREEN <<"> tests,    enter: " << MAGENTA << "3" << std::endl;
 
 		std::cout << std::endl;
 		std::cout << RED << "Enter: 'Q' for return" << RESET << std::endl;
@@ -42,6 +45,9 @@ void	chooseMapTests(void)
 				break;
 			case '2':
 				mapTestString();
+				break;
+			case '3':
+				mapTestClass();
 				break;
 			case 'q':
 			case 'Q':
