@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:19:35 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/21 13:40:26 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/26 22:59:30 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,10 +130,19 @@ void	vectorTestint(void)
 	vector_STD.clear();
 	printStack(&vector_FT, &vector_STD, "clear()", "int", 0);
 	
-	std::cout << GREEN << "--------------------- END VECTOR TESTS<int> --------------------" \
-		<< RESET << std::endl << std::endl;
-	std::cout << RED << "----------------------------------------------------------------" \
-		<< RESET << std::endl << std::endl;
+
+	std::cout << std::endl << std::endl;
+	std::cout << RED << "--------------------------------------------------------------------------" << RESET << std::endl << std::endl;
+	std::cout << GREEN << "------------------------- END TESTS Vector<int> --------------------------" << RESET << std::endl << std::endl;
+	std::cout << RED << "--------------------------------------------------------------------------" << RESET << std::endl << std::endl;
+
+	
+	std::string input;
+	
+	std::cout << "Press ENTER to continue" << std::endl;
+	std::getline(std::cin, input);
+	std::getline(std::cin, input);
+	std::cout << "\e[1;1H\e[2J";
 }
 
 /****************************************************************************************************/
@@ -219,10 +228,18 @@ void	vectorTestDouble(void)
 	vector_STD.clear();
 	printStack(&vector_FT, &vector_STD, "clear()", "double", 0);
 	
-	std::cout << GREEN << "--------------------- END VECTOR TESTS<DOUBLE> --------------------" \
-		<< RESET << std::endl << std::endl;
-	std::cout << RED << "----------------------------------------------------------------" \
-		<< RESET << std::endl << std::endl;
+	std::cout << std::endl << std::endl;
+	std::cout << RED << "---------------------------------------------------------------------------" << RESET << std::endl << std::endl;
+	std::cout << GREEN << "------------------------ END TESTS Vector<double> -------------------------" << RESET << std::endl << std::endl;
+	std::cout << RED << "---------------------------------------------------------------------------" << RESET << std::endl << std::endl;
+	
+
+	std::string input;
+	
+	std::cout << "Press ENTER to continue" << std::endl;
+	std::getline(std::cin, input);
+	std::getline(std::cin, input);
+	std::cout << "\e[1;1H\e[2J";
 }
 
 /****************************************************************************************************/
@@ -308,10 +325,18 @@ void	vectorTestString(void)
 	vector_STD.clear();
 	printStack(&vector_FT, &vector_STD, "clear()", "string", 0);
 	
-	std::cout << GREEN << "--------------------- END VECTOR TESTS<STRING> --------------------" \
-		<< RESET << std::endl << std::endl;
-	std::cout << RED << "----------------------------------------------------------------" \
-		<< RESET << std::endl << std::endl;
+	std::cout << std::endl << std::endl;
+	std::cout << RED << "---------------------------------------------------------------------------" << RESET << std::endl << std::endl;
+	std::cout << GREEN << "------------------------ END TESTS Vector<string> -------------------------" << RESET << std::endl << std::endl;
+	std::cout << RED << "---------------------------------------------------------------------------" << RESET << std::endl << std::endl;
+
+	
+	std::string input;
+	
+	std::cout << "Press ENTER to continue" << std::endl;
+	std::getline(std::cin, input);
+	std::getline(std::cin, input);
+	std::cout << "\e[1;1H\e[2J";
 }
 
 /****************************************************************************************************/
@@ -481,10 +506,17 @@ void	vectorTestStruct(void)
 	vector_STD.clear();
 	printStructStack(&vector_FT, &vector_STD, "clear()", "struct", 0, 0);
 	
-	std::cout << GREEN << "--------------------- END VECTOR TESTS<STRUCT> --------------------" \
-		<< RESET << std::endl << std::endl;
-	std::cout << RED << "----------------------------------------------------------------" \
-		<< RESET << std::endl << std::endl;
+	std::cout << std::endl << std::endl;
+	std::cout << RED << "---------------------------------------------------------------------------" << RESET << std::endl << std::endl;
+	std::cout << GREEN << "------------------------ END TESTS Vector<struct> -------------------------" << RESET << std::endl << std::endl;
+	std::cout << RED << "---------------------------------------------------------------------------" << RESET << std::endl << std::endl;
+	
+
+	std::string input;
+	
+	std::cout << "Press ENTER to continue" << std::endl;
+	std::getline(std::cin, input);
+	std::cout << "\e[1;1H\e[2J";
 }
 
 /****************************************************************************************************/
@@ -583,8 +615,15 @@ void	vectorTestClass(void)
 	vector_STD.clear();
 	printStructStack(&vector_FT, &vector_STD, "clear()", "class", 0, 0);
 	
-	std::cout << GREEN << "--------------------- END VECTOR TESTS<CLASS> --------------------" \
-		<< RESET << std::endl << std::endl;
-	std::cout << RED << "----------------------------------------------------------------" \
-		<< RESET << std::endl << std::endl;
+	std::cout << std::endl << std::endl;
+	std::cout << RED << "--------------------------------------------------------------------------" << RESET << std::endl << std::endl;
+	std::cout << GREEN << "------------------------ END TESTS Vector<class> -------------------------" << RESET << std::endl << std::endl;
+	std::cout << RED << "--------------------------------------------------------------------------" << RESET << std::endl << std::endl;
+
+	
+	std::string input;
+	
+	std::cout << "Press ENTER to continue" << std::endl;
+	std::getline(std::cin, input);
+	std::cout << "\e[1;1H\e[2J";
 }

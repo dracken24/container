@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/26 17:31:51 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/26 22:36:54 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 #include <iterator>
 #include <memory>
 #include <map>
+#include <cstdio>
 
 // Class tests //
 

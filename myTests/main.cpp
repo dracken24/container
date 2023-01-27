@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/26 15:25:52 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/26 22:56:48 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	chooseMapTests(void)
 	
 	while (input.compare("q") != 0 || input.compare("Q") != 0)
 	{
+		std::cout << "\e[1;1H\e[2J";
+		
 		std::cout << std::endl;
 		std::cout << MAGENTA << "----------------------------------------" << std::endl;
 		std::cout << "|      Make a choice for Map test      |" << std::endl;
@@ -65,6 +67,8 @@ void	chooseStackTests(void)
 	
 	while (input.compare("q") != 0 || input.compare("Q") != 0)
 	{
+		std::cout << "\e[1;1H\e[2J";
+		
 		std::cout << std::endl;
 		std::cout << MAGENTA << "----------------------------------------" << std::endl;
 		std::cout << "|     Make a choice for Stack test     |" << std::endl;
@@ -117,6 +121,8 @@ void	chooseVectorTests(void)
 	
 	while (input.compare("q") != 0 || input.compare("Q") != 0)
 	{
+		std::cout << "\e[1;1H\e[2J";
+		
 		std::cout << std::endl;
 		std::cout << MAGENTA << "-----------------------------------------" << std::endl;
 		std::cout << "|     Make a choice for Vector test     |" << std::endl;
@@ -174,6 +180,8 @@ void	chooseIteratorTests(void)
 	
 	while (input.compare("q") != 0 || input.compare("Q") != 0)
 	{
+		std::cout << "\e[1;1H\e[2J";
+		
 		std::cout << std::endl;
 		std::cout << MAGENTA << "-----------------------------------------" << std::endl;
 		std::cout << "|    Make a choice for Iterator test    |" << std::endl;
@@ -219,6 +227,8 @@ int	main(void)
 	
 	while (input.compare("q") != 0 || input.compare("Q") != 0)
 	{
+		std::cout << "\e[1;1H\e[2J";
+		
 		std::cout << std::endl;
 		std::cout << MAGENTA << "-----------------------------------------" << std::endl;
 		std::cout << "|            Make a choice              |" << std::endl;
@@ -260,9 +270,7 @@ int	main(void)
 			default:
 				std::cout << RED << "Invalid input" << RESET << std::endl;
 		}
-			
-		std::cout << std::endl;
-		input.empty();
+		
 	}
 		
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:27:24 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/20 19:18:47 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/26 22:59:46 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,14 @@ void    randomAccessIteratorTestInt(void)
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
 	std::cout << GREEN << "------------ END TESTS random_access_iterator INT -------------" << RESET << std::endl << std::endl;
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
+
+
+	std::string input;
+	
+	std::cout << "Press ENTER to continue" << std::endl;
+	std::getline(std::cin, input);
+	std::getline(std::cin, input);
+	std::cout << "\e[1;1H\e[2J";
 }
 
 /********************************************************************************************************/
@@ -143,6 +151,14 @@ void	randomAccessIteratorTestClass(void)
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
 	std::cout << GREEN << "------------ END TESTS random_access_iterator CLASS ------------" << RESET << std::endl << std::endl;
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
+
+
+	std::string input;
+	
+	std::cout << "Press ENTER to continue" << std::endl;
+	std::getline(std::cin, input);
+	std::getline(std::cin, input);
+	std::cout << "\e[1;1H\e[2J";
 }
 
 /********************************************************************************************************/
@@ -198,4 +214,12 @@ void    randomAccessIteratorTestDouble(void)
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
 	std::cout << GREEN << "----------- END TESTS random_access_iterator DOUBLE ------------" << RESET << std::endl << std::endl;
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
+
+
+	std::string input;
+	
+	std::cout << "Press ENTER to continue" << std::endl;
+	std::getline(std::cin, input);
+	std::getline(std::cin, input);
+	std::cout << "\e[1;1H\e[2J";
 }

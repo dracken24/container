@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:28:54 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/26 13:39:27 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/26 21:20:55 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,16 +169,12 @@ namespace ft
 
 			iterator end()
 			{
-				return iterator(_lastElem, _lastElem, _comp);
-				
-				// return iterator(_lastElem);
+				return iterator(_lastElem);
 			}
 
 			const_iterator end() const
 			{
-				return const_iterator(_lastElem, _lastElem, _comp);
-
-				// return const_iterator(_lastElem);
+				return const_iterator(_lastElem);
 			}
 
 			reverse_iterator rbegin()
@@ -193,12 +189,12 @@ namespace ft
 
 			reverse_iterator rend()
 			{
-				return reverse_iterator(_lastElem, _lastElem, _comp);
+				return reverse_iterator(_lastElem);
 			}
 
 			const_reverse_iterator rend() const
 			{
-				return const_reverse_iterator(_lastElem, _lastElem, _comp);
+				return const_reverse_iterator(_lastElem);
 			}
 
 			// Capacity //
@@ -336,10 +332,10 @@ namespace ft
 				Node* tmp = searchNode(_root, k);
 
 				if (tmp)
-					return iterator(tmp, _lastElem, _comp);
+					return iterator(tmp);
 				
 				// Case no match
-				return end();
+				return iterator(_lastElem);
 			}
 
 			const_iterator find(const key_type &k) const
@@ -347,10 +343,10 @@ namespace ft
 				Node* tmp = searchNode(_root, k);
 
 				if (tmp)
-					return const_iterator(tmp, _lastElem, _comp);
+					return const_iterator(tmp);
 				
 				// Case no match
-				return end();
+				return const_iterator(_lastElem);
 			}
 
 			size_type count (const key_type &k) const

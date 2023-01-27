@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:47:12 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/26 19:21:44 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/26 22:59:15 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,6 +238,14 @@ void	mapTestInt()
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
 	std::cout << GREEN << "------------------------ END TESTS MAP -------------------------" << RESET << std::endl << std::endl;
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
+
+
+	std::string input;
+	
+	std::cout << "Press ENTER to continue" << std::endl;
+	std::getline(std::cin, input);
+	std::getline(std::cin, input);
+	std::cout << "\e[1;1H\e[2J";
 }
 
 /**************************************************************************************************************************/
@@ -309,15 +317,15 @@ void	mapTestString()
 	ft::map<std::string, std::string>::iterator ftIt = ftMap.find("Unicorn");
 	std::map<std::string, std::string>::iterator stdIt = stdMap.find("Unicorn");
 
-	// std::cout << RED << "----------------------------------------------------------------"
-	// 	<< RESET  << std::endl << std::endl;
-	// std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 5 << YELLOW << "]: " << "ft::map: " << "Find(Unicorn)" << std::endl << std::endl;
-	// std::cout << MAGENTA << "[" << BLUE << ftIt->first << MAGENTA << ", " << BLUE << ftIt->second << MAGENTA "] ";
-	// std::cout << std::endl;
-	// std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
-	// std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 5 << YELLOW << "]: " << "std::map: " << "Find(Unicorn)" << std::endl << std::endl;
-	// std::cout << MAGENTA << "[" << GREEN << stdIt->first << MAGENTA << ", " << GREEN << stdIt->second << MAGENTA "] ";
-	// std::cout << std::endl;
+	std::cout << RED << "----------------------------------------------------------------"
+		<< RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 5 << YELLOW << "]: " << "ft::map: " << "Find(Unicorn)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << BLUE << ftIt->first << MAGENTA << ", " << BLUE << ftIt->second << MAGENTA "] ";
+	std::cout << std::endl;
+	std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 5 << YELLOW << "]: " << "std::map: " << "Find(Unicorn)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << GREEN << stdIt->first << MAGENTA << ", " << GREEN << stdIt->second << MAGENTA "] ";
+	std::cout << std::endl;
 
 	// Test 6: find(Tony) // good
 	ftIt = ftMap.find("Tony");
@@ -461,6 +469,14 @@ void	mapTestString()
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
 	std::cout << GREEN << "------------------------ END TESTS MAP -------------------------" << RESET << std::endl << std::endl;
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
+
+
+	std::string input;
+	
+	std::cout << "Press ENTER to continue" << std::endl;
+	std::getline(std::cin, input);
+	std::getline(std::cin, input);
+	std::cout << "\e[1;1H\e[2J";
 }
 
 /****************************************************************************************************************************/
@@ -780,4 +796,11 @@ void	mapTestClass()
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
 	std::cout << GREEN << "------------------------ END TESTS MAP -------------------------" << RESET << std::endl << std::endl;
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;
+
+
+	std::string input;
+	
+	std::cout << "Press ENTER to continue" << std::endl;
+	std::getline(std::cin, input);
+	std::cout << "\e[1;1H\e[2J";
 }
