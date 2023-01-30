@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapTest.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:47:12 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/26 22:59:15 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/01/30 11:41:22 by nadesjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -551,7 +551,7 @@ void	printClassMap(ft::map<T, U> map_FT, std::map<T, U> map_STD,
 	i++;
 }
 
-void	printOneClass(typename ft::map<int, A>::iterator ftIt, typename std::map<int, A>::iterator stdIt, std::string str, std::string type, int nbr)
+void	printOneClass(ft::map<int, A>::iterator ftIt, std::map<int, A>::iterator stdIt, std::string str, std::string type, int nbr)
 {
 	std::cout << YELLOW << "ft::map:< " << MAGENTA << type << YELLOW << " >" << std::endl << std::endl;
 	std::cout << RED << "----------------------------------------------------------------" 
