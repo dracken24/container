@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   color.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
+/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 21:35:21 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/07 23:27:43 by nadesjar         ###   ########.fr       */
+/*   Updated: 2023/02/08 09:26:43 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef COLOR_HPP
+# define COLOR_HPP
 
 # include <iostream>
 
@@ -32,3 +33,5 @@
 # define MAGENTA "\033[35m"
 # define CYAN "\033[34m"
 # define WHITE "\033[37m"
+
+#endif

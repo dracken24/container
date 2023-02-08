@@ -6,11 +6,12 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:08:02 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/26 14:07:26 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/08 09:23:38 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef PAIR_HPP
+# define PAIR_HPP
 
 namespace ft
 {
@@ -85,3 +86,5 @@ namespace ft
 		return (pair<T1, T2>(x, y));
 	}
 }
+
+#endif

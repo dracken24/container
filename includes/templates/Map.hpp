@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
+/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:28:54 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/08 01:06:55 by nadesjar         ###   ########.fr       */
+/*   Updated: 2023/02/08 09:25:30 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef	MAP_HPP
+# define MAP_HPP
 
 #include <functional>
 #include <cmath>
@@ -750,3 +751,5 @@ namespace ft
 			}
 	}; 
 };
+
+#endif

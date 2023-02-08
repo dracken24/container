@@ -6,14 +6,12 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 20:45:41 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/23 14:59:49 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/08 09:26:05 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
-// # include <deque>
-// # include <vector>
+#ifndef STACK_HPP
+# define STACK_HPP
 
 namespace ft
 {
@@ -128,3 +126,5 @@ namespace ft
 		return lhs._container >= rhs._container;
 	}
 };
+
+#endif

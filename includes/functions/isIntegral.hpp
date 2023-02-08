@@ -6,11 +6,12 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:59:56 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/23 12:30:06 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/08 09:23:21 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef ISINTEGRAL_HPP
+# define ISINTEGRAL_HPP
 
 #include <iostream>
 
@@ -100,3 +101,5 @@ namespace ft
 		static const bool value = true;
 	};
 }
+
+#endif

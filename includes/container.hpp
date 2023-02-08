@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   container.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
+/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/08 03:28:25 by nadesjar         ###   ########.fr       */
+/*   Updated: 2023/02/08 09:28:50 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef CONTAINER_HPP
+# define CONTAINER_HPP
 
 // For the sake of the project, I'm including all the files here.
 
 // Functions //
-#include "functions/isIntegral.hpp"
-#include "functions/pair.hpp"
+#include "./functions/isIntegral.hpp"
+#include "./functions/pair.hpp"
 
 // Containers //
-#include "templates/iterator.hpp"
-#include "templates/vector.hpp"
-#include "templates/stack.hpp"
-#include "templates/map.hpp"
+#include "./templates/Vector.hpp"
+#include "./templates/Stack.hpp"
+#include "./templates/Map.hpp"
 
 // Other //
 
@@ -277,3 +277,5 @@ void	mapTestString(void);
 void	mapTestStruct(void);
 void	mapTestClass(void);
 void	mapTestInt(void);
+
+#endif

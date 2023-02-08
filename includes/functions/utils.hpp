@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   utils.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
+/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:44:57 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/07 18:45:53 by nadesjar         ###   ########.fr       */
+/*   Updated: 2023/02/08 09:25:16 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+#ifndef UTILS_HPP
+# define UTILS_HPP
 
-#include "../templates/iterator.hpp"
+#include "../templates/Iterator.hpp"
 #include "isIntegral.hpp"
 #include "pair.hpp"
 
@@ -58,3 +59,5 @@ namespace ft
 		return true;
 	}
 };
+
+#endif

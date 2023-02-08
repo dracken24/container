@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+         #
+#    By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/23 13:22:35 by nadesjar          #+#    #+#              #
-#    Updated: 2023/02/07 19:58:54 by nadesjar         ###   ########.fr        #
+#    Updated: 2023/02/08 09:52:24 by dracken24        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,12 @@ P_TEST			= ./myTests/tests/
 P_CLASS			= ./myTests/templates/
 P_FT			= ./myTests/templates/functions/
 
+INCLUDE_PATH	= ./includes/
+
 FILES			= $(P_SRCS)main.cpp \
 				$(P_TEST)vectorTest.cpp \
 				$(P_TEST)stackTest.cpp \
 				$(P_TEST)mapTest.cpp \
-				# $(P_TEST)iteratorsTest.cpp \
 
 OBJS			= $(patsubst $(P_SRCS)%.cpp, $(P_OBJS)%.o, $(FILES))
 
@@ -37,10 +38,26 @@ all: signat msg_in $(NAME) msg_out
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
 
-$(P_OBJS)%.o:	$(P_SRCS)%.cpp
+# --------------------------- Recompilation Headers --------------------------- #
+
+$(P_OBJS)main.o: $(P_SRCS)main.cpp $(INCLUDE_PATH)container.hpp
 	@mkdir -p $(P_OBJS)
+	@$(CC) -I $(CFLAGS) -c $< -o $@
+	@printf "$C■"
+
+$(P_OBJS)tests/mapTest.o: $(P_TEST)mapTest.cpp $(INCLUDE_PATH)container.hpp
 	@mkdir -p $(P_OBJS)tests
-	@$(CC) $(CFLAGS) -I. -c $< -o $@
+	@$(CC) -I $(CFLAGS) -c $< -o $@
+	@printf "$G■"
+
+$(P_OBJS)tests/stackTest.o: $(P_TEST)stackTest.cpp $(INCLUDE_PATH)container.hpp
+	@mkdir -p $(P_OBJS)tests
+	@$(CC) -I $(CFLAGS) -c $< -o $@
+	@printf "$C■"
+
+$(P_OBJS)tests/vectorTest.o: $(P_TEST)vectorTest.cpp $(INCLUDE_PATH)container.hpp
+	@mkdir -p $(P_OBJS)tests
+	@$(CC) -I $(CFLAGS) -c $< -o $@
 	@printf "$G■"
 
 # ----------------------------------- Git ------------------------------------ #

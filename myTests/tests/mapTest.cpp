@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mapTest.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
+/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:47:12 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/08 03:44:33 by nadesjar         ###   ########.fr       */
+/*   Updated: 2023/02/08 09:36:34 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/container.hpp"
+#include "../../includes/container.hpp"
 
 template <class T, class U>
 void	printMap(ft::map<T, U> &ftMap, std::map<T, U> &stdMap, int i, std::string str)
@@ -1065,22 +1065,22 @@ void	mapTestStruct()
 
 	// Test 1: init // good
 	printClassMap(ftMap, stdMap,"Init", "Class", 1, 1);
-	printClassMap(ftMap2, stdMap2,"Init for change" , "Class", 1, 1);
+	printClassMap(ftMap2, stdMap2,"Init for change" , "Struct", 1, 1);
 
 	// Test 2: insert // good
 	ftMap.insert(ftMap2.begin(), ftMap2.end());
 	stdMap.insert(stdMap2.begin(), stdMap2.end());
-	printClassMap(ftMap, stdMap,"Insert(Map2.begin(), Map2.end())", "Class", 2, 0);
+	printClassMap(ftMap, stdMap,"Insert(Map2.begin(), Map2.end())", "Struct", 2, 0);
 
 	// Test 3: erase // good
 	ftMap.erase(ftMap.begin());
 	stdMap.erase(stdMap.begin());
-	printClassMap(ftMap, stdMap, "Erase(begin())", "Class", 3, 0);
+	printClassMap(ftMap, stdMap, "Erase(begin())", "Struct", 3, 0);
 
 	// Test 4: swap // good
 	ftMap.swap(ftMap2);
 	stdMap.swap(stdMap2);
-	printClassMap(ftMap, stdMap, "Swap(Map2)", "Class", 4, 0);
+	printClassMap(ftMap, stdMap, "Swap(Map2)", "Struct", 4, 0);
 	
 	
 	// Test 5: find(bad)
@@ -1088,12 +1088,12 @@ void	mapTestStruct()
 	std::map<StructA, StructA>::iterator stdIt = stdMap.find(bad);
 	
 	if (ftIt != ftMap.end() && stdIt != stdMap.end())
-		printOneStruct(ftIt, stdIt, "Find(bad)", "Class", 5);
+		printOneStruct(ftIt, stdIt, "Find(bad)", "Struct", 5);
 	else
 	{
 		std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
-		std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 5 << YELLOW << "]: " << "ft::map and std::map: " << "find(bad)" << std::endl << std::endl;
+		std::cout << YELLOW << "Test " << MAGENTA << "Struct" << YELLOW << " #[" << MAGENTA << 5 << YELLOW << "]: " << "ft::map and std::map: " << "find(bad)" << std::endl << std::endl;
 		std::cout << MAGENTA << "[" << GREEN << "key was not found in the ft::map" << BLUE << " and std::map" << MAGENTA << "] " << std::endl;
 	}
 	
@@ -1103,12 +1103,12 @@ void	mapTestStruct()
 	stdIt = stdMap.find(map3[0]);
 	
 	if (ftIt != ftMap.end() && stdIt != stdMap.end())
-		printOneStruct(ftIt, stdIt, "find(map3[0])", "Class", 6);
+		printOneStruct(ftIt, stdIt, "find(map3[0])", "Struct", 6);
 	else
 	{
 		std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
-		std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 6 << YELLOW << "]: " << "ft::map and std::map: " << "find(map3[0])" << std::endl << std::endl;
+		std::cout << YELLOW << "Test " << MAGENTA << "Struct" << YELLOW << " #[" << MAGENTA << 6 << YELLOW << "]: " << "ft::map and std::map: " << "find(map3[0])" << std::endl << std::endl;
 		std::cout << MAGENTA << "[" << GREEN << "key was not found in the ft::map" << BLUE << " and std::map" << MAGENTA << "] " << std::endl;
 	}
 
@@ -1119,10 +1119,10 @@ void	mapTestStruct()
 	
 	std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
-	std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 7 << YELLOW << "]: " << "ft::map: " << "Count(bad)" << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << MAGENTA << "Struct" << YELLOW << " #[" << MAGENTA << 7 << YELLOW << "]: " << "ft::map: " << "Count(bad)" << std::endl << std::endl;
 	std::cout << MAGENTA << "[" << GREEN << ftCount << MAGENTA << "]" << std::endl;
 	std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
-	std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 7 << YELLOW << "]: " << "std::map: " << "Count(bad)" << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << MAGENTA << "Struct" << YELLOW << " #[" << MAGENTA << 7 << YELLOW << "]: " << "std::map: " << "Count(bad)" << std::endl << std::endl;
 	std::cout << MAGENTA << "[" << BLUE << stdCount << MAGENTA << "]" << std::endl << std::endl;
 
 
@@ -1132,10 +1132,10 @@ void	mapTestStruct()
 	
 	std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
-	std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 8 << YELLOW << "]: " << "ft::map: " << "Count(map3[4])" << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << MAGENTA << "Struct" << YELLOW << " #[" << MAGENTA << 8 << YELLOW << "]: " << "ft::map: " << "Count(map3[4])" << std::endl << std::endl;
 	std::cout << MAGENTA << "[" << GREEN << ftCount << MAGENTA << "]" << std::endl;
 	std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
-	std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 8 << YELLOW << "]: " << "std::map: " << "Count(map3[4])" << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << MAGENTA << "Struct" << YELLOW << " #[" << MAGENTA << 8 << YELLOW << "]: " << "std::map: " << "Count(map3[4])" << std::endl << std::endl;
 	std::cout << MAGENTA << "[" << BLUE << stdCount << MAGENTA << "]" << std::endl;
 
 
@@ -1144,12 +1144,12 @@ void	mapTestStruct()
 	stdIt = stdMap.lower_bound(bad);
 	
 	if (ftIt != ftMap.end() && stdIt != stdMap.end())
-		printOneStruct(ftIt, stdIt, "lower_bound(bad)", "Class", 9);
+		printOneStruct(ftIt, stdIt, "lower_bound(bad)", "Struct", 9);
 	else
 	{
 		std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
-		std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 9 << YELLOW << "]: " << "ft::map and std::map: " << "lower_bound(bad)" << std::endl << std::endl;
+		std::cout << YELLOW << "Test " << MAGENTA << "Struct" << YELLOW << " #[" << MAGENTA << 9 << YELLOW << "]: " << "ft::map and std::map: " << "lower_bound(bad)" << std::endl << std::endl;
 		std::cout << MAGENTA << "[" << GREEN << "key was not found in the ft::map" << BLUE << " and std::map" << MAGENTA << "] \n" << std::endl;
 		std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
@@ -1160,30 +1160,30 @@ void	mapTestStruct()
 	stdIt = stdMap.lower_bound(map3[3]);
 	
 	if (ftIt != ftMap.end() && stdIt != stdMap.end())
-		printOneStruct(ftIt, stdIt, "lower_bound(map3[3])", "Class", 10);
+		printOneStruct(ftIt, stdIt, "lower_bound(map3[3])", "Struct", 10);
 	else
 	{
 		std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
-		std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 10 << YELLOW << "]: " << "ft::map and std::map: " << "lower_bound(map3[3])" << std::endl << std::endl;
+		std::cout << YELLOW << "Test " << MAGENTA << "Struct" << YELLOW << " #[" << MAGENTA << 10 << YELLOW << "]: " << "ft::map and std::map: " << "lower_bound(map3[3])" << std::endl << std::endl;
 		std::cout << MAGENTA << "[" << GREEN << "key was not found in the ft::map" << BLUE << " and std::map" << MAGENTA << "] \n" << std::endl;
 		std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
 	}
 
-	printClassMap(ftMap, stdMap, "Print Map", "Class", 0, 0);
+	printClassMap(ftMap, stdMap, "Print Map", "Struct", 0, 0);
 
 	// Test 11: upper_bound
 	ftIt = ftMap.upper_bound(bad);
 	stdIt = stdMap.upper_bound(bad);
 
 	if (ftIt != ftMap.end() && stdIt != stdMap.end())
-		printOneStruct(ftIt, stdIt, "upper_bound(bad)", "Class", 11);
+		printOneStruct(ftIt, stdIt, "upper_bound(bad)", "Struct", 11);
 	else
 	{
 		std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
-		std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 11 << YELLOW << "]: " << "ft::map and std::map: " << "upper_bound(bad)" << std::endl << std::endl;
+		std::cout << YELLOW << "Test " << MAGENTA << "Struct" << YELLOW << " #[" << MAGENTA << 11 << YELLOW << "]: " << "ft::map and std::map: " << "upper_bound(bad)" << std::endl << std::endl;
 		std::cout << MAGENTA << "[" << GREEN << "key was not found in the ft::map" << BLUE << " and std::map" << MAGENTA << "] \n" << std::endl;
 		std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
@@ -1194,12 +1194,12 @@ void	mapTestStruct()
 	stdIt = stdMap.upper_bound(map3[2]);
 
 	if (ftIt != ftMap.end() && stdIt != stdMap.end())
-		printOneStruct(ftIt, stdIt, "upper_bound(map3[2])", "Class", 12);
+		printOneStruct(ftIt, stdIt, "upper_bound(map3[2])", "Struct", 12);
 	else
 	{
 		std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
-		std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 12 << YELLOW << "]: " << "ft::map and std::map: " << "upper_bound(map3[2])" << std::endl << std::endl;
+		std::cout << YELLOW << "Test " << MAGENTA << "Struct" << YELLOW << " #[" << MAGENTA << 12 << YELLOW << "]: " << "ft::map and std::map: " << "upper_bound(map3[2])" << std::endl << std::endl;
 		std::cout << MAGENTA << "[" << GREEN << "key was not found in the ft::map" << BLUE << " and std::map" << MAGENTA << "] \n" << std::endl;
 		std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
@@ -1211,12 +1211,12 @@ void	mapTestStruct()
 	std::pair<std::map<StructA, StructA>::iterator, std::map<StructA, StructA>::iterator> stdPair = stdMap.equal_range(bad);
 	
 	if (ftPair.first != ftMap.end() && stdPair.first != stdMap.end())
-		printOneStruct(ftIt, stdIt, "equal_range(bad)", "Class", 13);
+		printOneStruct(ftIt, stdIt, "equal_range(bad)", "Struct", 13);
 	else
 	{
 		std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
-		std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 13 << YELLOW << "]: " << "ft::map and std::map: " << "equal_range(bad)" << std::endl << std::endl;
+		std::cout << YELLOW << "Test " << MAGENTA << "Struct" << YELLOW << " #[" << MAGENTA << 13 << YELLOW << "]: " << "ft::map and std::map: " << "equal_range(bad)" << std::endl << std::endl;
 		std::cout << MAGENTA << "[" << GREEN << "key was not found in the ft::map" << BLUE << " and std::map" << MAGENTA << "] \n" << std::endl;
 		std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
@@ -1228,34 +1228,34 @@ void	mapTestStruct()
 	stdPair = stdMap.equal_range(map3[1]);
 
 	if (ftPair.first != ftMap.end() && stdPair.first != stdMap.end())
-		printOneStruct(ftIt, stdIt, "equal_range(map3[1])", "Class", 14);
+		printOneStruct(ftIt, stdIt, "equal_range(map3[1])", "Struct", 14);
 	else
 	{
 		std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
-		std::cout << YELLOW << "Test " << MAGENTA << "Class" << YELLOW << " #[" << MAGENTA << 14 << YELLOW << "]: " << "ft::map and std::map: " << "equal_range(map3[1])" << std::endl << std::endl;
+		std::cout << YELLOW << "Test " << MAGENTA << "Struct" << YELLOW << " #[" << MAGENTA << 14 << YELLOW << "]: " << "ft::map and std::map: " << "equal_range(map3[1])" << std::endl << std::endl;
 		std::cout << MAGENTA << "[" << GREEN << "key was not found in the ft::map" << BLUE << " and std::map" << MAGENTA << "] \n" << std::endl;
 		std::cout << RED << "----------------------------------------------------------------"
 		<< RESET  << std::endl << std::endl;
 	}
 
 
-	printClassMap(ftMap, stdMap, "Print Map", "Class", 0, 0);
+	printClassMap(ftMap, stdMap, "Print Map", "Struct", 0, 0);
 
 	// Test 15: erase(bad)
 	ftMap.erase(bad);
 	stdMap.erase(bad);
-	printClassMap(ftMap, stdMap, "erase(bad)", "Class", 15, 0);
+	printClassMap(ftMap, stdMap, "erase(bad)", "Struct", 15, 0);
 
 	// Test 16: erase(map3[1])
 	ftMap.erase(map3[1]);
 	stdMap.erase(map3[1]);
-	printClassMap(ftMap, stdMap, "erase(map3[1])", "Class", 16, 0);
+	printClassMap(ftMap, stdMap, "erase(map3[1])", "Struct", 16, 0);
 
 	// Test 17: clear()
 	ftMap.clear();
 	stdMap.clear();
-	printClassMap(ftMap, stdMap, "clear()", "Class", 17, 0);
+	printClassMap(ftMap, stdMap, "clear()", "Struct", 17, 0);
 
 	std::cout << std::endl << std::endl;
 	std::cout << RED << "----------------------------------------------------------------" << RESET << std::endl << std::endl;

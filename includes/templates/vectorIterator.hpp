@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   vectorIterator.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
+/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 13:07:06 by hbaudet           #+#    #+#             */
-/*   Updated: 2023/02/08 01:08:38 by nadesjar         ###   ########.fr       */
+/*   Updated: 2023/02/08 09:27:13 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTORITERATOR_HPP
 # define VECTORITERATOR_HPP
 
-# include "iterator.hpp"
+# include "Iterator.hpp"
 
 namespace ft
 {

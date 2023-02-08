@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
+/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 23:43:30 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/07 18:43:21 by nadesjar         ###   ########.fr       */
+/*   Updated: 2023/02/08 09:26:21 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef VECTOR_HPP
+# define VECTOR_HPP
 
 #include "../functions/utils.hpp"
 #include "vectorIterator.hpp"
@@ -481,3 +482,5 @@ namespace ft
 	};
 
 };
+
+#endif

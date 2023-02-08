@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   mapIterator.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
+/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 16:58:40 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/08 01:06:28 by nadesjar         ###   ########.fr       */
+/*   Updated: 2023/02/08 09:25:52 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef MAPITERATOR_HPP
+# define MAPITERATOR_HPP
 
 # include "../functions/pair.hpp"
 
@@ -488,3 +489,5 @@ namespace ft
 			key_compare     _comp;      // Comparison object used to sort the binary tree
 	};
 };
+
+#endif
