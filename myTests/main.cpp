@@ -6,7 +6,7 @@
 /*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/07 18:50:33 by nadesjar         ###   ########.fr       */
+/*   Updated: 2023/02/08 03:45:33 by nadesjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	chooseMapTests(void)
 
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map" << RESET << GREEN << "<" \
 			<< BLUE << " class " << GREEN <<"> tests,    enter: " << MAGENTA << "3" << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map" << RESET << GREEN << "<" \
+			<< BLUE << " struct " << GREEN <<"> tests,   enter: " << MAGENTA << "4" << std::endl;
 
 		std::cout << std::endl;
 		std::cout << RED << "Enter: 'Q' for return" << RESET << std::endl;
@@ -50,6 +52,9 @@ void	chooseMapTests(void)
 				break;
 			case '3':
 				mapTestClass();
+				break;
+			case '4':
+				mapTestStruct();
 				break;
 			case 'q':
 			case 'Q':

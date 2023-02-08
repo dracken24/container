@@ -6,7 +6,7 @@
 /*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 16:58:40 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/07 20:02:31 by nadesjar         ###   ########.fr       */
+/*   Updated: 2023/02/08 01:06:28 by nadesjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ namespace ft
 				if (_node == _lastElem)
 				{
 					_node = _lastElem->right;
+					
 					return (*this);
 				}
 				while (_node != _lastElem && !_comp(previousNode->content.first, _node->content.first))
@@ -128,6 +129,7 @@ namespace ft
 					else
 						_node = _node->parent;
 				}
+				
 				return (*this);
 			}
 
@@ -166,6 +168,7 @@ namespace ft
 				if (_node == _lastElem)
 				{
 					_node = _lastElem->left;
+					
 					return (*this);
 				}
 
@@ -231,8 +234,8 @@ namespace ft
 			Node *searchMaxNode(Node *root)
 			{
 				if (root && root != _lastElem && root->right && root->right != _lastElem)
-				
 					return searchMaxNode(root->right);
+					
 				return root;
 			}
 
@@ -416,6 +419,7 @@ namespace ft
 					else
 						_node = _node->parent;
 				}
+				
 				return (*this);
 			}
 

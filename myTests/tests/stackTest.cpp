@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stackTest.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 23:49:34 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/26 22:59:38 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/07 23:12:40 by nadesjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ void	printOperators(ft::stack<T> stackFT, ft::stack<T> stackFT2, std::stack<T> s
 	std::cout << YELLOW << "Test Stack<" << MAGENTA << type << YELLOW <<"> #["
 		<< MAGENTA << nbr << YELLOW << "]: " << str << std::endl;
 	std::cout << "----------------------------------------" << RESET  << std::endl;
-	std::cout << BLUE << "ft::Stack == ft::Stack2 : " << MAGENTA << (stackFT == stackFT2) << std::endl;
-	std::cout << BLUE << "ft::Stack != ft::Stack2 : " << MAGENTA << (stackFT != stackFT2) << std::endl;
-	std::cout << BLUE << "ft::Stack < ft::Stack2  : " << MAGENTA << (stackFT < stackFT2) << std::endl;
-	std::cout << BLUE << "ft::Stack <= ft::Stack2 : " << MAGENTA << (stackFT <= stackFT2) << std::endl;
-	std::cout << BLUE << "ft::Stack > ft::Stack2  : " << MAGENTA << (stackFT > stackFT2) << std::endl;
-	std::cout << BLUE << "ft::Stack >= ft::Stack2 : " << MAGENTA << (stackFT >= stackFT2) << std::endl;
+	std::cout << GREEN << "ft::Stack == ft::Stack2 : " << MAGENTA << (stackFT == stackFT2) << std::endl;
+	std::cout << GREEN << "ft::Stack != ft::Stack2 : " << MAGENTA << (stackFT != stackFT2) << std::endl;
+	std::cout << GREEN << "ft::Stack < ft::Stack2  : " << MAGENTA << (stackFT < stackFT2) << std::endl;
+	std::cout << GREEN << "ft::Stack <= ft::Stack2 : " << MAGENTA << (stackFT <= stackFT2) << std::endl;
+	std::cout << GREEN << "ft::Stack > ft::Stack2  : " << MAGENTA << (stackFT > stackFT2) << std::endl;
+	std::cout << GREEN << "ft::Stack >= ft::Stack2 : " << MAGENTA << (stackFT >= stackFT2) << std::endl;
 	std::cout << std::endl;
 
-	std::cout << GREEN << "std::Stack == std::Stack2 : " << MAGENTA << (stackSTD == stackSTD2) << std::endl;
-	std::cout << GREEN << "std::Stack != std::Stack2 : " << MAGENTA << (stackSTD != stackSTD2) << std::endl;
-	std::cout << GREEN << "std::Stack < std::Stack2  : " << MAGENTA << (stackSTD < stackSTD2) << std::endl;
-	std::cout << GREEN << "std::Stack <= std::Stack2 : " << MAGENTA << (stackSTD <= stackSTD2) << std::endl;
-	std::cout << GREEN << "std::Stack > std::Stack2  : " << MAGENTA << (stackSTD > stackSTD2) << std::endl;
-	std::cout << GREEN << "std::Stack >= std::Stack2 : " << MAGENTA << (stackSTD >= stackSTD2) << std::endl;
+	std::cout << BLUE << "std::Stack == std::Stack2 : " << MAGENTA << (stackSTD == stackSTD2) << std::endl;
+	std::cout << BLUE << "std::Stack != std::Stack2 : " << MAGENTA << (stackSTD != stackSTD2) << std::endl;
+	std::cout << BLUE << "std::Stack < std::Stack2  : " << MAGENTA << (stackSTD < stackSTD2) << std::endl;
+	std::cout << BLUE << "std::Stack <= std::Stack2 : " << MAGENTA << (stackSTD <= stackSTD2) << std::endl;
+	std::cout << BLUE << "std::Stack > std::Stack2  : " << MAGENTA << (stackSTD > stackSTD2) << std::endl;
+	std::cout << BLUE << "std::Stack >= std::Stack2 : " << MAGENTA << (stackSTD >= stackSTD2) << std::endl;
 	std::cout << RESET << std::endl << std::endl;
 }
 
@@ -49,9 +49,9 @@ void	printStack(ft::stack<T> stackFT, std::stack<T> stackSTD, std::string str, s
 		<< MAGENTA << i << YELLOW << "]: " << str << std::endl;
 	std::cout << "----------------------------------------" << RESET  << std::endl;
 	
-	std::cout << BLUE << "ft::Stack size     : " << MAGENTA << stackFT.size() << std::endl;
-	std::cout << BLUE << "ft::Stack top      : " << MAGENTA << stackFT.top() << std::endl;
-	std::cout << BLUE << "ft::Stack content : " << MAGENTA;
+	std::cout << GREEN << "ft::Stack size     : " << MAGENTA << stackFT.size() << std::endl;
+	std::cout << GREEN << "ft::Stack top      : " << MAGENTA << stackFT.top() << std::endl;
+	std::cout << GREEN << "ft::Stack content : " << MAGENTA;
 	while (!stackFT.empty())
 	{
 		std::cout << "[" << stackFT.top() << "] ";
@@ -59,9 +59,9 @@ void	printStack(ft::stack<T> stackFT, std::stack<T> stackSTD, std::string str, s
 	}
 	std::cout << std::endl << std::endl;
 	
-	std::cout << GREEN << "std::Stack size    : " << MAGENTA << stackSTD.size() << std::endl;
-	std::cout << GREEN << "std::Stack top     : " << MAGENTA << stackSTD.top() << std::endl;
-	std::cout << GREEN << "std::Stack content: " << MAGENTA;
+	std::cout << BLUE << "std::Stack size    : " << MAGENTA << stackSTD.size() << std::endl;
+	std::cout << BLUE << "std::Stack top     : " << MAGENTA << stackSTD.top() << std::endl;
+	std::cout << BLUE << "std::Stack content: " << MAGENTA;
 	while (!stackSTD.empty())
 	{
 		std::cout << "[" << stackSTD.top() << "] ";
@@ -213,37 +213,37 @@ void	printStackClass(ft::stack<T> stackFT, std::stack<T> stackSTD, std::string s
 		<< MAGENTA << i << YELLOW << "]: " << str << std::endl;
 	std::cout << "----------------------------------------" << RESET  << std::endl;
 	
-	std::cout << BLUE << "ft::Stack size     : " << MAGENTA << stackFT.size() << std::endl;
-	std::cout << GREEN << "std::Stack size    : " << MAGENTA << stackSTD.size() << std::endl << std::endl;
+	std::cout << GREEN << "ft::Stack size     : " << MAGENTA << stackFT.size() << std::endl;
+	std::cout << BLUE << "std::Stack size    : " << MAGENTA << stackSTD.size() << std::endl << std::endl;
 	
 	size_t k = stackFT.size() - 1;
 	while (!stackFT.empty() || !stackSTD.empty())
 	{
 		T tmp = stackFT.top();
 
-		std::cout << BLUE << "Place in array #: " << CYAN << k << std::endl << std::endl;
+		std::cout << GREEN << "Place in array #: " << CYAN << k << std::endl << std::endl;
 			
-		std::cout << BLUE << "ft::Stack<" << MAGENTA << type << BLUE"> nbr:        " \
+		std::cout << GREEN << "ft::Stack<" << MAGENTA << type << GREEN"> nbr:        " \
 			<< MAGENTA << tmp._nbr << std::endl;
-		std::cout << BLUE << "ft::Stack<" << MAGENTA << type << BLUE"> str:        " \
+		std::cout << GREEN << "ft::Stack<" << MAGENTA << type << GREEN"> str:        " \
 			<< MAGENTA << tmp._str << std::endl;
-		std::cout << BLUE << "ft::Stack<" << MAGENTA << type << BLUE"> vec2.x:     " \
+		std::cout << GREEN << "ft::Stack<" << MAGENTA << type << GREEN"> vec2.x:     " \
 			<< MAGENTA << tmp._vec.x \
-			<< BLUE << "  vec2.y: " << MAGENTA << tmp._vec.y << RESET << std::endl;
+			<< GREEN << "  vec2.y: " << MAGENTA << tmp._vec.y << RESET << std::endl;
 		std::cout << YELLOW << "----------------------------------------------------------------" \
 			<< RESET << std::endl << std::endl;
 		stackFT.pop();
 
 		tmp = stackSTD.top();
-		std::cout << GREEN << "Place in array #: " << CYAN << k << std::endl << std::endl;
+		std::cout << BLUE << "Place in array #: " << CYAN << k << std::endl << std::endl;
 			
-		std::cout << GREEN << "std::Stack<" << MAGENTA << type << GREEN"> nbr:        " \
+		std::cout << BLUE << "std::Stack<" << MAGENTA << type << BLUE"> nbr:        " \
 			<< MAGENTA << tmp._nbr << std::endl;
-		std::cout << GREEN << "std::Stack<" << MAGENTA << type << GREEN"> str:        " \
+		std::cout << BLUE << "std::Stack<" << MAGENTA << type << BLUE"> str:        " \
 			<< MAGENTA << tmp._str << std::endl;
-		std::cout << GREEN << "std::Stack<" << MAGENTA << type << GREEN"> vec2.x:     " \
+		std::cout << BLUE << "std::Stack<" << MAGENTA << type << BLUE"> vec2.x:     " \
 			<< MAGENTA << tmp._vec.x \
-			<< GREEN << "  vec2.y: " << MAGENTA << tmp._vec.y << RESET << std::endl;
+			<< BLUE << "  vec2.y: " << MAGENTA << tmp._vec.y << RESET << std::endl;
 		std::cout << YELLOW << "----------------------------------------------------------------" \
 			<< RESET << std::endl << std::endl;	
 		stackSTD.pop();

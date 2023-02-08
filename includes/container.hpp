@@ -6,7 +6,7 @@
 /*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/07 18:42:53 by nadesjar         ###   ########.fr       */
+/*   Updated: 2023/02/08 03:28:25 by nadesjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct Vector2
 class A
 {
 	public:
+	// Constructors & Destructors //
 		A(void) : _nbr(0), _str("")
 		{
 			this->_vec = (Vector2){0, 0};
@@ -80,6 +81,7 @@ class A
 
 		~A(void) {}
 
+	// Operators //
 		A &operator=(const A &rhs)
 		{
 			_nbr = rhs._nbr;
@@ -87,7 +89,56 @@ class A
 			_str = rhs._str;
 			return *this;
 		}
+
+		bool	operator>(A const &src) const
+		{
+			if (this->_nbr > src._nbr)
+				return (true);
+
+			return (false);
+		}
+
+		bool	operator<(A const &src) const
+		{
+			if (this->_nbr < src._nbr)
+				return (true);
+
+			return (false);
+		}
+
+		bool	operator>=(A const &src) const
+		{
+			if (this->_nbr >= src._nbr)
+				return (true);
+
+			return (false);
+		}
+
+		bool	operator<=(A const &src) const
+		{
+			if (this->_nbr <= src._nbr)
+				return (true);
+
+			return (false);
+		}
+
+		bool	operator==(A const &src) const
+		{
+			if (this->_nbr == src._nbr)
+				return (true);
+
+			return (false);
+		}
+
+		bool	operator!=(A const &src) const
+		{
+			if (this->_nbr != src._nbr)
+				return (true);
+
+			return (false);
+		}
 		
+	// Setters //
 		void setNbr(int nbr)
 		{
 			_nbr = nbr;
@@ -97,7 +148,7 @@ class A
 		{
 			_vec = vec;
 		}
-
+	// Getters //
 		std::string getStr(void) const
 		{
 			return _str;
@@ -148,6 +199,54 @@ struct StructA
 		_nbr = rhs._nbr;
 		return *this;
 	}
+
+	bool	operator>(StructA const &src) const
+	{
+		if (this->_nbr > src._nbr)
+			return (true);
+
+		return (false);
+	}
+
+	bool	operator<(StructA const &src) const
+	{
+		if (this->_nbr < src._nbr)
+			return (true);
+
+		return (false);
+	}
+
+	bool	operator>=(StructA const &src) const
+	{
+		if (this->_nbr >= src._nbr)
+			return (true);
+
+		return (false);
+	}
+
+	bool	operator<=(StructA const &src) const
+	{
+		if (this->_nbr <= src._nbr)
+			return (true);
+
+		return (false);
+	}
+
+	bool	operator==(StructA const &src) const
+	{
+		if (this->_nbr == src._nbr)
+			return (true);
+
+		return (false);
+	}
+
+	bool	operator!=(StructA const &src) const
+	{
+		if (this->_nbr != src._nbr)
+			return (true);
+
+		return (false);
+	}
 };
 
 //*** Functions ***//
@@ -174,6 +273,7 @@ void    stackFloatTest(void);
 void    stackIntTest(void);
 
 // Map Tests //
-void	mapTestString();
-void	mapTestClass();
-void	mapTestInt();
+void	mapTestString(void);
+void	mapTestStruct(void);
+void	mapTestClass(void);
+void	mapTestInt(void);

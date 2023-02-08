@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vectorTest.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:19:35 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/26 22:59:30 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/07 23:09:11 by nadesjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ void	printStack(ft::vector<T> *stack_FT, std::vector<T> *stack_STD,
 	std::cout << "----------------------------------------------------------------" \
 		<< RESET  << std::endl;
 	
-	std::cout << BLUE << "vector_FT.size(): " << stack_FT->size() << std::endl;
+	std::cout << GREEN << "vector_FT.size(): " << stack_FT->size() << std::endl;
 	std::cout << "vector_FT.capacity(): " << stack_FT->capacity() << MAGENTA << std::endl;
 	for (size_t i = 0; i < stack_FT->size(); i++)
 		std::cout << "[" << stack_FT->at(i) << "] ";
 
 	std::cout << std::endl << std::endl;
 
-	std::cout << GREEN << "vector_STD.size(): " << stack_STD->size() << std::endl;
+	std::cout << BLUE << "vector_STD.size(): " << stack_STD->size() << std::endl;
 	std::cout << "vector_STD.capacity(): " << stack_STD->capacity() << MAGENTA << std::endl;
 	for (size_t i = 0; i < stack_STD->size(); i++)
 		std::cout << "[" << stack_STD->at(i) << "] ";
@@ -165,8 +165,8 @@ void	vectorTestDouble(void)
 	// Init vector //
 	ft::vector<double>		vector_FT(myints, myints + 5);
 	ft::vector<double>		vector_FT2(myints2, myints2 + 5);
-	std::vector<double>	vector_STD(myints, myints + 5);
-	std::vector<double>	vector_STD2(myints2, myints2 + 5);
+	std::vector<double>		vector_STD(myints, myints + 5);
+	std::vector<double>		vector_STD2(myints2, myints2 + 5);
 	
 	// Test 1 //
 	printStack(&vector_FT, &vector_STD, "Add: {75, 223.44, 65, 42.42, 113} to vector", "double", 1);
