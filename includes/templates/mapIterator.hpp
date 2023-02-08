@@ -6,7 +6,7 @@
 /*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 16:58:40 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/07 19:12:58 by nadesjar         ###   ########.fr       */
+/*   Updated: 2023/02/07 20:02:31 by nadesjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,7 +270,7 @@ namespace ft
 			
 
 
-		public:
+		public: 
 		
 			rev_map_iterator(nodePtr node = 0, nodePtr lastElem = 0,
 							const key_compare& comp = key_compare()) :
