@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/26 23:06:36 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/07 18:50:33 by nadesjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,53 +174,6 @@ void	chooseVectorTests(void)
 	}
 }
 
-void	chooseIteratorTests(void)
-{
-	std::string input;
-	
-	while (input.compare("q") != 0 || input.compare("Q") != 0)
-	{
-		std::cout << "\e[1;1H\e[2J";
-		
-		std::cout << std::endl;
-		std::cout << MAGENTA << "-----------------------------------------" << std::endl;
-		std::cout << "|    Make a choice for Iterator test    |" << std::endl;
-		std::cout << "-----------------------------------------" << GREEN  << std::endl << std::endl;
-
-		std::cout << "For " << ITALIC << UNDERLINE << MAGENTA << "random_access_iterator" << RESET \
-			<< GREEN "<" << BLUE << " int "<< GREEN << "> tests,    enter: " << MAGENTA << "1" << std::endl;
-		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "random_access_iterator" << RESET \
-			<< GREEN "<" << BLUE << " double "<< GREEN << "> tests, enter: " << MAGENTA << "2" << std::endl;
-		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "random_access_iterator" << RESET \
-			<< GREEN "<" << BLUE << " class "<< GREEN << "> tests,  enter: " << MAGENTA << "3" << std::endl;
-		std::cout << std::endl;
-		std::cout << RED << "Enter: 'Q' for return" << RESET << std::endl;
-		
-		std::cout << "Choice: "; 
-		std::cin >> input;
-		std::cout << std::endl;
-
-		switch (input[0])
-		{
-			case '1':
-				randomAccessIteratorTestInt();
-				break ;
-			case '2':
-				randomAccessIteratorTestDouble();
-				break ;
-			case '3':
-				randomAccessIteratorTestClass();
-				break ;
-			case 'q':
-			case 'Q':
-				return ;
-			default:
-				std::cout << RED << "Wrong input" << RESET << std::endl;
-				break ;
-		}
-	}
-}
-
 int	main(void)
 {
 	std::string input;
@@ -234,15 +187,12 @@ int	main(void)
 		std::cout << "|            Make a choice              |" << std::endl;
 		std::cout << "-----------------------------------------" << GREEN  << std::endl << std::endl;
 
-		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Iterator" << RESET \
-			<< GREEN <<" tests, enter:  " << MAGENTA << "1" << std::endl << std::endl;
-			
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Vector" << RESET << GREEN \
-			<<" tests,   enter:  " << MAGENTA << "2" << std::endl;
+			<<" tests,   enter:  " << MAGENTA << "1" << std::endl;
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Stack" << RESET << GREEN \
-			<<" tests,    enter:  " << MAGENTA << "3" << std::endl;
+			<<" tests,    enter:  " << MAGENTA << "2" << std::endl;
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map" << RESET << GREEN \
-			<<" tests,      enter:  " << MAGENTA << "4" << std::endl << std::endl;
+			<<" tests,      enter:  " << MAGENTA << "3" << std::endl << std::endl;
 
 		std::cout << RED << "Enter: 'Q' for quit" << RESET << std::endl;
 		
@@ -252,16 +202,14 @@ int	main(void)
 
 		switch (input[0])
 		{
-			case '1':
-				chooseIteratorTests();
 				break ;
-			case '2':
+			case '1':
 				chooseVectorTests();
 				break ;
-			case '3':
+			case '2':
 				chooseStackTests();
 				break ;
-			case '4':
+			case '3':
 				chooseMapTests();
 				break ;
 			case 'q':

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   container.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/26 22:36:54 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/07 18:42:53 by nadesjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 #include "functions/pair.hpp"
 
 // Containers //
-#include "templates/Iterator.hpp"
-#include "templates/Vector.hpp"
-#include "templates/Stack.hpp"
-#include "templates/Map.hpp"
+#include "templates/iterator.hpp"
+#include "templates/vector.hpp"
+#include "templates/stack.hpp"
+#include "templates/map.hpp"
 
 // Other //
 

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 23:43:30 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/26 13:36:57 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/07 18:43:21 by nadesjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "../functions/utils.hpp"
+#include "vectorIterator.hpp"
 
 namespace ft
 {
@@ -31,8 +32,8 @@ namespace ft
 			typedef T*												pointer;
 			typedef const T*										const_pointer;
 			
-			typedef typename ft::random_access_iterator<T>			iterator;
-			typedef typename ft::random_access_iterator<const T>	const_iterator;
+			typedef typename ft::vector_iterator<T>					iterator;
+			typedef typename ft::vector_iterator<const T>			const_iterator;
 
 			typedef typename ft::reverse_iterator<T>				reverse_iterator;
 			typedef typename ft::reverse_iterator<const T>			const_reverse_iterator;

@@ -6,7 +6,7 @@
 #    By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/23 13:22:35 by nadesjar          #+#    #+#              #
-#    Updated: 2023/01/24 16:16:49 by nadesjar         ###   ########.fr        #
+#    Updated: 2023/02/07 19:58:54 by nadesjar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ P_FT			= ./myTests/templates/functions/
 
 FILES			= $(P_SRCS)main.cpp \
 				$(P_TEST)vectorTest.cpp \
-				$(P_TEST)iteratorsTest.cpp \
 				$(P_TEST)stackTest.cpp \
 				$(P_TEST)mapTest.cpp \
+				# $(P_TEST)iteratorsTest.cpp \
 
 OBJS			= $(patsubst $(P_SRCS)%.cpp, $(P_OBJS)%.o, $(FILES))
 
@@ -42,6 +42,14 @@ $(P_OBJS)%.o:	$(P_SRCS)%.cpp
 	@mkdir -p $(P_OBJS)tests
 	@$(CC) $(CFLAGS) -I. -c $< -o $@
 	@printf "$G■"
+
+# ----------------------------------- Git ------------------------------------ #
+
+COMMIT = $(shell date "+%d %B %T")
+git:
+	@git add .
+	@git commit -m "$(COMMIT)"
+	@git push
 
 # --------------------------------- Messages --------------------------------- #
 

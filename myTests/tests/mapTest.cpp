@@ -6,7 +6,7 @@
 /*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:47:12 by dracken24         #+#    #+#             */
-/*   Updated: 2023/01/30 11:41:22 by nadesjar         ###   ########.fr       */
+/*   Updated: 2023/02/07 19:19:46 by nadesjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -366,18 +366,18 @@ void	mapTestString()
 
 	printMap(ftMap, stdMap, 0, "Print Values");
 
-	// // Test 9: lower_bound("Unicorn") // good
-	// ftIt = ftMap.lower_bound("Unicorn");
-	// stdIt = stdMap.lower_bound("Unicorn");
-	// std::cout << RED << "----------------------------------------------------------------"
-	// 	<< RESET  << std::endl << std::endl;
-	// std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 9 << YELLOW << "]: " << "ft::map: " << "Lower_bound(Unicorn)" << std::endl << std::endl;
-	// std::cout << MAGENTA << "[" << BLUE << ftIt->first << MAGENTA << ", " << BLUE << ftIt->second << MAGENTA "] ";
-	// std::cout << std::endl;
-	// std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
-	// std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 9 << YELLOW << "]: " << "std::map: " << "Lower_bound(Unicorn)" << std::endl << std::endl;
-	// std::cout << MAGENTA << "[" << GREEN << stdIt->first << MAGENTA << ", " << GREEN << stdIt->second << MAGENTA "] ";
-	// std::cout << std::endl;
+	// Test 9: lower_bound("Unicorn") // good
+	ftIt = ftMap.lower_bound("Unicorn");
+	stdIt = stdMap.lower_bound("Unicorn");
+	std::cout << RED << "----------------------------------------------------------------"
+		<< RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 9 << YELLOW << "]: " << "ft::map: " << "Lower_bound(Unicorn)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << BLUE << ftIt->first << MAGENTA << ", " << BLUE << ftIt->second << MAGENTA "] ";
+	std::cout << std::endl;
+	std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 9 << YELLOW << "]: " << "std::map: " << "Lower_bound(Unicorn)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << GREEN << stdIt->first << MAGENTA << ", " << GREEN << stdIt->second << MAGENTA "] ";
+	std::cout << std::endl;
 
 	// Test 10: lower_bound("Tony") // good
 	ftIt = ftMap.lower_bound("Tony");
@@ -394,46 +394,46 @@ void	mapTestString()
 
 	printMap(ftMap, stdMap, 0, "Print Values");
 
-	// // Test 11: upper_bound(Unicorn)
-	// ftIt = ftMap.upper_bound("Unicorn");
-	// stdIt = stdMap.upper_bound("Unicorn");
-	// std::cout << RED << "----------------------------------------------------------------"
-	// 	<< RESET  << std::endl << std::endl;
-	// std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 11 << YELLOW << "]: " << "ft::map: " << "Upper_bound(Unicorn)" << std::endl << std::endl;
-	// std::cout << MAGENTA << "[" << BLUE << ftIt->first << MAGENTA << ", " << BLUE << ftIt->second << MAGENTA "] ";
-	// std::cout << std::endl;
-	// std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
-	// std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 11 << YELLOW << "]: " << "std::map: " << "Upper_bound(Unicorn)" << std::endl << std::endl;
-	// std::cout << MAGENTA << "[" << GREEN << stdIt->first << MAGENTA << ", " << GREEN << stdIt->second << MAGENTA "] ";
-	// std::cout << std::endl;
+	// Test 11: upper_bound(Unicorn)
+	ftIt = ftMap.upper_bound("Unicorn");
+	stdIt = stdMap.upper_bound("Unicorn");
+	std::cout << RED << "----------------------------------------------------------------"
+		<< RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 11 << YELLOW << "]: " << "ft::map: " << "Upper_bound(Unicorn)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << BLUE << ftIt->first << MAGENTA << ", " << BLUE << ftIt->second << MAGENTA "] ";
+	std::cout << std::endl;
+	std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 11 << YELLOW << "]: " << "std::map: " << "Upper_bound(Unicorn)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << GREEN << stdIt->first << MAGENTA << ", " << GREEN << stdIt->second << MAGENTA "] ";
+	std::cout << std::endl;
 
-	// // Test 12: upper_bound(Tony)
-	// ftIt = ftMap.upper_bound("Tony");
-	// stdIt = stdMap.upper_bound("Tony");
-	// std::cout << RED << "----------------------------------------------------------------"
-	// 	<< RESET  << std::endl << std::endl;
-	// std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 12 << YELLOW << "]: " << "ft::map: " << "Upper_bound(Tony)" << std::endl << std::endl;
-	// std::cout << MAGENTA << "[" << BLUE << ftIt->first << MAGENTA << ", " << BLUE << ftIt->second << MAGENTA "] ";
-	// std::cout << std::endl;
-	// std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
-	// std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 12 << YELLOW << "]: " << "std::map: " << "Upper_bound(Tony)" << std::endl << std::endl;
-	// std::cout << MAGENTA << "[" << GREEN << stdIt->first << MAGENTA << ", " << GREEN << stdIt->second << MAGENTA "] ";
-	// std::cout << std::endl;
+	// Test 12: upper_bound(Tony)
+	ftIt = ftMap.upper_bound("Tony");
+	stdIt = stdMap.upper_bound("Tony");
+	std::cout << RED << "----------------------------------------------------------------"
+		<< RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 12 << YELLOW << "]: " << "ft::map: " << "Upper_bound(Tony)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << BLUE << ftIt->first << MAGENTA << ", " << BLUE << ftIt->second << MAGENTA "] ";
+	std::cout << std::endl;
+	std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 12 << YELLOW << "]: " << "std::map: " << "Upper_bound(Tony)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << GREEN << stdIt->first << MAGENTA << ", " << GREEN << stdIt->second << MAGENTA "] ";
+	std::cout << std::endl;
 
-	// printMap(ftMap, stdMap, 0, "Print Values");
+	printMap(ftMap, stdMap, 0, "Print Values");
 	
-	// // Test 13: equal_range(Unicorn)
+	// Test 13: equal_range(Unicorn)
 	ft::pair<ft::map<std::string, std::string>::iterator, ft::map<std::string, std::string>::iterator> ftPair = ftMap.equal_range("Unicorn");
 	std::pair<std::map<std::string, std::string>::iterator, std::map<std::string, std::string>::iterator> stdPair = stdMap.equal_range("Unicorn");
-	// std::cout << RED << "----------------------------------------------------------------"
-	// 	<< RESET  << std::endl << std::endl;
-	// std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 13 << YELLOW << "]: " << "ft::map: " << "Equal_range(Unicorn)" << std::endl << std::endl;
-	// std::cout << MAGENTA << "[" << BLUE << ftPair.first->first << MAGENTA << ", " << BLUE << ftPair.first->second << MAGENTA "] ";
-	// std::cout << std::endl;
-	// std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
-	// std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 13 << YELLOW << "]: " << "std::map: " << "Equal_range(Unicorn)" << std::endl << std::endl;
-	// std::cout << MAGENTA << "[" << GREEN << stdPair.first->first << MAGENTA << ", " << GREEN << stdPair.first->second << MAGENTA "] ";
-	// std::cout << std::endl;
+	std::cout << RED << "----------------------------------------------------------------"
+		<< RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 13 << YELLOW << "]: " << "ft::map: " << "Equal_range(Unicorn)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << BLUE << ftPair.first->first << MAGENTA << ", " << BLUE << ftPair.first->second << MAGENTA "] ";
+	std::cout << std::endl;
+	std::cout << YELLOW << "----------------------------------------" << RESET  << std::endl << std::endl;
+	std::cout << YELLOW << "Test " << YELLOW << " #[" << MAGENTA << 13 << YELLOW << "]: " << "std::map: " << "Equal_range(Unicorn)" << std::endl << std::endl;
+	std::cout << MAGENTA << "[" << GREEN << stdPair.first->first << MAGENTA << ", " << GREEN << stdPair.first->second << MAGENTA "] ";
+	std::cout << std::endl;
 
 	// Test 14: equal_range(Tony)
 	ftPair = ftMap.equal_range("Tony");
