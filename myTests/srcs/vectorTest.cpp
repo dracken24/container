@@ -6,11 +6,11 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:19:35 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/08 09:49:26 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/10 15:24:31 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/container.hpp"
+#include "../includes/container.hpp"
 #include <vector>
 
 template <typename T>
@@ -49,7 +49,7 @@ void	printStack(ft::vector<T> *stack_FT, std::vector<T> *stack_STD,
 
 /****************************************************************************************************/
 // Test Int //
-void	vectorTestint(void)
+void	vectorTestint(int flag)
 {	
 	std::cout << std::boolalpha;
 	
@@ -69,66 +69,91 @@ void	vectorTestint(void)
 	ft::vector<int>		vector_FT2(myints2, myints2 + 5);
 	std::vector<int>	vector_STD(myints, myints + 5);
 	std::vector<int>	vector_STD2(myints2, myints2 + 5);
+
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	long int msTime = time.tv_sec * 1000 + time.tv_usec / 1000;
 	
 	// Test 1 //
-	printStack(&vector_FT, &vector_STD, "Add: {75, 223, 65, 42, 113} to vector", "int", 1);
+	if (flag == 1)
+		printStack(&vector_FT, &vector_STD, "Add: {75, 223, 65, 42, 113} to vector", "int", 1);
 
 	// Test 2 //
 	vector_FT.resize(14);
 	vector_STD.resize(14);
-	printStack(&vector_FT, &vector_STD, "resize(14)", "int", 0);
+	if (flag == 1)
+		printStack(&vector_FT, &vector_STD, "resize(14)", "int", 0);
 
 	// Test 3 //
 	vector_FT.push_back(4224);
 	vector_FT.push_back(101);
 	vector_STD.push_back(4224);
 	vector_STD.push_back(101);
-	printStack(&vector_FT, &vector_STD, "push_back(4224) && push_back(101)", "int", 0);
+	if (flag == 1)
+		printStack(&vector_FT, &vector_STD, "push_back(4224) && push_back(101)", "int", 0);
 
 	// Test 4 //
 	vector_FT.pop_back();
 	vector_STD.pop_back();
-	printStack(&vector_FT, &vector_STD, "pop_back()", "int", 0);
+	if (flag == 1)
+		printStack(&vector_FT, &vector_STD, "pop_back()", "int", 0);
 
 	// Test 5 //
 	vector_FT.insert(vector_FT.begin() + 9, 99);
 	vector_STD.insert(vector_STD.begin() + 9, 99);
-	printStack(&vector_FT, &vector_STD, "insert(vector_FT.begin() + 9, 99)", "int", 0);
+	if (flag == 1)
+		printStack(&vector_FT, &vector_STD, "insert(vector_FT.begin() + 9, 99)", "int", 0);
 	
 	// Test 6 //
 	vector_FT.reserve(33);
 	vector_STD.reserve(33);
-	printStack(&vector_FT, &vector_STD, "reserve(33)", "int", 0);
+	if (flag == 1)
+		printStack(&vector_FT, &vector_STD, "reserve(33)", "int", 0);
 
 	// Test 7 //
 	vector_FT.erase(vector_FT.begin() + 3);
 	vector_STD.erase(vector_STD.begin() + 3);
-	printStack(&vector_FT, &vector_STD, "erase(vector_FT.begin() + 3)", "int", 0);
+	if (flag == 1)
+		printStack(&vector_FT, &vector_STD, "erase(vector_FT.begin() + 3)", "int", 0);
 
 	// Test 8 //
 	vector_FT.erase(vector_FT.begin() + 3, vector_FT.begin() + 5);
 	vector_STD.erase(vector_STD.begin() + 3, vector_STD.begin() + 5);
-	printStack(&vector_FT, &vector_STD, "erase(vector_FT.begin() + 3, vector_FT.begin() + 5)", "int", 0);
+	if (flag == 1)
+		printStack(&vector_FT, &vector_STD, "erase(vector_FT.begin() + 3, vector_FT.begin() + 5)", "int", 0);
 
 	// Test 9 //
 	vector_FT.assign(5, 42);
 	vector_STD.assign(5, 42);
-	printStack(&vector_FT, &vector_STD, "assign(5, 42)", "int", 0);
+	if (flag == 1)
+		printStack(&vector_FT, &vector_STD, "assign(5, 42)", "int", 0);
 
 	// Test 10 //
 	vector_FT.resize(3);
 	vector_STD.resize(3);
-	printStack(&vector_FT, &vector_STD, "resize(3)", "int", 0);
+	if (flag == 1)
+		printStack(&vector_FT, &vector_STD, "resize(3)", "int", 0);
 	
 	// Test 11 //
 	vector_FT.swap(vector_FT2);
 	vector_STD.swap(vector_STD2);
-	printStack(&vector_FT, &vector_STD, "swap(vector_FT2 = {2, 4, 6, 8, 10})", "int", 0);
+	if (flag == 1)
+		printStack(&vector_FT, &vector_STD, "swap(vector_FT2 = {2, 4, 6, 8, 10})", "int", 0);
 
 	// Test 12 //
 	vector_FT.clear();
 	vector_STD.clear();
-	printStack(&vector_FT, &vector_STD, "clear()", "int", 0);
+	if (flag == 1)
+		printStack(&vector_FT, &vector_STD, "clear()", "int", 0);
+
+	if (flag == 0)
+	{
+		struct timeval	time2;
+
+		gettimeofday(&time2, NULL);
+		std::cout << "Time in ms: " << (time2.tv_sec * 1000 + time2.tv_usec / 1000) - msTime << std::endl;
+	}
 	
 
 	std::cout << std::endl << std::endl;

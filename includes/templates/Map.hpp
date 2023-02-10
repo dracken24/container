@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:28:54 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/08 09:25:30 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/10 11:21:01 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ namespace ft
 	{
 		private:        
 
+			// Node structure for link all pair like a binar tree //
 			struct Node
 			{
 				ft::pair<const Key, T>  content;
@@ -59,42 +60,6 @@ namespace ft
 
 			typedef typename ft::rev_map_iterator<Key, T, Compare, Node, false>	reverse_iterator;
 			typedef typename ft::rev_map_iterator<Key, T, Compare, Node, true>	const_reverse_iterator;
-
-
-		public:
-		
-			class value_compare
-			{
-				friend class map;
-				
-				public:
-				
-					typedef bool		result_type;
-					typedef value_type	first_argument_type;
-					typedef value_type	second_argument_type;
-
-					bool operator()(const value_type &x, const value_type &y) const
-					{
-						return comp(x.first, y.first);
-					}
-					
-				protected:
-				
-					key_compare		comp;
-					
-					value_compare(Compare c) :
-					comp(c)
-					{}
-			};
-
-		private:
-		
-			Node*					_root;          // Pointer to the first element of the tree (root)
-			Node*					_lastElem;      // Pointer to the last elem of the tree
-			size_type				_size;          // Number of T values inside the map
-			allocator_type			_allocPair;     // Copy of allocator_type object
-			key_compare				_comp;          // Copy of comp key_compare predicate
-			std::allocator<Node>	_allocNode;     // Node's allocator
 			
 		public:
 			
@@ -323,11 +288,6 @@ namespace ft
 				return _comp;
 			}
 
-			value_compare value_comp() const
-			{
-				return value_compare(_comp);
-			}
-			
 			iterator find(const key_type &k)
 			{
 				Node* tmp = searchNode(_root, k);
@@ -749,6 +709,15 @@ namespace ft
 					node = node->parent;
 				}
 			}
+			
+		private:
+		
+			Node*					_root;          // Pointer to the first element of the tree (root)
+			Node*					_lastElem;      // Pointer to the last elem of the tree
+			size_type				_size;          // Number of T values inside the map
+			allocator_type			_allocPair;     // Copy of allocator_type object
+			key_compare				_comp;          // Copy of comp key_compare predicate
+			std::allocator<Node>	_allocNode;     // Node's allocator
 	}; 
 };
 

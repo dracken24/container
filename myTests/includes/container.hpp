@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/08 09:28:50 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/10 15:20:45 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 // For the sake of the project, I'm including all the files here.
 
 // Functions //
-#include "./functions/isIntegral.hpp"
-#include "./functions/pair.hpp"
+#include "../../includes/functions/isIntegral.hpp"
+#include "../../includes/functions/pair.hpp"
 
 // Containers //
-#include "./templates/Vector.hpp"
-#include "./templates/Stack.hpp"
-#include "./templates/Map.hpp"
+#include "../../includes/templates/Vector.hpp"
+#include "../../includes/templates/Stack.hpp"
+#include "../../includes/templates/Map.hpp"
 
 // Other //
 
@@ -51,6 +51,7 @@
 #include <memory>
 #include <map>
 #include <cstdio>
+# include <sys/time.h>
 
 // Class tests //
 
@@ -252,7 +253,7 @@ struct StructA
 //*** Functions ***//
 
 // Choose Tests type //
-void	chooseVectorTests(void);
+void	chooseVectorTests(int flag);
 
 // rendomAccessIterator Tests //
 void    randomAccessIteratorTestDouble(void);
@@ -264,7 +265,7 @@ void	vectorTestStruct(void);
 void	vectorTestString(void);
 void	vectorTestDouble(void);
 void	vectorTestClass(void);
-void	vectorTestint(void);
+void	vectorTestint(int flag);
 
 // Stack Tests //
 void    stackStructTest(void);

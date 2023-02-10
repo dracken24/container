@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
+/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/08 03:45:33 by nadesjar         ###   ########.fr       */
+/*   Updated: 2023/02/10 15:15:42 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void	chooseStackTests(void)
 	}
 }
 
-void	chooseVectorTests(void)
+void	chooseVectorTests(int flag)
 {
 	std::string input;
 	
@@ -155,7 +155,7 @@ void	chooseVectorTests(void)
 		switch (input[0])
 		{
 			case '1':
-				vectorTestint();
+				vectorTestint(flag);
 				break;
 			case '2':
 				vectorTestDouble();
@@ -176,6 +176,7 @@ void	chooseVectorTests(void)
 				std::cout << RED << "Wrong input!" << RESET << std::endl;
 				break;
 		}
+		
 	}
 }
 
@@ -199,31 +200,54 @@ int	main(void)
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map" << RESET << GREEN \
 			<<" tests,      enter:  " << MAGENTA << "3" << std::endl << std::endl;
 
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Vector Timout" << RESET << GREEN \
+			<<" tests,      enter:  " << MAGENTA << "4" << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Stack Timout" << RESET << GREEN \
+			<<" tests,       enter:  " << MAGENTA << "5" << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map Timout" << RESET << GREEN \
+			<<" tests,         enter:  " << MAGENTA << "6" << std::endl << std::endl;
+
 		std::cout << RED << "Enter: 'Q' for quit" << RESET << std::endl;
 		
 		std::cout << "Choice: "; 
 		std::cin >> input;
 		std::cout << std::endl;
-
-		switch (input[0])
+		
+		if (input[0] >= '4' && input[0] <= '6')
 		{
-				break ;
-			case '1':
-				chooseVectorTests();
-				break ;
-			case '2':
-				chooseStackTests();
-				break ;
-			case '3':
-				chooseMapTests();
-				break ;
-			case 'q':
-			case 'Q':
+			switch (input[0])
 			{
-				std::cout << "\e[1;1H\e[2J";
-				return (0);
+				case '4':
+					chooseVectorTests(0);
+					break ;
+				case '5':
+					chooseStackTests();
+					break ;
+				case '6':
+					chooseMapTests();
+					break ;
 			}
-			default:
+		}
+		else if (input[0] >= '1' && input[0] <= '3')
+		{
+			switch (input[0])
+			{
+				case '1':
+					chooseVectorTests(1);
+					break ;
+				case '2':
+					chooseStackTests();
+					break ;
+				case '3':
+					chooseMapTests();
+					break ;
+			}
+		}
+		else
+		{
+			if (input[0] == 'q' || input[0] == 'Q')
+				return (0);
+			else
 				std::cout << RED << "Invalid input" << RESET << std::endl;
 		}
 		

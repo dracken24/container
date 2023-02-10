@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 08:09:40 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/08 09:24:44 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/09 20:14:04 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,31 +38,6 @@ namespace ft
 			typedef Pointer		pointer;
 			typedef Reference	reference;
 
-	};
-
-	template < class Iter >
-	class iterator_traits
-	{
-		public :
-		
-			typedef typename Iter::difference_type		difference_type;
-			typedef typename Iter::value_type			value_type;
-			typedef typename Iter::pointer				pointer;
-			typedef typename Iter::reference			reference;
-			typedef typename Iter::iterator_category	iterator_category;
-
-	};
-
-	template < class T >
-	class iterator_traits<T*>
-	{
-		public :
-
-			typedef std::ptrdiff_t						difference_type;
-			typedef T									value_type;
-			typedef const T*							pointer;
-			typedef const T&							reference;
-			typedef random_access_iterator_tag			iterator_category;
 	};
 
 	template < class Iterator>

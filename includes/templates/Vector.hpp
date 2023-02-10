@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 23:43:30 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/08 09:26:21 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/09 20:13:39 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -373,61 +373,6 @@ namespace ft
 					pop_back();
 			}
 			
-		/*************************************************************************************/
-			// Overload operators //
-			
-			friend bool operator==(const vector &lhs, const vector &rhs)
-			{
-				if (lhs.size() != rhs.size())
-					return false;
-
-				for (ft::pair<const_iterator, const_iterator> it(lhs.begin(), rhs.begin());
-						it.first != lhs.end(); ++it.first, ++it.second)
-				{
-					if (*(it.first) != *(it.second))
-						return false;
-				}
-						
-				return true;
-			}
-
-			friend bool operator!=(const vector &lhs, const vector &rhs)
-			{
-				return !(lhs == rhs);
-			}
-			
-			friend bool operator<(const vector &lhs, const vector &rhs)
-			{
-				for (ft::pair<const_iterator, const_iterator> it(lhs.begin(), rhs.begin());
-						it.first != lhs.end() && it.second != rhs.end(); ++it.first, ++it.second)
-				{
-					if (*(it.first) < *(it.second))
-						return true;
-				}
-				
-				return (lhs.size() < rhs.size());
-			}
-
-			friend bool operator>(const vector &lhs, const vector &rhs)
-			{
-				return rhs < lhs;
-			}
-
-			friend bool operator<=(const vector &lhs, const vector &rhs)
-			{
-				return !(rhs < lhs);
-			}
-			
-			friend bool operator>=(const vector &lhs, const vector &rhs)
-			{
-				return !(lhs < rhs);
-			}
-
-			friend void swap (vector &x, vector &y)
-			{
-				 x.swap(y);
-			}
-			
 		/*************************************************************************************/	
 		// Private member functions //
 		private:
@@ -481,6 +426,66 @@ namespace ft
 			size_type           _capacity;      // Capacity allocated (can be greater than size)
 	};
 
+	template <class T, class Alloc>
+	bool operator==(const vector<T,Alloc> &lhs, const vector<T,Alloc> &rhs)
+	{
+		if (lhs.size() != rhs.size())
+			return false;
+		
+		for (ft::pair<typename vector<T,Alloc>::const_iterator, typename vector<T,Alloc>::const_iterator> it(lhs.begin(), rhs.begin());
+				it.first != lhs.end() && it.second != rhs.end(); ++it.first, ++it.second)
+		{
+			if (*(it.first) != *(it.second))
+				return false;
+		}
+		
+		return true;
+	}
+
+	template <class T, class Alloc>
+	bool operator!=(const vector<T,Alloc> &lhs, const vector<T,Alloc> &rhs)
+	{
+		return !(lhs == rhs);
+	}
+
+	template <class T, class Alloc>
+	bool operator<(const vector<T,Alloc> &lhs, const vector<T,Alloc> &rhs)
+	{
+		for (ft::pair<typename vector<T,Alloc>::const_iterator, typename vector<T,Alloc>::const_iterator> it(lhs.begin(), rhs.begin());
+				it.first != lhs.end() && it.second != rhs.end(); ++it.first, ++it.second)
+		{
+			if (*(it.first) < *(it.second))
+				return true;
+			else if (*(it.first) > *(it.second))
+				return false;
+		}
+		
+		return lhs.size() < rhs.size();
+	}
+
+	template <class T, class Alloc>
+	bool operator>(const vector<T,Alloc> &lhs, const vector<T,Alloc> &rhs)
+	{
+		return rhs < lhs;
+	}
+
+	template <class T, class Alloc>
+	bool operator<=(const vector<T,Alloc> &lhs, const vector<T,Alloc> &rhs)
+	{
+		return !(rhs < lhs);
+	}
+
+	template <class T, class Alloc>
+	bool operator>=(const vector<T,Alloc> &lhs, const vector<T,Alloc> &rhs)
+	{
+		return !(lhs < rhs);
+	}
+
+	template <class T, class Alloc>
+	void swap (vector<T,Alloc> &x, vector<T,Alloc> &y)
+	{
+		x.swap(y);
+	}
 };
 
 #endif
