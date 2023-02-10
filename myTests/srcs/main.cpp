@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/10 16:50:47 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/10 17:46:01 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,8 +206,8 @@ int	main(void)
 			<<" tests,      enter:  " << MAGENTA << "4" << std::endl;
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Stack Timout" << RESET << GREEN \
 			<<" tests,       enter:  " << MAGENTA << "5" << std::endl;
-		// std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map Timout" << RESET << GREEN \
-		// 	<<" tests,         enter:  " << MAGENTA << "6" << std::endl << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map Timout" << RESET << GREEN \
+			<<" tests,         enter:  " << MAGENTA << "6" << std::endl << std::endl;
 
 		std::cout << RED << "Enter: 'Q' for quit" << RESET << std::endl;
 		
@@ -225,9 +225,9 @@ int	main(void)
 				case '5':
 					chooseStackTestsInt();
 					break ;
-				// case '6':
-				// 	chooseMapTests();
-				// 	break ;
+				case '6':
+					chooseMapTestsInt();
+					break ;
 			}
 		}
 		else if (input[0] >= '1' && input[0] <= '3')

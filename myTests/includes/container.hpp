@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/10 16:51:28 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/10 17:45:29 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,5 +282,6 @@ void	mapTestInt(void);
 // TimeOut //
 void	vectorTimeOutTestInt(void);
 void    chooseStackTestsInt(void);
+void	chooseMapTestsInt(void);
 
 #endif

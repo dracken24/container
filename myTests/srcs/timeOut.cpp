@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:28:13 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/10 17:10:59 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/10 18:09:18 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -269,7 +269,118 @@ void    chooseStackTestsInt(void)
 
 	std::cout << std::endl;
 	std::cout << RED << "--------------------------------------------------------------------------" << RESET << std::endl << std::endl;
-	std::cout << GREEN << "----------------------- END TESTS Stack timeout -------------------------" << RESET << std::endl << std::endl;
+	std::cout << GREEN << "------------------------ END TESTS Stack timeout -------------------------" << RESET << std::endl << std::endl;
+	std::cout << RED << "--------------------------------------------------------------------------" << RESET << std::endl << std::endl;
+	
+	
+	std::string input;
+	
+	std::cout << "Press ENTER to continue" << std::endl;
+	std::getline(std::cin, input);
+	std::getline(std::cin, input);
+	std::cout << "\e[1;1H\e[2J";
+}
+
+/***************************************************************************************************/
+
+void	chooseMapTestsInt(void)
+{
+	std::cout << std::boolalpha;
+	
+	std::cout << std::endl;
+	std::cout << RED << "/*******************************" << GREEN << " Map<int> " \
+		<< RED << "*******************************/" << RESET << std::endl;
+	std::cout << std::endl;
+
+	int		myints[] = {75, 223, 65, 42, 113};
+	int		myints2[] = {2, 4, 6, 8, 10};
+	
+	// Init vector //
+	ft::map<int, int>	ftMap;
+	ft::map<int, int>	ftMap2;
+	std::map<int, int>	stdMap;
+	std::map<int, int>	stdMap2;
+
+	for (int i = 0; i < 7; i++)
+	{
+		int nbr = rand() % 1000;
+		int nbr2 = rand() % 1000;
+		
+		ftMap.insert(ft::make_pair(nbr, nbr2));
+		stdMap.insert(std::make_pair(nbr, nbr2));
+
+		nbr = rand() % 500;
+		nbr2 = rand() % 500;
+
+		ftMap2.insert(ft::make_pair(nbr, i * nbr2));
+		stdMap2.insert(std::make_pair(nbr, i * nbr2));
+	}
+	
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	
+	long int start = time.tv_sec * 1000 + time.tv_usec / 1000;
+	
+	// ft tests //
+	for (int i = 0; i < 10000; i++)
+	{
+		ftMap.insert(ft::pair<int, int>(i, 1 * 2));
+		ftMap.insert(ft::pair<int, int>(i * 3, 1 * 6));
+		ftMap.insert(ft::pair<int, int>(i * 6, 1 * 5));
+		ftMap.erase(ftMap.begin());
+		ftMap.find(5);
+		ftMap.find(277);
+		ftMap.count(5);
+		ftMap.count(277);
+		ftMap.lower_bound(277);
+		ftMap.upper_bound(277);
+		ftMap.swap(ftMap2);
+		// std::cout << "I: " << i << std::endl;
+	}
+
+	ftMap.clear();
+
+	
+	struct timeval	time2;
+
+	gettimeofday(&time2, NULL);
+	long int end = time2.tv_sec * 1000 + time2.tv_usec / 1000;
+
+	std::cout << GREEN << "Time for ft::map<int>: " << end - start << " ms" << std::endl;
+	
+	start = end;
+	
+	// std tests //
+	for (int i = 0; i < 10000; i++)
+	{
+		stdMap.insert(std::pair<int, int>(i, 1 * 2));
+		stdMap.insert(std::pair<int, int>(i * 3, 1 * 6));
+		stdMap.insert(std::pair<int, int>(i * 6, 1 * 5));
+		stdMap.erase(stdMap.begin());
+		stdMap.find(5);
+		stdMap.find(277);
+		stdMap.count(5);
+		stdMap.count(277);
+		stdMap.lower_bound(277);
+		stdMap.upper_bound(277);
+		stdMap.swap(stdMap2);
+		// std::cout << "I: " << i << std::endl;
+	}
+
+	stdMap.clear();
+
+	gettimeofday(&time, NULL);
+
+	end = time.tv_sec * 1000 + time.tv_usec / 1000;
+
+	std::cout << BLUE << "Time for std::map<int>: " << end - start << " ms" << std::endl;
+
+	// vectorTimeOutTestClass();
+
+	std::cout << std::endl;
+	std::cout << RED << "--------------------------------------------------------------------------" << RESET << std::endl << std::endl;
+	std::cout << GREEN << "----------------------- END TESTS Map timeout -------------------------" << RESET << std::endl << std::endl;
 	std::cout << RED << "--------------------------------------------------------------------------" << RESET << std::endl << std::endl;
 	
 	
