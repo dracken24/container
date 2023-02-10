@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/10 15:20:45 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/10 16:51:28 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,7 +265,7 @@ void	vectorTestStruct(void);
 void	vectorTestString(void);
 void	vectorTestDouble(void);
 void	vectorTestClass(void);
-void	vectorTestint(int flag);
+void	vectorTestint(void);
 
 // Stack Tests //
 void    stackStructTest(void);
@@ -278,5 +278,9 @@ void	mapTestString(void);
 void	mapTestStruct(void);
 void	mapTestClass(void);
 void	mapTestInt(void);
+
+// TimeOut //
+void	vectorTimeOutTestInt(void);
+void    chooseStackTestsInt(void);
 
 #endif

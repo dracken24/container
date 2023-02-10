@@ -6,7 +6,7 @@
 #    By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/23 13:22:35 by nadesjar          #+#    #+#              #
-#    Updated: 2023/02/09 20:06:44 by dracken24        ###   ########.fr        #
+#    Updated: 2023/02/10 15:40:04 by dracken24        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ FILES			= $(P_SRCS)main.cpp \
 				$(P_SRCS)vectorTest.cpp \
 				$(P_SRCS)stackTest.cpp \
 				$(P_SRCS)mapTest.cpp \
+				$(P_SRCS)timeOut.cpp \
 
 OBJS			= $(patsubst $(P_SRCS)%.cpp, $(P_OBJS)%.o, $(FILES))
 
@@ -51,6 +52,10 @@ $(P_OBJS)stackTest.o: $(P_SRCS)stackTest.cpp $(INCLUDE_PATH)container.hpp
 	@printf "$C■"
 
 $(P_OBJS)vectorTest.o: $(P_SRCS)vectorTest.cpp $(INCLUDE_PATH)container.hpp
+	@$(CC) -I $(CFLAGS) -c $< -o $@
+	@printf "$G■"
+
+$(P_OBJS)timeOut.o: $(P_SRCS)timeOut.cpp $(INCLUDE_PATH)container.hpp
 	@$(CC) -I $(CFLAGS) -c $< -o $@
 	@printf "$G■"
 

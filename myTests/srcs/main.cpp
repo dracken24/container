@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:03:27 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/10 15:15:42 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/10 16:50:47 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ void	chooseVectorTests(int flag)
 			
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Vector" << RESET << GREEN << "<" \
 			<< BLUE << " struct " << GREEN <<"> tests, enter: " << MAGENTA << "4" << std::endl;
-			std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Vector" << RESET << GREEN << "<" \
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Vector" << RESET << GREEN << "<" \
 			<< BLUE << " class " << GREEN <<"> tests,  enter: " << MAGENTA << "5" << std::endl;
 
 		std::cout << std::endl;
@@ -152,31 +152,33 @@ void	chooseVectorTests(int flag)
 		std::cin >> input;
 		std::cout << std::endl;
 
-		switch (input[0])
-		{
-			case '1':
-				vectorTestint(flag);
-				break;
-			case '2':
-				vectorTestDouble();
-				break;
-			case '3':
-				vectorTestString();
-				break;
-			case '4':
-				vectorTestStruct();
-				break;
-			case '5':
-				vectorTestClass();
-				break;
-			case 'q':
-			case 'Q':
-				return;
-			default:
-				std::cout << RED << "Wrong input!" << RESET << std::endl;
-				break;
-		}
-		
+		if (flag == 0)
+		{	
+			switch (input[0])
+			{
+				case '1':
+					vectorTestint();
+					break;
+				case '2':
+					vectorTestDouble();
+					break;
+				case '3':
+					vectorTestString();
+					break;
+				case '4':
+					vectorTestStruct();
+					break;
+				case '5':
+					vectorTestClass();
+					break;
+				case 'q':
+				case 'Q':
+					return;
+				default:
+					std::cout << RED << "Wrong input!" << RESET << std::endl;
+					break;
+			}
+		}		
 	}
 }
 
@@ -204,8 +206,8 @@ int	main(void)
 			<<" tests,      enter:  " << MAGENTA << "4" << std::endl;
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Stack Timout" << RESET << GREEN \
 			<<" tests,       enter:  " << MAGENTA << "5" << std::endl;
-		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map Timout" << RESET << GREEN \
-			<<" tests,         enter:  " << MAGENTA << "6" << std::endl << std::endl;
+		// std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Map Timout" << RESET << GREEN \
+		// 	<<" tests,         enter:  " << MAGENTA << "6" << std::endl << std::endl;
 
 		std::cout << RED << "Enter: 'Q' for quit" << RESET << std::endl;
 		
@@ -218,14 +220,14 @@ int	main(void)
 			switch (input[0])
 			{
 				case '4':
-					chooseVectorTests(0);
+					vectorTimeOutTestInt();
 					break ;
 				case '5':
-					chooseStackTests();
+					chooseStackTestsInt();
 					break ;
-				case '6':
-					chooseMapTests();
-					break ;
+				// case '6':
+				// 	chooseMapTests();
+				// 	break ;
 			}
 		}
 		else if (input[0] >= '1' && input[0] <= '3')
@@ -233,7 +235,7 @@ int	main(void)
 			switch (input[0])
 			{
 				case '1':
-					chooseVectorTests(1);
+					chooseVectorTests(0);
 					break ;
 				case '2':
 					chooseStackTests();
