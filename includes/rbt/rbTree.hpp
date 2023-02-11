@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 22:36:18 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/11 10:51:50 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/11 16:47:51 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 namespace ft
 {
-template <typename value_type, typename Compare, typename Allocator>
+	template <typename value_type, typename Compare, typename Allocator>
 	class rb_tree
 	{
 	//******************************************************************************************************//
@@ -32,7 +32,7 @@ template <typename value_type, typename Compare, typename Allocator>
 		typedef typename Allocator::template rebind<rbt_node<value_type> >::other	node_allocator;
 		typedef typename node_allocator::difference_type							node_difference_type;
 		typedef rbt_iterator<value_type, Compare>									iterator;
-		typedef rbt_const_iterator<value_type, Compare>								const_iterator;
+		typedef const rbt_iterator<value_type, Compare>								const_iterator;
 		typedef typename ft::reverse_iterator<iterator>								reverse_iterator;
 		typedef typename ft::reverse_iterator<const_iterator>						const_reverse_iterator;
 
@@ -85,7 +85,6 @@ template <typename value_type, typename Compare, typename Allocator>
 			_node_alloc.deallocate(_end_node, 1);
 		}
 
-
 		rb_tree &operator=(const rb_tree &other)
 		{
 			rb_tree tmp(other);
@@ -94,6 +93,10 @@ template <typename value_type, typename Compare, typename Allocator>
 			return *this;
 		}
 
+	//******************************************************************************************************//
+	//											Getters - Setters								    		//
+	//******************************************************************************************************//
+	
 		pair<iterator, bool> insert(const value_type &value)
 		{
 
@@ -271,6 +274,10 @@ template <typename value_type, typename Compare, typename Allocator>
 			return 0;
 		}
 
+	//******************************************************************************************************//
+	//												Iterators									    		//
+	//******************************************************************************************************//
+
 		iterator begin()
 		{
 			return iterator(get_first_node(_root_node));
@@ -292,42 +299,46 @@ template <typename value_type, typename Compare, typename Allocator>
 		}
 
 		template <typename Key>
-			iterator find(const Key &key)
+		iterator find(const Key &key)
+		{
+
+			tree_node_ptr node = _root_node;
+
+			while (node != NULL)
 			{
-
-				tree_node_ptr node = _root_node;
-
-				while (node != NULL)
-				{
-					if (_comp(key, node->data.first))
-						node = node->left;
-					else if (_comp(node->data.first, key))
-						node = node->right;
-					else
-						return iterator(node);
-				}
-
-				return end();
+				if (_comp(key, node->data.first))
+					node = node->left;
+				else if (_comp(node->data.first, key))
+					node = node->right;
+				else
+					return iterator(node);
 			}
+
+			return end();
+		}
 
 		template <typename Key>
-			const_iterator find(const Key &key) const
+		const_iterator find(const Key &key) const
+		{
+			tree_node_ptr node = _root_node;
+
+			while (node != NULL)
 			{
-				tree_node_ptr node = _root_node;
-
-				while (node != NULL)
-				{
-					if (_comp(key, node->data.first))
-						node = node->left;
-					else if (_comp(node->data.first, key))
-						node = node->right;
-					else
-						return const_iterator(node);
-				}
-
-				return end();
+				if (_comp(key, node->data.first))
+					node = node->left;
+				else if (_comp(node->data.first, key))
+					node = node->right;
+				else
+					return const_iterator(node);
 			}
 
+			return end();
+		}
+
+	//******************************************************************************************************//
+	//											Element access									    		//
+	//******************************************************************************************************//
+	
 		template <typename Key, typename T>
 		T &operator[](const Key &key)
 		{
@@ -340,8 +351,7 @@ template <typename value_type, typename Compare, typename Allocator>
 				return insert(ft::make_pair(key, T())).first->second;
 			}
 		}
-
-
+	
 		template <typename Key, typename Value>
 		Value &at(const Key &key)
 		{
@@ -363,6 +373,10 @@ template <typename value_type, typename Compare, typename Allocator>
 				
 			return it->second;
 		}
+
+	//******************************************************************************************************//
+	//											Capacity and Look								    		//
+	//******************************************************************************************************//
 
 		template <typename Key>
 		pair<iterator, iterator> equal_range(const Key& key)
@@ -486,7 +500,13 @@ template <typename value_type, typename Compare, typename Allocator>
 			delete_tree(_end_node);
 		}
 
+	//******************************************************************************************************//
+	//											No Member Functions								    		//
+	//******************************************************************************************************//
+	// Play with Nodes in the tree //
+
 	private:
+		// Delete all Nodes in the tree //
 		void delete_tree(tree_node_ptr node)
 		{
 			if (node != NULL)
@@ -506,68 +526,77 @@ template <typename value_type, typename Compare, typename Allocator>
 			_size = 0;
 		}
 
+		// Insert a Node in the tree //
 		void rbt_insertion(tree_node_ptr node)
 		{
-			if (node == _root_node)
+			if (node == _root_node)									// If node is root, then color it black //
 				node->is_black = true;
 
 			while (node->parent->is_black == false)
 			{
-				tree_node_ptr uncle = get_parent(node);
-
+				tree_node_ptr parent = get_parent(node);
+				
+				// Check if parent is left child //
 				if (node->parent == node->parent->parent->left)
 				{
-					if (uncle && uncle->is_black == false)
+					// If parent color is red, then uncle color is black //
+					if (parent && parent->is_black == false)
 					{
-						node->parent->is_black = true;
-						uncle->is_black = true;
-						node->parent->parent->is_black = false;
-						rbt_insertion(node->parent->parent);
+						node->parent->is_black = true;				// Color node parent black //
+						parent->is_black = true;					// Color parent black //
+						node->parent->parent->is_black = false;		// Color grandparent red //
+						rbt_insertion(node->parent->parent);		// Insert grandparent //
 
 						return;
 					}
+					// If parent color is red, then uncle color is black //
 					else
 					{
+						// If node is right child //
 						if (node == node->parent->right)
 						{
-							node = node->parent;
-							rotate_left(node);
+							node = node->parent;					// Node is now parent //
+							rotate_left(node);						// Rotate left //
 						}
 
-						node->parent->is_black = true;
-						node->parent->parent->is_black = false;
-						rotate_right(node->parent->parent);
-						_root_node->is_black = true;
+						node->parent->is_black = true;				// Color parent black //
+						node->parent->parent->is_black = false;		// Color grandparent red //
+						rotate_right(node->parent->parent);			// Rotate right //
+						_root_node->is_black = true;				// Color root black //
 					}
 				}
+				// Check if parent is right child //
 				else
 				{
-					if (uncle && uncle->is_black == false)
+					// If parent color is red, then parent color is black //
+					if (parent && parent->is_black == false)
 					{
-						node->parent->is_black = true;
-						uncle->is_black = true;
-						node->parent->parent->is_black = false;
-						rbt_insertion(node->parent->parent);
+						node->parent->is_black = true;				// Parent color is black //
+						parent->is_black = true;					// parent color is black //
+						node->parent->parent->is_black = false;		// Grandparent color is red //
+						rbt_insertion(node->parent->parent);		// Insert grandparent //
 
 						return;
 					}
+					// If parent color is red, then parent color is black //
 					else
 					{
+						// If node is left child //
 						if (node == node->parent->left)
 						{
-							node = node->parent;
-							rotate_right(node);
+							node = node->parent;					// Node is parent //
+							rotate_right(node);						// Rotate right //
 						}
 
-						node->parent->is_black = true;
-						node->parent->parent->is_black = false;
-						rotate_left(node->parent->parent);
-						_root_node->is_black = true;
+						node->parent->is_black = true;				// Parent color is black //
+						node->parent->parent->is_black = false;		// Grandparent color is red //
+						rotate_left(node->parent->parent);			// Rotate left //
+						_root_node->is_black = true;				// Root color is black //
 					}
 				}
 			}
 		}
-
+		
 		int rotate_left(tree_node_ptr node_x)
 		{
 			if (node_x->right == NULL)
@@ -577,10 +606,12 @@ template <typename value_type, typename Compare, typename Allocator>
 
 			if (node_x->parent->left == node_x)
 				node_x->parent->left = node_y;
+
 			else if (node_x->parent->right == node_x)
 			{
 				node_x->parent->right = node_y;
 			}
+			
 			node_y->parent = node_x->parent;
 
 			node_x->right = node_y->left;
@@ -619,6 +650,7 @@ template <typename value_type, typename Compare, typename Allocator>
 			return 1;
 		}
 
+		// Change color of node //
 		void change_color(tree_node_ptr node)
 		{
 			if (node)
@@ -630,6 +662,7 @@ template <typename value_type, typename Compare, typename Allocator>
 			}
 		}
 
+		// Check if node is root or end node //
 		tree_node_ptr get_sibbling(const tree_node_ptr node) const
 		{
 			if (node == _end_node || node == _root_node)
@@ -683,6 +716,7 @@ template <typename value_type, typename Compare, typename Allocator>
 			if (node == _root_node)
 				return;
 
+			// 
 			if (sibbling && node == node->parent->left)
 			{
 				far_sib_child = sibbling->right;

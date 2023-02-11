@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:28:54 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/11 11:14:55 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/11 16:53:53 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 # include "../functions/utils.hpp"
 # include "../rbt/rbTree.hpp"
+# include "../rbt/rbtIterator.hpp"
+# include "../templates/iterator.hpp"
 
 namespace ft
 {
@@ -41,7 +43,7 @@ namespace ft
 		typedef  typename Allocator::pointer							pointer;                 
 		typedef  typename Allocator::const_pointer						const_pointer;           
 		typedef  rbt_iterator<value_type, Compare>						iterator;
-		typedef  rbt_const_iterator<value_type, Compare>				const_iterator;
+		typedef  rbt_iterator<value_type, Compare>				const_iterator;
 		typedef  typename ft::reverse_iterator<iterator>				reverse_iterator;        
 		typedef  typename ft::reverse_iterator<const_iterator>			const_reverse_iterator;  
 		typedef  rb_tree<value_type, Compare, Allocator>				rb_tree;

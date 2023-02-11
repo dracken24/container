@@ -6,11 +6,12 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:47:12 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/11 10:23:54 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/11 15:10:50 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/container.hpp"
+#include "../../includes/templates/map.hpp"
 
 template <class T, class U>
 void	printMap(ft::map<T, U> &ftMap, std::map<T, U> &stdMap, int i, std::string str)

@@ -6,11 +6,12 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 23:49:34 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/09 20:00:51 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/11 15:10:45 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/container.hpp"
+#include "../../includes/templates/stack.hpp"
 
 template <typename T>
 void	printOperators(ft::stack<T> stackFT, ft::stack<T> stackFT2, std::stack<T> stackSTD,

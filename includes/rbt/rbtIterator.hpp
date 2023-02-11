@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 22:41:12 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/11 00:25:22 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/11 16:56:06 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ namespace ft
 		bool		is_black;
 	};
 
-	template <typename T, typename Compare>
-	class rbt_const_iterator;
+	// template <typename T, typename Compare>
+	// class rbt_iterator;
+
+	// template <typename T, typename Compare>
+	// class rbt_const_iterator;
 
 	template<typename T, typename Compare>
 	class rbt_iterator
@@ -47,18 +50,19 @@ namespace ft
 		typedef T&									reference;
 		typedef std::bidirectional_iterator_tag		iterator_category;
 		typedef std::ptrdiff_t						difference_type;
-		typedef rbt_const_iterator<T, Compare>		rbt_const_iterator;
+		typedef const rbt_iterator<T, Compare>		rbt_const_iterator;
 
 	private:
-		typedef rbt_node<value_type>	tree_node;
-		typedef tree_node*				tree_node_ptr;
+		typedef rbt_node<value_type>				tree_node;
+		typedef tree_node*							tree_node_ptr;
 
 
 	//******************************************************************************************************//
 	//										Constructor - Destructor							    		//
 	//******************************************************************************************************//
 
-	  public:
+	public:
+	  
 		rbt_iterator() :
 		_current(NULL),
 		_comp(Compare())
@@ -172,9 +176,9 @@ namespace ft
 			return _current == other.base();
 		}
 
-		bool operator==(const rbt_const_iterator &other)
+		bool operator==(const rbt_const_iterator &other) const
 		{
-			return _current == other.base();
+			return (_current == other.base());
 		}
 
 		bool operator!=(const rbt_iterator &other)
@@ -182,7 +186,7 @@ namespace ft
 			return !(*this == other);
 		}
 
-		bool operator!=(const rbt_const_iterator &other)
+		bool operator!=(const rbt_const_iterator &other) const
 		{
 			return !(*this == other);
 		}
@@ -200,164 +204,167 @@ namespace ft
 
 	};
 
-  	template<typename T, typename Compare>
-	class rbt_const_iterator
-	{
-	public:
-		typedef T									value_type;
-		typedef const T*							pointer;
-		typedef const T&							reference;
-		typedef std::ptrdiff_t						difference_type;
-		typedef rbt_iterator<T, Compare>			rbt_iterator;
-		typedef std::bidirectional_iterator_tag		iterator_category;
+  	// template<typename T, typename Compare>
+	// class rbt_const_iterator
+	// {
+	// public:
+	// 	typedef T									value_type;
+	// 	typedef const T*							pointer;
+	// 	typedef const T&							reference;
+	// 	typedef std::ptrdiff_t						difference_type;
+	// 	typedef rbt_iterator<T, Compare>			rbt_iterator;
+	// 	typedef std::bidirectional_iterator_tag		iterator_category;
 
-	private:
-		typedef rbt_node<value_type>				tree_node;
-		typedef tree_node*							tree_node_ptr;
+	// private:
+	// 	typedef rbt_node<value_type>				tree_node;
+	// 	typedef tree_node*							tree_node_ptr;
 		
-	//******************************************************************************************************//
-	//										Constructor - Destructor							    		//
-	//******************************************************************************************************//
+	// //******************************************************************************************************//
+	// //										Constructor - Destructor							    		//
+	// //******************************************************************************************************//
 
-	public:
+	// public:
 
-		rbt_const_iterator(void) :
-		_current(NULL),
-		_comp(Compare())
-		{
+	// 	rbt_const_iterator(void) :
+	// 	_current(NULL),
+	// 	_comp(Compare())
+	// 	{
 
-		}
+	// 	}
 
-		rbt_const_iterator(const tree_node_ptr node) :
-		_current(node),
-		_comp(Compare())
-		{
+	// 	rbt_const_iterator(const tree_node_ptr node) :
+	// 	_current(node),
+	// 	_comp(Compare())
+	// 	{
 
-		}
+	// 	}
 
-		rbt_const_iterator(rbt_iterator it) :
-		_current(it.base())
-		{
+	// 	rbt_const_iterator(rbt_iterator it) :
+	// 	_current(it.base())
+	// 	{
 
-		}
+	// 	}
 
-	//******************************************************************************************************//
-	//						    				Overload Operator		    					    		//
-	//******************************************************************************************************//
+	// //******************************************************************************************************//
+	// //						    				Overload Operator		    					    		//
+	// //******************************************************************************************************//
 
-		reference operator*(void) const
-		{
-			return _current->data;
-		}
+	// 	reference operator*(void) const
+	// 	{
+	// 		return _current->data;
+	// 	}
 
-		pointer operator->(void) const
-		{
-			return &_current->data;
-		}
+	// 	pointer operator->(void) const
+	// 	{
+	// 		return &_current->data;
+	// 	}
 
-		rbt_const_iterator &operator=(const rbt_const_iterator &other)
-		{
-			_current = other._current;
+	// 	rbt_const_iterator &operator=(const rbt_const_iterator &other)
+	// 	{
+	// 		_current = other._current;
 
-			return *this;
-		}
+	// 		return *this;
+	// 	}
 
-		rbt_const_iterator &operator++(void)
-		{
-			if (_current->right != NULL)
-			{
-				_current = _current->right;
-				while (_current->left != NULL)
-				{
-					_current = _current->left;
-				}
+	// 	rbt_const_iterator &operator++(void)
+	// 	{
+	// 		if (_current->right != NULL)
+	// 		{
+	// 			_current = _current->right;
+	// 			while (_current->left != NULL)
+	// 			{
+	// 				_current = _current->left;
+	// 			}
 
-				return *this;
-			}
-			else
-			{
-				while (_current->parent != NULL && _current->parent->right == _current)
-				{
-					_current = _current->parent;
-				}
-				_current = _current->parent;
+	// 			return *this;
+	// 		}
+	// 		else
+	// 		{
+	// 			while (_current->parent != NULL && _current->parent->right == _current)
+	// 			{
+	// 				_current = _current->parent;
+	// 			}
+	// 			_current = _current->parent;
 
-				return *this;
-			}
-		}
+	// 			return *this;
+	// 		}
+	// 	}
 
-		rbt_const_iterator operator++(int)
-		{
-			rbt_const_iterator tmp_it = *this;
-			++(*this);
+	// 	rbt_const_iterator operator++(int)
+	// 	{
+	// 		rbt_const_iterator tmp_it = *this;
+	// 		++(*this);
 
-			return tmp_it;
-		}
+	// 		return tmp_it;
+	// 	}
 
-		rbt_const_iterator& operator--()
-		{
-			if (_current->left != NULL)
-			{
-				_current = _current->left;
-				while (_current->right != NULL)
-				{
-					_current = _current->right;
-				}
+	// 	rbt_const_iterator &operator--()
+	// 	{
+	// 		if (_current->left != NULL)
+	// 		{
+	// 			_current = _current->left;
+	// 			while (_current->right != NULL)
+	// 			{
+	// 				_current = _current->right;
+	// 			}
 
-				return *this;
-			}
-			else
-			{
-				while (_current->parent != NULL && _current->parent->left == _current)
-				{
-					_current = _current->parent;
-				}
-				_current = _current->parent;
+	// 			return *this;
+	// 		}
+	// 		else
+	// 		{
+	// 			while (_current->parent != NULL && _current->parent->left == _current)
+	// 			{
+	// 				_current = _current->parent;
+	// 			}
+	// 			_current = _current->parent;
 
-				return *this;
-			}
-		}
+	// 			return *this;
+	// 		}
+	// 	}
 
-		rbt_const_iterator operator--(int)
-		{
-			rbt_const_iterator tmp_it = *this;
-			--(*this);
+	// 	rbt_const_iterator operator--(int)
+	// 	{
+	// 		rbt_const_iterator tmp_it = *this;
+	// 		--(*this);
 
-			return tmp_it;
-		}
+	// 		return tmp_it;
+	// 	}
 
-	//******************************************************************************************************//
-	//						    				Compare Operator		    					    		//
-	//******************************************************************************************************//
+	// //******************************************************************************************************//
+	// //						    				Compare Operator		    					    		//
+	// //******************************************************************************************************//
 
-		bool operator==(const rbt_const_iterator &other)
-		{
-			return _current == other.base();
-		}
+	// 	bool operator==(const rbt_const_iterator &other)
+	// 	{
+	// 		return _current == other.base();
+	// 	}
 
-		bool operator==(const rbt_iterator &other)
-		{
-			return _current == other.base();
-		}
+	// 	bool operator==(const rbt_iterator &other)
+	// 	{
+	// 		return _current == other.base();
+	// 	}
 
-		bool operator!=(const rbt_const_iterator &other)
-		{
-			return !(*this == other);
-		}
+	// 	bool operator!=(const rbt_const_iterator &other)
+	// 	{
+	// 		return !(*this == other);
+	// 	}
 
-		bool operator!=(const rbt_iterator &other)
-		{
-			return !(*this == other);
-		}
+	// 	bool operator!=(const rbt_iterator &other)
+	// 	{
+	// 		return !(*this == other);
+	// 	}
 
-		const tree_node_ptr base() const { return _current; }
+	// 	tree_node_ptr base(void) const
+	// 	{
+	// 		return _current;
+	// 	}
 
-		protected:
-			tree_node_ptr _current;
+	// 	protected:
+	// 		tree_node_ptr	_current;
 
-		private:
-			Compare _comp;
-	};
+	// 	private:
+	// 		Compare			_comp;
+	// };
 }
 
 #endif

@@ -6,23 +6,21 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/10 18:47:06 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/11 15:38:51 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTAINER_HPP
 # define CONTAINER_HPP
 
-// For the sake of the project, I'm including all the files here.
-
 // Functions //
 #include "../../includes/functions/isIntegral.hpp"
 #include "../../includes/functions/pair.hpp"
 
 // Containers //
-#include "../../includes/templates/vector.hpp"
-#include "../../includes/templates/stack.hpp"
-#include "../../includes/templates/map.hpp"
+// #include "../../includes/templates/vector.hpp"
+// #include "../../includes/templates/stack.hpp"
+// #include "../../includes/templates/map.hpp"
 
 // Other //
 
