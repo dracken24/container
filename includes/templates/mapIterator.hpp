@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 16:58:40 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/08 09:25:52 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/10 22:31:28 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ namespace ft
 			typedef T												mapped_type;
 			typedef Key												key_type;
 			typedef Compare											key_compare;
-			
+
 			typedef size_t											size_type;
 			typedef long int										difference_type;
 			typedef ft::pair<const key_type, mapped_type>			value_type;

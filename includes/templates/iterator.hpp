@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 08:09:40 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/10 19:31:44 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/10 22:25:22 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ namespace ft
 
 	};
 
-	template <class Iterator> struct iterator_traits
+	template <class Iterator>
+	struct iterator_traits
 	{
         typedef typename Iterator::difference_type       		difference_type;
         typedef typename Iterator::value_type            		value_type;
@@ -48,7 +49,8 @@ namespace ft
         typedef typename Iterator::iterator_category     		iterator_category;
     };
 
-	template <class T> struct iterator_traits<T*>
+	template <class T>
+	struct iterator_traits<T*>
 	{
         typedef ptrdiff_t                       				difference_type;
         typedef T                               				value_type;
@@ -57,7 +59,8 @@ namespace ft
         typedef ft::random_access_iterator_tag  				iterator_category;
     };
 	
-    template <class T> class iterator_traits<const T*>
+    template <class T>
+	class iterator_traits<const T*>
 	{
         typedef ptrdiff_t                       				difference_type;
         typedef T                               				value_type;
