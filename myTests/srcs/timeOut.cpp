@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:28:13 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/10 18:28:22 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/11 18:27:49 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void vectorTimeOutTestClass(void)
 	long int start = time.tv_sec * 1000 + time.tv_usec / 1000;
 	
 	// ft tests //
-	for (int i = 0; i < 100000; i++)
+	for (int i = 0; i < 5000000; i++)
 	{
 		vector_FT.resize(14);
 		vector_FT.push_back(tmp);
@@ -81,7 +81,7 @@ void vectorTimeOutTestClass(void)
 	start = end;
 	
 	// std tests //
-	for (int i = 0; i < 100000; i++)
+	for (int i = 0; i < 5000000; i++)
 	{
 		vector_STD.resize(14);
 		vector_STD.push_back(tmp);
@@ -131,7 +131,7 @@ void vectorTimeOutTestInt(void)
 	long int start = time.tv_sec * 1000 + time.tv_usec / 1000;
 	
 	// ft tests //
-	for (int i = 0; i < 100000; i++)
+	for (int i = 0; i < 10000000; i++)
 	{
 		vector_FT.push_back(42);
 		vector_FT.resize(14);
@@ -160,7 +160,7 @@ void vectorTimeOutTestInt(void)
 	start = end;
 	
 	// std tests //
-	for (int i = 0; i < 100000; i++)
+	for (int i = 0; i < 10000000; i++)
 	{
 		vector_STD.push_back(42);
 		vector_STD.resize(14);
@@ -202,6 +202,83 @@ void vectorTimeOutTestInt(void)
 
 /***************************************************************************************************/
 
+void    chooseStackTestsClass(void)
+{
+	std::cout << std::boolalpha;
+	
+	std::cout << std::endl;
+	std::cout << RED << "/*******************************" << GREEN << " Stack<class> " \
+		<< RED << "*******************************/" << RESET << std::endl;
+	std::cout << std::endl;
+	
+	// Init Stack //
+	
+	A	myStruct[] = {A("Hello", 1, (Vector2){2, 4}), A("World", 2, (Vector2){3, 5}),
+			A("This", 3, (Vector2){4, 6}), A("Is", 4, (Vector2){5, 7}),
+			A("A", 5, (Vector2){6, 8}), A("Test", 6, (Vector2){7, 9})};
+
+	// Init stack //
+	ft::stack<A>	stackFT;
+	std::stack<A>	stackSTD;
+
+	A	tmp = A("Banana", 27, (Vector2){12, 14});
+	A	tmp2 = A("Encore", 11, (Vector2){55, 55});
+	A	tmp3 = A("BbyShark", 71, (Vector2){69, 69});
+	A	tmp4 = A("BANKAI", 88, (Vector2){9999, 9999});
+
+	for (int i = 0; i < 6; i++)
+	{
+		stackFT.push(myStruct[i]);
+		stackSTD.push(myStruct[i]);
+	}
+	
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	
+	long int start = time.tv_sec * 1000 + time.tv_usec / 1000;
+
+	// ft tests //
+	for (int i = 0; i < 20000000; i++)
+	{
+		stackFT.push(tmp);
+		stackFT.push(tmp2);
+		stackFT.push(tmp3);
+		stackFT.push(tmp4);
+		stackFT.top();
+		stackFT.top();
+		stackFT.pop();
+	}
+
+	stackFT.empty();
+
+	gettimeofday(&time, NULL);
+
+	long int end = time.tv_sec * 1000 + time.tv_usec / 1000;
+
+	std::cout << GREEN << "Time for ft::stack<class>: " << end - start << " ms" << std::endl;
+
+	start = end;
+
+	// std tests //
+	for (int i = 0; i < 20000000; i++)
+	{
+		stackSTD.push(tmp);
+		stackSTD.push(tmp2);
+		stackSTD.push(tmp3);
+		stackSTD.push(tmp4);
+		stackSTD.top();
+		stackSTD.top();
+		stackSTD.pop();
+	}
+	
+	gettimeofday(&time, NULL);
+
+	end = time.tv_sec * 1000 + time.tv_usec / 1000;
+
+	std::cout << BLUE << "Time for std::stack<class>: " << end - start << " ms" << std::endl;
+}
+
 void    chooseStackTestsInt(void)
 {
 	std::cout << std::boolalpha;
@@ -213,59 +290,61 @@ void    chooseStackTestsInt(void)
 	
 	// Init vector //
 	ft::stack<int> stackFT;
-	ft::stack<int> stackFT2;
 	std::stack<int> stackSTD;
-	std::stack<int> stackSTD2;
 	
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
 	
 	long int start = time.tv_sec * 1000 + time.tv_usec / 1000;
-	
+
 	// ft tests //
-	for (int i = 0; i < 5000; i++)
+	for (int i = 0; i < 20000000; i++)
 	{
-		for (int k = 0; k < 5; k++)
-		{
-			stackFT.push(k * 2);
-			stackFT2.push(k * 4);
-		}
-		for (int j = 0; j < 2; j++)
-			stackFT.pop();
-		stackFT = stackFT2;
+		stackFT.push(42);
+		stackFT.push(4224);
+		stackFT.push(101);
+		stackFT.pop();
+		stackFT.top();
+		stackFT.size();
+		stackFT.push(482);
+		stackFT.push(4904);
+		stackFT.push(1661);
+		stackFT.empty();
 	}
 
-	
-	struct timeval	time2;
+	stackFT.empty();
 
-	gettimeofday(&time2, NULL);
-	long int end = time2.tv_sec * 1000 + time2.tv_usec / 1000;
+	gettimeofday(&time, NULL);
+
+	long int end = time.tv_sec * 1000 + time.tv_usec / 1000;
 
 	std::cout << GREEN << "Time for ft::stack<int>: " << end - start << " ms" << std::endl;
-	
-	start = end;
-	
-	// std tests //
-	for (int i = 0; i < 5000; i++)
-	{
-		for (int k = 0; k < 5; k++)
-		{
-			stackSTD.push(k * 2);
-			stackSTD2.push(k * 4);
-		}
-		for (int j = 0; j < 2; j++)
-			stackSTD.pop();
-		stackSTD = stackSTD2;
-	}
 
+	start = end;
+
+	// std tests //
+	for (int i = 0; i < 20000000; i++)
+	{
+		stackSTD.push(42);
+		stackSTD.push(4224);
+		stackSTD.push(101);
+		stackSTD.pop();
+		stackSTD.top();
+		stackSTD.size();
+		stackFT.push(482);
+		stackFT.push(4904);
+		stackFT.push(1661);
+		stackSTD.empty();
+	}
+	
 	gettimeofday(&time, NULL);
 
 	end = time.tv_sec * 1000 + time.tv_usec / 1000;
 
 	std::cout << BLUE << "Time for std::stack<int>: " << end - start << " ms" << std::endl;
 
-	// vectorTimeOutTestClass();
+	chooseStackTestsClass();
 
 	std::cout << std::endl;
 	std::cout << RED << "--------------------------------------------------------------------------" << RESET << std::endl << std::endl;
@@ -282,6 +361,109 @@ void    chooseStackTestsInt(void)
 }
 
 /***************************************************************************************************/
+
+void	chooseMapTestsClass(void)
+{
+	std::cout << std::boolalpha;
+	
+	std::cout << std::endl;
+	std::cout << RED << "/*******************************" << GREEN << " Map<class> " \
+		<< RED << "*******************************/" << RESET << std::endl;
+	std::cout << std::endl;
+
+	// Init Map //
+	StructA	map[] = 
+	{
+		StructA("Monkey", 24, (Vector2){24, 48}),
+		StructA("Unicorn", 42, (Vector2){42, 84}),
+		StructA("Pony", 96, (Vector2){96, 192}),
+		StructA("Zombie", 666, (Vector2){666, 1332}),
+		StructA("Squirrel", 77, (Vector2){777, 154}),
+	};
+
+	StructA	map2[] = 
+	{
+		StructA("Bubble", 45, (Vector2){264, 483}),
+		StructA("Tracteur", 6, (Vector2){452, 884}),
+		StructA("Avion", 567, (Vector2){986, 1942}),
+		StructA("Jedi", 85, (Vector2){6566, 13392}),
+		StructA("AAAAAAAAA", 476, (Vector2){7577, 654}),
+	};
+
+	StructA	bad("Bad", 777, (Vector2){777, 777});
+
+
+	ft::map<StructA, StructA>	ftMap;
+	std::map<StructA, StructA>	stdMap;
+	
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	
+	long int start = time.tv_sec * 1000 + time.tv_usec / 1000;
+	
+	// ft tests //
+	for (int i = 0; i < 10000000; i++)
+	{
+		ftMap.insert(ft::pair<StructA, StructA>(map[0], map2[0]));
+		ftMap.insert(ft::pair<StructA, StructA>(map[1], map2[1]));
+		ftMap.insert(ft::pair<StructA, StructA>(map[2], map2[2]));
+		ftMap.insert(ft::pair<StructA, StructA>(map[3], map2[3]));
+		ftMap.insert(ft::pair<StructA, StructA>(map[4], map2[4]));
+		ftMap.equal_range(map[0]);
+		ftMap.count(map[0]);
+		ftMap.find(map[0]);
+		ftMap.erase(map[0]);
+		ftMap.lower_bound(map[0]);
+		ftMap.upper_bound(map[0]);
+		ftMap.begin();
+		ftMap.end();
+		ftMap.rbegin();
+		ftMap.rend();
+		ftMap.empty();
+	}
+
+	ftMap.clear();
+
+	
+	struct timeval	time2;
+
+	gettimeofday(&time2, NULL);
+	long int end = time2.tv_sec * 1000 + time2.tv_usec / 1000;
+
+	std::cout << GREEN << "Time for ft::map<class>: " << end - start << " ms" << std::endl;
+	
+	start = end;
+	
+	// std tests //
+	for (int i = 0; i < 10000000; i++)
+	{
+		stdMap.insert(std::pair<StructA, StructA>(map[0], map2[0]));
+		stdMap.insert(std::pair<StructA, StructA>(map[1], map2[1]));
+		stdMap.insert(std::pair<StructA, StructA>(map[2], map2[2]));
+		stdMap.insert(std::pair<StructA, StructA>(map[3], map2[3]));
+		stdMap.insert(std::pair<StructA, StructA>(map[4], map2[4]));
+		stdMap.equal_range(map[0]);
+		stdMap.count(map[0]);
+		stdMap.find(map[0]);
+		stdMap.erase(map[0]);
+		stdMap.lower_bound(map[0]);
+		stdMap.upper_bound(map[0]);
+		stdMap.begin();
+		stdMap.end();
+		stdMap.rbegin();
+		stdMap.rend();
+		stdMap.empty();
+	}
+
+	stdMap.clear();
+
+	gettimeofday(&time, NULL);
+
+	end = time.tv_sec * 1000 + time.tv_usec / 1000;
+
+	std::cout << BLUE << "Time for std::map<class>: " << end - start << " ms" << std::endl;
+}
 
 void	chooseMapTestsInt(void)
 {
@@ -323,7 +505,7 @@ void	chooseMapTestsInt(void)
 	long int start = time.tv_sec * 1000 + time.tv_usec / 1000;
 	
 	// ft tests //
-	for (int i = 0; i < 10000; i++)
+	for (int i = 0; i < 3000000; i++)
 	{
 		ftMap.insert(ft::pair<int, int>(i, 1 * 2));
 		ftMap.insert(ft::pair<int, int>(i * 3, 1 * 6));
@@ -336,7 +518,6 @@ void	chooseMapTestsInt(void)
 		ftMap.lower_bound(277);
 		ftMap.upper_bound(277);
 		ftMap.swap(ftMap2);
-		// std::cout << "I: " << i << std::endl;
 	}
 
 	ftMap.clear();
@@ -352,7 +533,7 @@ void	chooseMapTestsInt(void)
 	start = end;
 	
 	// std tests //
-	for (int i = 0; i < 10000; i++)
+	for (int i = 0; i < 3000000; i++)
 	{
 		stdMap.insert(std::pair<int, int>(i, 1 * 2));
 		stdMap.insert(std::pair<int, int>(i * 3, 1 * 6));
@@ -365,7 +546,6 @@ void	chooseMapTestsInt(void)
 		stdMap.lower_bound(277);
 		stdMap.upper_bound(277);
 		stdMap.swap(stdMap2);
-		// std::cout << "I: " << i << std::endl;
 	}
 
 	stdMap.clear();
@@ -376,7 +556,7 @@ void	chooseMapTestsInt(void)
 
 	std::cout << BLUE << "Time for std::map<int>: " << end - start << " ms" << std::endl;
 
-	// vectorTimeOutTestClass();
+	chooseMapTestsClass();
 
 	std::cout << std::endl;
 	std::cout << RED << "--------------------------------------------------------------------------" << RESET << std::endl << std::endl;

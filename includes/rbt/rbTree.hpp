@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 22:36:18 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/11 16:47:51 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/11 17:18:09 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ namespace ft
 		typedef typename pair_allocator::difference_type							pair_difference_type;
 		typedef typename Allocator::template rebind<rbt_node<value_type> >::other	node_allocator;
 		typedef typename node_allocator::difference_type							node_difference_type;
+		
 		typedef rbt_iterator<value_type, Compare>									iterator;
 		typedef const rbt_iterator<value_type, Compare>								const_iterator;
 		typedef typename ft::reverse_iterator<iterator>								reverse_iterator;
@@ -39,7 +40,7 @@ namespace ft
 		typedef typename node_allocator::size_type									size_type;
 		typedef Compare																value_compare;
 
-
+		
 	//******************************************************************************************************//
 	//										Constructor - Destructor							    		//
 	//******************************************************************************************************//

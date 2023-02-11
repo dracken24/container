@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:28:54 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/11 16:53:53 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/11 17:20:04 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,15 @@ namespace ft
 		typedef  value_type&											reference;                                                     
 		typedef  const value_type&										const_reference;         
 		typedef  typename Allocator::pointer							pointer;                 
-		typedef  typename Allocator::const_pointer						const_pointer;           
+		typedef  typename Allocator::const_pointer						const_pointer; 
+		          
 		typedef  rbt_iterator<value_type, Compare>						iterator;
-		typedef  rbt_iterator<value_type, Compare>				const_iterator;
+		typedef  rbt_iterator<value_type, Compare>						const_iterator;
 		typedef  typename ft::reverse_iterator<iterator>				reverse_iterator;        
-		typedef  typename ft::reverse_iterator<const_iterator>			const_reverse_iterator;  
-		typedef  rb_tree<value_type, Compare, Allocator>				rb_tree;
+		typedef  typename ft::reverse_iterator<const_iterator>			const_reverse_iterator;
+		  
+		typedef  rb_tree<value_type, Compare, Allocator>				map_rb_tree;
+		
 
 	//******************************************************************************************************//
 	//											Member class									    		//
@@ -89,7 +92,7 @@ namespace ft
 		_allocator(alloc)
 		, _compare(comp)
 		{
-			_tree = rb_tree(comp, alloc);
+			_tree = map_rb_tree(comp, alloc);
 		}
 
 		template<typename InputIt>
@@ -98,7 +101,7 @@ namespace ft
 		_allocator(alloc)
 		, _compare(comp)
 		{
-			_tree = rb_tree(first, last, comp, alloc);
+			_tree = map_rb_tree(first, last, comp, alloc);
 		}
 
 		map(const map& other) :
@@ -316,7 +319,7 @@ namespace ft
 		}
 
 	private:
-		rb_tree			_tree;
+		map_rb_tree			_tree;
 		allocator_type	_allocator;
 		Compare			_compare;
 	};

@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 20:45:41 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/10 21:25:45 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/11 17:59:19 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ namespace ft
 			{
 				c.pop_back();
 			}
+
+			
 			
 			template <class Tn, class ContN>
 			friend bool operator==(const stack<Tn, ContN> &lhs, const stack<Tn, ContN> &rhs);

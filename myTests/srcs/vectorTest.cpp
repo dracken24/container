@@ -6,12 +6,11 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:19:35 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/11 15:10:34 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/11 17:20:57 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/container.hpp"
-#include "../../includes/templates/vector.hpp"
 #include <vector>
 
 template <typename T>
