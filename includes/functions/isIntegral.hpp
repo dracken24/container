@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:59:56 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/08 09:23:21 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/11 11:05:05 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,33 @@ namespace ft
 	struct is_integral<unsigned long long>
 	{
 		static const bool value = true;
+	};
+
+	struct true_type {};
+	struct false_type {};
+
+	template <typename, typename>
+	struct is_same
+	{
+	typedef bool value_type;
+	typedef false_type type;
+
+	static const bool value = false;
+	operator bool() {
+		return value;
+	}
+	};
+
+	template <typename T>
+	struct is_same<T, T>
+	{
+	typedef bool value_type;
+	typedef false_type type;
+
+	static const bool value = true;
+	operator bool() {
+		return value;
+	}
 	};
 }
 

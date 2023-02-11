@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 22:36:18 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/11 00:36:54 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/11 10:51:50 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define RBTMAP_HPP
 
 # include "rbtIterator.hpp"
+# include "../templates/iterator.hpp"
 
 namespace ft
 {
