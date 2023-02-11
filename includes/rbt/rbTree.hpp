@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 22:36:18 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/11 00:14:28 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/11 00:36:54 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ template <typename value_type, typename Compare, typename Allocator>
 
 		~rb_tree()
 		{
-			destroy_tree(_end_node);
+			delete_tree(_end_node);
 			_node_alloc.deallocate(_end_node, 1);
 		}
 
@@ -138,7 +138,7 @@ template <typename value_type, typename Compare, typename Allocator>
 				return pair<iterator, bool>(iterator(node_constructed), can_construct);
 			}
 
-			check_rb_insertion(node_constructed);
+			rbt_insertion(node_constructed);
 
 			return pair<iterator, bool>(iterator(node_constructed), can_construct);
 		}
@@ -191,11 +191,11 @@ template <typename value_type, typename Compare, typename Allocator>
 
 			if (!node->left && !node->right)
 			{
-				check_double_black(node);
+				check_black(node);
 
 				tree_node_ptr next_node = get_next_node(node);
 
-				destroy_node(node);
+				delete_node(node);
 
 				return iterator(next_node);
 			}
@@ -482,16 +482,16 @@ template <typename value_type, typename Compare, typename Allocator>
 
 		void clear()
 		{
-			destroy_tree(_end_node);
+			delete_tree(_end_node);
 		}
 
 	private:
-		void destroy_tree(tree_node_ptr node)
+		void delete_tree(tree_node_ptr node)
 		{
 			if (node != NULL)
 			{
-				destroy_tree(node->left);
-				destroy_tree(node->right);
+				delete_tree(node->left);
+				delete_tree(node->right);
 				if (node != _end_node)
 				{
 					_pair_alloc.destroy(&node->data);
@@ -505,14 +505,14 @@ template <typename value_type, typename Compare, typename Allocator>
 			_size = 0;
 		}
 
-		void check_rb_insertion(tree_node_ptr node)
+		void rbt_insertion(tree_node_ptr node)
 		{
 			if (node == _root_node)
 				node->is_black = true;
 
 			while (node->parent->is_black == false)
 			{
-				tree_node_ptr uncle = get_uncle(node);
+				tree_node_ptr uncle = get_parent(node);
 
 				if (node->parent == node->parent->parent->left)
 				{
@@ -521,7 +521,7 @@ template <typename value_type, typename Compare, typename Allocator>
 						node->parent->is_black = true;
 						uncle->is_black = true;
 						node->parent->parent->is_black = false;
-						check_rb_insertion(node->parent->parent);
+						rbt_insertion(node->parent->parent);
 
 						return;
 					}
@@ -546,7 +546,7 @@ template <typename value_type, typename Compare, typename Allocator>
 						node->parent->is_black = true;
 						uncle->is_black = true;
 						node->parent->parent->is_black = false;
-						check_rb_insertion(node->parent->parent);
+						rbt_insertion(node->parent->parent);
 
 						return;
 					}
@@ -639,7 +639,7 @@ template <typename value_type, typename Compare, typename Allocator>
 				return node->parent->left;
 		}
 
-		tree_node_ptr get_uncle(const tree_node_ptr node) const
+		tree_node_ptr get_parent(const tree_node_ptr node) const
 		{
 			tree_node_ptr parent = node->parent;
 
@@ -652,7 +652,7 @@ template <typename value_type, typename Compare, typename Allocator>
 		}
 
 
-		void destroy_node(tree_node_ptr node)
+		void delete_node(tree_node_ptr node)
 		{
 			if (node == node->parent->left)
 			{
@@ -670,7 +670,7 @@ template <typename value_type, typename Compare, typename Allocator>
 			_size--;
 		}
 
-		void check_double_black(tree_node_ptr node)
+		void check_black(tree_node_ptr node)
 		{
 			tree_node_ptr sibbling = get_sibbling(node);
 			tree_node_ptr far_sib_child = NULL;
@@ -705,7 +705,7 @@ template <typename value_type, typename Compare, typename Allocator>
 					}
 					else if (node->parent->is_black)
 					{
-						check_double_black(node->parent);
+						check_black(node->parent);
 					}
 				}
 				else if (near_sib_child && !near_sib_child->is_black
@@ -717,7 +717,7 @@ template <typename value_type, typename Compare, typename Allocator>
 						rotate_right(sibbling);
 					else if (node == node->parent->right)
 						rotate_left(sibbling);
-					check_double_black(node);
+					check_black(node);
 				}
 				else if ((!near_sib_child || near_sib_child->is_black)
 						&& (far_sib_child && !far_sib_child->is_black))
@@ -746,7 +746,7 @@ template <typename value_type, typename Compare, typename Allocator>
 					else if (node == node->parent->right)
 						rotate_right(node->parent);
 
-					check_double_black(node);
+					check_black(node);
 				}
 			}
 		}
