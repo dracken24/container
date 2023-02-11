@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Vector.hpp                                         :+:      :+:    :+:   */
+/*   vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 23:43:30 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/09 20:13:39 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/10 19:52:06 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,43 +240,23 @@ namespace ft
 		/*************************************************************************************/
 			// Modifier //
 			template <class InputIterator>
-			void assign (InputIterator first, InputIterator last,
-						typename enable_if<!is_integral<InputIterator>::value >::type* = 0)
+			void assign(InputIterator first, InputIterator last,
+						typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0)
 			{
 				clear();
-
-				size_type n = static_cast<size_type>(last - first);
-				if (n > _capacity)
-				{
-					_allocator.deallocate(_vector, _capacity);
-					_vector = _allocator.allocate(n);
-				}
-				
-				size_type i = 0;
-				for (; first != last; ++i, ++first)
-					_allocator.construct(&_vector[i], *first);
-				_size = i;
+				insert(begin(), first, last);
 			}
 
-			void assign (size_type n, const value_type &val)
+			void assign(size_type n, const value_type& val)
 			{
 				clear();
-
-				if (n > _capacity)
-				{
-					_allocator.deallocate(_vector, _capacity);
-					_vector = _allocator.allocate(n);
-				}
-				
-				for (size_type i = 0; i < n; ++i)
-					_allocator.construct(&_vector[i], val);
-				_size = n;
+				insert(begin(), n, val);
 			}
 
 			void push_back (const value_type &val)
 			{
 				if (_size + 1 > _capacity)
-					reallocateVec(!_capacity ? 1 : _capacity * 2);
+					reallocateVec(!_capacity ? 1 : _capacity + 1);
 				_allocator.construct(&_vector[_size++], val);
 			}
 

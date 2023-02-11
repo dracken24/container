@@ -6,14 +6,14 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 13:07:06 by hbaudet           #+#    #+#             */
-/*   Updated: 2023/02/08 09:27:13 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/10 19:45:54 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTORITERATOR_HPP
 # define VECTORITERATOR_HPP
 
-# include "Iterator.hpp"
+# include "iterator.hpp"
 
 namespace ft
 {
@@ -51,6 +51,7 @@ namespace ft
             _value = rhs;
             return *this;
         }
+        
         vector_iterator &operator=(const vector_iterator &rhs)
         {
             _value = rhs._value;
@@ -72,6 +73,7 @@ namespace ft
         {
             return (_value < rhs._value);
         }
+        
         bool operator>(const vector_iterator &rhs) const
         {
             return (_value > rhs._value);
@@ -108,6 +110,7 @@ namespace ft
             
             return *this;
         }
+        
         vector_iterator &operator-=(difference_type rhs)
         {
             _value -= rhs;

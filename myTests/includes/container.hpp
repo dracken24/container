@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/10 17:45:29 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/10 18:47:06 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 #include "../../includes/functions/pair.hpp"
 
 // Containers //
-#include "../../includes/templates/Vector.hpp"
-#include "../../includes/templates/Stack.hpp"
-#include "../../includes/templates/Map.hpp"
+#include "../../includes/templates/vector.hpp"
+#include "../../includes/templates/stack.hpp"
+#include "../../includes/templates/map.hpp"
 
 // Other //
 

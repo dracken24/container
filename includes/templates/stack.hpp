@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Stack.hpp                                          :+:      :+:    :+:   */
+/*   stack.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 20:45:41 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/10 17:57:56 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/10 19:34:19 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_HPP
 # define STACK_HPP
 
-# include "Vector.hpp"
+# include "vector.hpp"
 
 namespace ft
 {
@@ -24,6 +24,8 @@ namespace ft
 			typedef T			value_type;
 			typedef Container	container_type;
 			typedef size_t		size_type;
+			typedef T			&reference;
+			typedef const T		&const_reference;
 			
 		public:
 
