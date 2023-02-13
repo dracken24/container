@@ -1,0 +1,6 @@
+In file included from mains/clear_main.cpp:14:
+In file included from ../.INCLUDES/MAP_UC.HPP:19:
+../.INCLUDES/mapIterator.hpp:15:11: fatal error: '../functions/pair.hpp' file not found
+# include "../functions/pair.hpp"
+          ^~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.

@@ -1,0 +1,8 @@
+In file included from mains/top_main.cpp:13:
+../.INCLUDES/STACK_UC.HPP:20:43: error: no template named 'vector' in namespace 'ft'
+        template <class T, class Container = ft::vector<T> >
+                                             ~~~~^
+../.INCLUDES/STACK_UC.HPP:26:12: error: unknown type name 'size_t'
+                        typedef size_t          size_type;
+                                ^
+2 errors generated.

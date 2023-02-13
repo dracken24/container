@@ -1,0 +1,29 @@
+In file included from mains/begin_main.cpp:14:
+../.INCLUDES/VECTOR_UC.HPP:23:51: error: a space is required between consecutive right angle brackets (use '> >')
+        template <class T, class Alloc = std::allocator<T>>
+                                                         ^~
+                                                         > >
+../.INCLUDES/VECTOR_UC.HPP:53:55: error: no template named 'isIntegral'; did you mean 'is_integral'?
+                vector(InputIterator first, typename ft::enable_if<!isIntegral<InputIterator>::value, InputIterator>::type last,
+                                                                    ^~~~~~~~~~
+                                                                    is_integral
+../.INCLUDES/isIntegral.hpp:20:9: note: 'is_integral' declared here
+        struct is_integral
+               ^
+In file included from mains/begin_main.cpp:14:
+../.INCLUDES/VECTOR_UC.HPP:207:60: error: no template named 'isIntegral'; did you mean 'is_integral'?
+                void assign(InputIterator first, typename ft::enable_if<!isIntegral<InputIterator>::value, InputIterator>::type last)
+                                                                         ^~~~~~~~~~
+                                                                         is_integral
+../.INCLUDES/isIntegral.hpp:20:9: note: 'is_integral' declared here
+        struct is_integral
+               ^
+In file included from mains/begin_main.cpp:14:
+../.INCLUDES/VECTOR_UC.HPP:276:79: error: no template named 'isIntegral'; did you mean 'is_integral'?
+                void insert(iterator position, InputIterator first, typename ft::enable_if<!isIntegral<InputIterator>::value, InputIterator>::type last)
+                                                                                            ^~~~~~~~~~
+                                                                                            is_integral
+../.INCLUDES/isIntegral.hpp:20:9: note: 'is_integral' declared here
+        struct is_integral
+               ^
+4 errors generated.

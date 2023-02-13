@@ -1,0 +1,59 @@
+In file included from mains/relationalOperators_main.cpp:13:
+../.INCLUDES/STACK_UC.HPP:20:43: error: no template named 'vector' in namespace 'ft'
+        template <class T, class Container = ft::vector<T> >
+                                             ~~~~^
+../.INCLUDES/STACK_UC.HPP:26:12: error: unknown type name 'size_t'
+                        typedef size_t          size_type;
+                                ^
+mains/relationalOperators_main.cpp:29:3: error: too few template arguments for class template 'stack'
+  stack<int> a, b, c;
+  ^
+../.INCLUDES/STACK_UC.HPP:21:8: note: template is declared here
+        class stack
+              ^
+mains/relationalOperators_main.cpp:34:3: error: use of undeclared identifier 'b'
+  b.push(10);
+  ^
+mains/relationalOperators_main.cpp:35:3: error: use of undeclared identifier 'b'
+  b.push(20);
+  ^
+mains/relationalOperators_main.cpp:36:3: error: use of undeclared identifier 'b'
+  b.push(30);
+  ^
+mains/relationalOperators_main.cpp:38:3: error: use of undeclared identifier 'c'
+  c.push(30);
+  ^
+mains/relationalOperators_main.cpp:39:3: error: use of undeclared identifier 'c'
+  c.push(20);
+  ^
+mains/relationalOperators_main.cpp:40:3: error: use of undeclared identifier 'c'
+  c.push(10);
+  ^
+mains/relationalOperators_main.cpp:42:10: error: use of undeclared identifier 'b'
+  if (a==b) cout << "a and b are equal\n";
+         ^
+mains/relationalOperators_main.cpp:43:7: error: use of undeclared identifier 'b'
+  if (b!=c) cout << "b and c are not equal\n";
+      ^
+mains/relationalOperators_main.cpp:43:10: error: use of undeclared identifier 'c'
+  if (b!=c) cout << "b and c are not equal\n";
+         ^
+mains/relationalOperators_main.cpp:44:9: error: use of undeclared identifier 'c'
+  if (b<c) cout << "b is less than c\n";
+        ^
+mains/relationalOperators_main.cpp:44:7: error: use of undeclared identifier 'b'
+  if (b<c) cout << "b is less than c\n";
+      ^
+mains/relationalOperators_main.cpp:45:7: error: use of undeclared identifier 'c'
+  if (c>b) cout << "c is greater than b\n";
+      ^
+mains/relationalOperators_main.cpp:45:9: error: use of undeclared identifier 'b'
+  if (c>b) cout << "c is greater than b\n";
+        ^
+mains/relationalOperators_main.cpp:46:10: error: use of undeclared identifier 'b'
+  if (a<=b) cout << "a is less than or equal to b\n";
+         ^
+mains/relationalOperators_main.cpp:47:10: error: use of undeclared identifier 'b'
+  if (a>=b) cout << "a is greater than or equal to b\n";
+         ^
+18 errors generated.

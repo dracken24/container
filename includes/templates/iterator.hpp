@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iterator.hpp                                       :+:      :+:    :+:   */
+/*   Iterator.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 08:09:40 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/11 16:45:04 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/13 14:29:26 by nadesjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,9 +248,7 @@ namespace ft
 //******************************************************************************************************//
 
 	template<typename Iterator_type>
-	class reverse_iterator : std::iterator<typename iterator_traits<Iterator_type>::iterator_category,
-		typename iterator_traits<Iterator_type>::value_type, typename iterator_traits<Iterator_type>::difference_type,
-			typename iterator_traits<Iterator_type>::pointer, typename iterator_traits<Iterator_type>::reference>
+	class reverse_iterator
 	{
 		public:
 		Iterator_type current;

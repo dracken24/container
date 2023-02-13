@@ -1,0 +1,14 @@
+In file included from mains/top_main.cpp:13:
+../.INCLUDES/STACK_UC.HPP:20:43: error: no template named 'vector' in namespace 'ft'
+        template <class T, class Container = ft::vector<T> >
+                                             ~~~~^
+../.INCLUDES/STACK_UC.HPP:26:12: error: unknown type name 'size_t'
+                        typedef size_t          size_type;
+                                ^
+mains/top_main.cpp:29:3: error: too few template arguments for class template 'stack'
+  stack<int> mystack;
+  ^
+../.INCLUDES/STACK_UC.HPP:21:8: note: template is declared here
+        class stack
+              ^
+3 errors generated.
