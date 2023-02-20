@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 22:36:18 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/11 17:18:09 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/18 16:07:52 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,10 @@ namespace ft
 		pair<iterator, bool> insert(const value_type &value)
 		{
 
-			tree_node_ptr node_constructed;
-			bool can_construct;
+			tree_node_ptr node_constructed; // un pointeur vers le noeud nouvellement construit
+			bool can_construct; // un booléen qui indique si un noeud peut être construit
 
+			// Si l'arbre est vide, construit le premier noeud et le rend noir
 			if (_root_node == NULL)
 			{
 				_root_node = construct_node(value, _end_node);
@@ -112,11 +113,14 @@ namespace ft
 				node_constructed = _root_node;
 				can_construct = true;
 
+				// Renvoie une paire contenant l'itérateur vers le noeud construit et true
 				return pair<iterator, bool>(iterator(node_constructed), can_construct);
 			}
 
+			// Trouve la position du parent où ajouter le nouveau noeud dans l'arbre
 			pair<tree_node_ptr, bool> parent_node = find_parent_pos(value, _root_node);
 
+			// Si la clé est déjà présente dans l'arbre, retourne une paire avec l'itérateur pointant vers le noeud existant et false
 			if (parent_node.second == false)
 			{
 				node_constructed = parent_node.first;
@@ -125,6 +129,7 @@ namespace ft
 				return pair<iterator, bool>(iterator(node_constructed), can_construct);
 			}
 
+			// Ajoute le nouveau noeud à l'arbre
 			if (_comp(value.first, parent_node.first->data.first) == true)
 			{
 				parent_node.first->left = construct_node(value, parent_node.first);
@@ -138,11 +143,13 @@ namespace ft
 				can_construct = true;
 			}
 
+			// Si le parent du noeud construit est noir, retourne la paire avec l'itérateur et true
 			if (node_constructed->parent->is_black == true)
 			{
 				return pair<iterator, bool>(iterator(node_constructed), can_construct);
 			}
 
+			// Insère le noeud nouvellement construit dans l'arbre rouge-noir et retourne la paire avec l'itérateur et true
 			rbt_insertion(node_constructed);
 
 			return pair<iterator, bool>(iterator(node_constructed), can_construct);
@@ -150,31 +157,37 @@ namespace ft
 
 		iterator insert(iterator hint, const value_type &value)
 		{
+			// Obtient un pointeur vers le nœud associé à l'itérateur suggéré
 			tree_node_ptr hint_node = hint.base();
 
+			// Si l'itérateur suggéré est la fin de l'arbre, insère simplement la valeur à la fin
 			if (hint == end())
 				return insert(value).first;
+
+			// Si l'arbre est vide, insère la valeur en tant que racine
 			if (_root_node == NULL)
 			{
 				_root_node = construct_node(value, _end_node);
 				return iterator(_root_node);
 			}
+
+			// Si la clé de la valeur à insérer est entre l'itérateur suggéré et l'élément suivant,
+			// insère la nouvelle valeur en tant que fils droit de l'itérateur suggéré (ou fils gauche de l'élément suivant)
 			if (_comp(hint->first, value.first) && _comp(value.first, get_next_node(hint_node)->data.first))
 			{
 				if (!hint_node->right)
 				{
 					hint_node->right = construct_node(value, hint_node);
-
 					return iterator(hint_node->right);
 				}
 				else
 				{
 					hint_node->right->left = construct_node(value, hint_node->right);
-
 					return iterator(hint_node->right->left);
 				}
 			}
 			else
+				// Sinon, insère la nouvelle valeur à une position arbitraire dans l'arbre
 				return insert(value).first;
 		}
 
@@ -189,40 +202,58 @@ namespace ft
 
 		iterator erase(iterator pos)
 		{
+			// Vérifie si la position est la fin de l'arbre
 			if (pos == end())
 				return pos;
 
+			// Récupère le nœud à partir de la position donnée
 			tree_node_ptr node = pos.base();
 
+			// Si le nœud n'a pas d'enfants
 			if (!node->left && !node->right)
 			{
+				// Vérifie que le nœud est noir
 				check_black(node);
 
+				// Récupère le nœud suivant
 				tree_node_ptr next_node = get_next_node(node);
 
+				// Supprime le nœud
 				delete_node(node);
 
+				// Retourne un itérateur sur le nœud suivant
 				return iterator(next_node);
 			}
+			// Si le nœud a des enfants
 			else
 			{
+				// Récupère le nœud suivant et le nœud précédent
 				tree_node_ptr next_node = get_next_node(node);
 				tree_node_ptr prev_node = get_prev_node(node);
 
+				// Si le nœud suivant est l'élément sentinelle ou a la même clé que le nœud actuel
 				if (next_node == _end_node || next_node->data.first == node->data.first)
 				{
+					// Remplace la clé de ce nœud par celle du nœud précédent
 					_pair_alloc.destroy(&node->data);
 					_pair_alloc.construct(&node->data, prev_node->data);
+
+					// Rappelle la fonction d'effacement avec la position précédente
 					erase(--pos);
 
+					// Retourne un itérateur sur la fin de l'arbre
 					return end();
 				}
 				else
 				{
+					// Remplace la clé de ce nœud par celle du nœud suivant
 					_pair_alloc.destroy(&node->data);
 					_pair_alloc.construct(&node->data, next_node->data);
+
+					// Rappelle la fonction d'effacement avec la position suivante
 					erase(++pos);
 
+					// Retourne un itérateur sur le nœud actuel
 					return iterator(node);
 				}
 			}
@@ -395,32 +426,43 @@ namespace ft
 		template <typename Key>
 		iterator lower_bound(const Key& key)
 		{
+			// On initialise le noeud courant à la racine de l'arbre.
 			tree_node_ptr curr_node = _root_node;
+			// On initialise le noeud "inférieur" à la fin de l'arbre.
 			tree_node_ptr lower_node = _end_node;
 
+			// On parcourt l'arbre jusqu'à trouver un noeud ayant une clé supérieure ou égale à `key`.
 			while (curr_node != NULL && curr_node != _end_node)
 			{
+				// Si la clé du noeud courant est égale à `key`, on retourne un itérateur sur ce noeud.
 				if (curr_node->data.first == key)
 					return iterator(curr_node);
 
+				// Si la clé du noeud courant est inférieure à `key`, on met à jour le noeud "inférieur"
+				// et on continue la recherche dans le sous-arbre droit.
 				if (_comp(key, curr_node->data.first))
 				{
 					lower_node = curr_node;
 					curr_node = curr_node->left;
 				}
+				// Si la clé du noeud courant est supérieure à `key`, on continue la recherche dans le sous-arbre gauche.
 				else
 					curr_node = curr_node->right;
 			}
 
+			// Si on n'a pas trouvé de noeud ayant une clé supérieure ou égale à `key`,
+			// on retourne un itérateur sur le noeud "inférieur".
 			return iterator(lower_node);
 		}
 
 		template <typename Key>
 		const_iterator lower_bound(const Key& key) const
 		{
+			// Initialisation des noeuds courant et inférieur
 			tree_node_ptr curr_node = _root_node;
 			tree_node_ptr lower_node = _end_node;
 
+			// Parcours de l'arbre jusqu'à trouver le noeud correspondant à la clé recherchée
 			while (curr_node != NULL && curr_node != _end_node)
 			{
 				if (curr_node->data.first == key)
@@ -435,15 +477,18 @@ namespace ft
 					curr_node = curr_node->right;
 			}
 
+			// Retour de l'itérateur constant vers le premier élément dont la clé est supérieure ou égale à key
 			return const_iterator(lower_node);
 		}
 
 		template <typename Key>
 		iterator upper_bound(const Key& key)
 		{
+			// Initialisation des variables
 			tree_node_ptr curr_node = _root_node;
 			tree_node_ptr upper_node = _end_node;
 
+			// Recherche de la première position où la clé cherchée est strictement inférieure à la clé stockée
 			while (curr_node != NULL && curr_node != _end_node)
 			{
 				if (_comp(key, curr_node->data.first))
@@ -455,15 +500,19 @@ namespace ft
 					curr_node = curr_node->right;
 			}
 
+			// Retour de l'itérateur sur la première position où la clé cherchée est strictement
+			// inférieure à la clé stockée, ou sur la fin si la clé est supérieure à toutes les clés de l'arbre
 			return iterator(upper_node);
 		}
 
 		template <typename Key>
 		const_iterator upper_bound(const Key& key) const
 		{
+			// Initialisation des variables
 			tree_node_ptr curr_node = _root_node;
 			tree_node_ptr upper_node = _end_node;
 
+			// Recherche de la première position où la clé cherchée est strictement inférieure à la clé stockée
 			while (curr_node != NULL && curr_node != _end_node)
 			{
 				if (_comp(key, curr_node->data.first))
@@ -475,6 +524,8 @@ namespace ft
 					curr_node = curr_node->right;
 			}
 
+			// Retour de l'itérateur sur la première position où la clé cherchée est strictement
+			// inférieure à la clé stockée, ou sur la fin si la clé est supérieure à toutes les clés de l'arbre
 			return const_iterator(upper_node);
 		}
 
@@ -527,72 +578,75 @@ namespace ft
 			_size = 0;
 		}
 
-		// Insert a Node in the tree //
 		void rbt_insertion(tree_node_ptr node)
 		{
-			if (node == _root_node)									// If node is root, then color it black //
+			// Si le nœud est la racine, le marquer en noir
+			if (node == _root_node)
 				node->is_black = true;
 
+			// Boucle jusqu'à ce que le parent du nœud actuel soit noir
 			while (node->parent->is_black == false)
 			{
 				tree_node_ptr parent = get_parent(node);
-				
-				// Check if parent is left child //
+						
+				// Cas 1 : si le parent du nœud actuel est un enfant gauche
 				if (node->parent == node->parent->parent->left)
 				{
-					// If parent color is red, then uncle color is black //
+					// Cas 1A : si l'oncle est rouge, rééquilibrer l'arbre
 					if (parent && parent->is_black == false)
 					{
-						node->parent->is_black = true;				// Color node parent black //
-						parent->is_black = true;					// Color parent black //
-						node->parent->parent->is_black = false;		// Color grandparent red //
-						rbt_insertion(node->parent->parent);		// Insert grandparent //
+						node->parent->is_black = true;
+						parent->is_black = true;
+						node->parent->parent->is_black = false;
+						rbt_insertion(node->parent->parent);
 
 						return;
 					}
-					// If parent color is red, then uncle color is black //
+					// Cas 1B : si l'oncle est noir, rééquilibrer l'arbre
 					else
 					{
-						// If node is right child //
+						// Cas 1Bi : le nœud actuel est un enfant droit
 						if (node == node->parent->right)
 						{
-							node = node->parent;					// Node is now parent //
-							rotate_left(node);						// Rotate left //
+							node = node->parent;
+							rotate_left(node);
 						}
 
-						node->parent->is_black = true;				// Color parent black //
-						node->parent->parent->is_black = false;		// Color grandparent red //
-						rotate_right(node->parent->parent);			// Rotate right //
-						_root_node->is_black = true;				// Color root black //
+						// Cas 1Bii : le nœud actuel est un enfant gauche
+						node->parent->is_black = true;
+						node->parent->parent->is_black = false;
+						rotate_right(node->parent->parent);
+						_root_node->is_black = true;
 					}
 				}
-				// Check if parent is right child //
+				// Cas 2 : si le parent du nœud actuel est un enfant droit
 				else
 				{
-					// If parent color is red, then parent color is black //
+					// Cas 2A : si l'oncle est rouge, rééquilibrer l'arbre
 					if (parent && parent->is_black == false)
 					{
-						node->parent->is_black = true;				// Parent color is black //
-						parent->is_black = true;					// parent color is black //
-						node->parent->parent->is_black = false;		// Grandparent color is red //
-						rbt_insertion(node->parent->parent);		// Insert grandparent //
+						node->parent->is_black = true;
+						parent->is_black = true;
+						node->parent->parent->is_black = false;
+						rbt_insertion(node->parent->parent);
 
 						return;
 					}
-					// If parent color is red, then parent color is black //
+					// Cas 2B : si l'oncle est noir, rééquilibrer l'arbre
 					else
 					{
-						// If node is left child //
+						// Cas 2Bi : le nœud actuel est un enfant gauche
 						if (node == node->parent->left)
 						{
-							node = node->parent;					// Node is parent //
-							rotate_right(node);						// Rotate right //
+							node = node->parent;
+							rotate_right(node);
 						}
 
-						node->parent->is_black = true;				// Parent color is black //
-						node->parent->parent->is_black = false;		// Grandparent color is red //
-						rotate_left(node->parent->parent);			// Rotate left //
-						_root_node->is_black = true;				// Root color is black //
+						// Cas 2Bii : le nœud actuel est un enfant droit
+						node->parent->is_black = true;
+						node->parent->parent->is_black = false;
+						rotate_left(node->parent->parent);
+						_root_node->is_black = true;
 					}
 				}
 			}
