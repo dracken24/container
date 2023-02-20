@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rbTree.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nadesjar <dracken24@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 22:36:18 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/18 16:07:52 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/02/20 16:57:32 by nadesjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -651,31 +651,34 @@ namespace ft
 				}
 			}
 		}
-		
+
 		int rotate_left(tree_node_ptr node_x)
 		{
+			// Vérifie si le noeud node_x possède un sous-arbre droit
 			if (node_x->right == NULL)
 				return 0;
 
+			// Crée un pointeur vers le sous-arbre droit de node_x nommé node_y
 			tree_node_ptr node_y = node_x->right;
 
+			// Met à jour les pointeurs parent de node_y pour pointer vers le parent de node_x
 			if (node_x->parent->left == node_x)
 				node_x->parent->left = node_y;
-
 			else if (node_x->parent->right == node_x)
-			{
 				node_x->parent->right = node_y;
-			}
-			
+
 			node_y->parent = node_x->parent;
 
+			// Met à jour les pointeurs parent et droit de node_x pour pointer vers le sous-arbre gauche de node_y
 			node_x->right = node_y->left;
 			if (node_x->right)
 				node_x->right->parent = node_x;
 
+			// Met à jour les pointeurs parent et gauche de node_y pour pointer vers node_x
 			node_y->left = node_x;
 			node_x->parent = node_y;
 
+			// Met à jour le pointeur racine _root_node pour pointer vers le sous-arbre gauche de _end_node
 			_root_node = _end_node->left;
 
 			return 1;
@@ -683,23 +686,31 @@ namespace ft
 
 		int rotate_right(tree_node_ptr node_x)
 		{
+			// Si le fils gauche de node_x est NULL, il ne peut pas y avoir de rotation droite
 			if (node_x->left == NULL)
 				return 0;
+
+			// On récupère le noeud fils gauche de node_x
 			tree_node_ptr node_y = node_x->left;
 
-			if (node_x->parent->left == node_x)
-				node_x->parent->left = node_y;
-			else if (node_x->parent->right == node_x)
-				node_x->parent->right = node_y;
+			// On met à jour le parent de node_y
 			node_y->parent = node_x->parent;
 
+			// Si node_x était le fils gauche de son parent, on met à jour le fils gauche du parent avec node_y
+			if (node_x->parent->left == node_x)
+				node_x->parent->left = node_y;
+			// Sinon, on met à jour le fils droit du parent avec node_y
+			else if (node_x->parent->right == node_x)
+				node_x->parent->right = node_y;
+
+			// On met à jour les fils de node_x et node_y en fonction de la rotation
 			node_x->left = node_y->right;
 			if (node_x->left)
 				node_x->left->parent = node_x;
-
 			node_y->right = node_x;
 			node_x->parent = node_y;
 
+			// On met à jour la racine de l'arbre
 			_root_node = _end_node->left;
 
 			return 1;
@@ -730,16 +741,19 @@ namespace ft
 
 		tree_node_ptr get_parent(const tree_node_ptr node) const
 		{
+			// On récupère le parent du noeud
 			tree_node_ptr parent = node->parent;
 
+			// Si le parent est la racine, alors il n'a pas de frère
 			if (parent == _root_node)
 				return NULL;
-			if (parent == parent->parent->right)
-				return parent->parent->left;
-			else
-				return parent->parent->right;
-		}
 
+			// On vérifie si le parent est le fils gauche ou droit de son propre parent
+			if (parent == parent->parent->right)
+				return parent->parent->left; // Si le parent est le fils droit, on retourne le fils gauche du grand-parent
+			else
+				return parent->parent->right; // Sinon, on retourne le fils droit du grand-parent
+		}
 
 		void delete_node(tree_node_ptr node)
 		{
