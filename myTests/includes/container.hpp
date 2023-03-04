@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/11 17:21:14 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/03/03 20:40:06 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 #include "../../includes/functions/pair.hpp"
 
 // Containers //
-#include "../../includes/templates/vector.hpp"
-#include "../../includes/templates/stack.hpp"
-#include "../../includes/templates/map.hpp"
+// #include "../../includes/templates/vector.hpp"
+// #include "../../includes/templates/stack.hpp"
+// #include "../../includes/templates/map.hpp"
 
 // Other //
 
@@ -250,6 +250,27 @@ struct StructA
 	}
 };
 
+template<typename T>
+std::ostream	&operator<<(std::ostream &out, const ft::is_integral<T> &src)
+{
+	out << src.value;
+	return out;
+}
+
+template<typename T, typename U>
+std::ostream	&operator<<(std::ostream &out, const ft::is_same<T, U> &src)
+{
+	out << src.value;
+	return out;
+}
+
+template<typename T>
+std::ostream	&operator<<(std::ostream &out, const ft::is_same<T, T> &src)
+{
+	out << src.value;
+	return out;
+}
+
 //*** Functions ***//
 
 // Choose Tests type //
@@ -283,5 +304,10 @@ void	mapTestInt(void);
 void	vectorTimeOutTestInt(void);
 void    chooseStackTestsInt(void);
 void	chooseMapTestsInt(void);
+
+// OneByOne //
+void	is_integralTests(void);
+void	is_sameTests(void);
+void	pairTests(void);
 
 #endif

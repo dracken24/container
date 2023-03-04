@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:59:56 by dracken24         #+#    #+#             */
-/*   Updated: 2023/02/11 11:05:05 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/03/03 20:34:21 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 
 namespace ft
 {
+	//******************************************************************************************************//
+	//												is_integral									    		//
+	//******************************************************************************************************//
 	template <class T>
 	struct is_integral
 	{
@@ -36,13 +39,25 @@ namespace ft
 	};
 
 	template <>
+	struct is_integral<unsigned char>
+	{
+		static const bool value = true;
+	};
+
+	template <>
 	struct is_integral<signed char>
 	{
 		static const bool value = true;
 	};
 
 	template <>
-	struct is_integral<unsigned char>
+	struct is_integral<char16_t>
+	{
+		static const bool value = true;
+	};
+
+	template <>
+	struct is_integral<char32_t>
 	{
 		static const bool value = true;
 	};
@@ -101,32 +116,31 @@ namespace ft
 		static const bool value = true;
 	};
 
-	struct true_type {};
-	struct false_type {};
+	//******************************************************************************************************//
+	//												is_same										    		//
+	//******************************************************************************************************//
 
 	template <typename, typename>
 	struct is_same
 	{
-	typedef bool value_type;
-	typedef false_type type;
-
-	static const bool value = false;
-	operator bool() {
-		return value;
-	}
+		static const bool value = false;
+		
+		operator bool()
+		{
+			return value;
+		}
 	};
 
 	template <typename T>
 	struct is_same<T, T>
 	{
-	typedef bool value_type;
-	typedef false_type type;
-
-	static const bool value = true;
-	operator bool() {
-		return value;
-	}
+		static const bool value = true;
+		
+		operator bool()
+		{
+			return value;
+		}
 	};
-}
+};
 
 #endif
