@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 18:59:25 by dracken24         #+#    #+#             */
-/*   Updated: 2023/03/03 20:26:19 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/03/04 16:09:14 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,17 @@ int	main(void)
 		std::cout << "-----------------------------------------" << GREEN  << std::endl << std::endl;
 
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Pair" << RESET << GREEN \
-			<<" tests,           enter:  " << MAGENTA << "1" << std::endl;
+			<<" tests,             enter:  " << MAGENTA << "1" << std::endl;
 		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "is_integral" << RESET << GREEN \
-			<<" tests,    enter:  " << MAGENTA << "2" << std::endl;
-            std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "is_same" << RESET << GREEN \
-			<<" tests,        enter:  " << MAGENTA << "3" << std::endl;
+			<<" tests,      enter:  " << MAGENTA << "2" << std::endl;
+        std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "is_same" << RESET << GREEN \
+			<<" tests,          enter:  " << MAGENTA << "3" << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "enable_if" << RESET << GREEN \
+			<<" tests,        enter:  " << MAGENTA << "4\n" << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Lexico and equal" << RESET << GREEN \
+			<<" tests, enter:  " << MAGENTA << "5" << std::endl;
+		std::cout << GREEN << "For " << ITALIC << UNDERLINE << MAGENTA << "Iterators" << RESET << GREEN \
+			<<" tests,        enter:  " << MAGENTA << "6" << std::endl;
 
 		std::cout << RED << "\nEnter: 'Q' for quit\n" << RESET << std::endl;
 		
@@ -38,7 +44,7 @@ int	main(void)
 		std::cin >> input;
 		std::cout << std::endl;
 		
-		if (input[0] >= '1' && input[0] <= '3')
+		if (input[0] >= '1' && input[0] <= '6')
 		{
 			switch (input[0])
 			{
@@ -50,6 +56,15 @@ int	main(void)
 					break ;
                 case '3':
 					is_sameTests();
+					break ;
+				case '4':
+					enable_ifTests();
+					break ;
+				case '5':
+					lexicoTests();
+					break ;
+				case '6':
+					iteratorsTests();
 					break ;
 			}
 		}

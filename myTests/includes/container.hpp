@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/03/03 20:40:06 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/03/04 16:43:00 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 // Functions //
 #include "../../includes/functions/isIntegral.hpp"
+#include "../../includes/templates/iterator.hpp"
+#include "../../includes/functions/utils.hpp"
 #include "../../includes/functions/pair.hpp"
 
 // Containers //
@@ -51,7 +53,8 @@
 #include <memory>
 #include <map>
 #include <cstdio>
-# include <sys/time.h>
+#include <random>
+#include <sys/time.h>
 
 // Class tests //
 
@@ -254,6 +257,7 @@ template<typename T>
 std::ostream	&operator<<(std::ostream &out, const ft::is_integral<T> &src)
 {
 	out << src.value;
+	
 	return out;
 }
 
@@ -261,6 +265,7 @@ template<typename T, typename U>
 std::ostream	&operator<<(std::ostream &out, const ft::is_same<T, U> &src)
 {
 	out << src.value;
+
 	return out;
 }
 
@@ -268,6 +273,7 @@ template<typename T>
 std::ostream	&operator<<(std::ostream &out, const ft::is_same<T, T> &src)
 {
 	out << src.value;
+	
 	return out;
 }
 
@@ -307,7 +313,10 @@ void	chooseMapTestsInt(void);
 
 // OneByOne //
 void	is_integralTests(void);
+void	enable_ifTests(void);
+void	iteratorsTests(void);
 void	is_sameTests(void);
+void	lexicoTests(void);
 void	pairTests(void);
 
 #endif

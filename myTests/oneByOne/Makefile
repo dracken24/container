@@ -6,7 +6,7 @@
 #    By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/23 13:22:35 by nadesjar          #+#    #+#              #
-#    Updated: 2023/03/03 19:15:02 by dracken24        ###   ########.fr        #
+#    Updated: 2023/03/04 16:44:37 by dracken24        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,12 @@ P_OBJS 			= ./objs/
 P_SRCS			= ./srcs/
 
 INCLUDE_PATH	= ../includes/
+FUNCT_PATH		= ../../includes/functions/
+CONT_PATH		= ../../includes/templates/
 
 FILES			= $(P_SRCS)pair.cpp $(P_SRCS)is_integral.cpp \
-				$(P_SRCS)mainOne.cpp \
+				$(P_SRCS)mainOne.cpp $(P_SRCS)lexComp_equal.cpp \
+				$(P_SRCS)enable_if.cpp $(P_SRCS)iterators.cpp \
 
 OBJS			= $(patsubst $(P_SRCS)%.cpp, $(P_OBJS)%.o, $(FILES))
 
@@ -35,20 +38,30 @@ $(NAME): $(OBJS)
 
 # --------------------------- Recompilation Headers --------------------------- #
 
-$(P_OBJS)pair.o: $(P_SRCS)pair.cpp $(INCLUDE_PATH)container.hpp
+$(P_OBJS)pair.o: $(P_SRCS)pair.cpp $(INCLUDE_PATH)container.hpp $(FUNCT_PATH)pair.hpp
 	@mkdir -p $(P_OBJS)
 	@$(CC) -I $(CFLAGS) -c $< -o $@
-	@printf "$C■"
+	@printf "$G■"
 
 $(P_OBJS)is_integral.o: $(P_SRCS)is_integral.cpp $(INCLUDE_PATH)container.hpp
-	@mkdir -p $(P_OBJS)
 	@$(CC) -I $(CFLAGS) -c $< -o $@
-	@printf "$C■"
+	@printf "$G■"
 
 $(P_OBJS)mainOne.o: $(P_SRCS)mainOne.cpp $(INCLUDE_PATH)container.hpp
-	@mkdir -p $(P_OBJS)
 	@$(CC) -I $(CFLAGS) -c $< -o $@
-	@printf "$C■"
+	@printf "$G■"
+
+$(P_OBJS)lexComp_equal.o: $(P_SRCS)lexComp_equal.cpp $(INCLUDE_PATH)container.hpp $(FUNCT_PATH)utils.hpp
+	@$(CC) -I $(CFLAGS) -c $< -o $@
+	@printf "$G■"
+
+$(P_OBJS)enable_if.o: $(P_SRCS)enable_if.cpp $(INCLUDE_PATH)container.hpp $(FUNCT_PATH)utils.hpp
+	@$(CC) -I $(CFLAGS) -c $< -o $@
+	@printf "$G■"
+
+$(P_OBJS)iterators.o: $(P_SRCS)iterators.cpp $(INCLUDE_PATH)container.hpp $(CONT_PATH)iterator.hpp
+	@$(CC) -I $(CFLAGS) -c $< -o $@
+	@printf "$G■"
 
 # --------------------------------- Messages --------------------------------- #
 

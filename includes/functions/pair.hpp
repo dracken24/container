@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:08:02 by dracken24         #+#    #+#             */
-/*   Updated: 2023/03/03 18:11:38 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/03/04 10:33:26 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,25 +63,25 @@ namespace ft
 	template<class T1, class T2>
 	bool    operator<(const pair<T1, T2> &src1, const pair<T1, T2> &src2)
 	{
-		return (src1._first < src2._first || (src1._first < src2._first && src1._second < src2._second));
+		return (src1._first < src2._first);
 	}
 
 	template<class T1, class T2>
 	bool    operator<=(const pair<T1, T2> &src1, const pair<T1, T2> &src2)
 	{
-		return (src1._first <= src2._first || (src1._first <= src2._first && src1._second <= src2._second));
+		return (src1._first <= src2._first && src1._second <= src2._second);
 	}
 
 	template<class T1, class T2>
 	bool    operator>(const pair<T1, T2> &src1, const pair<T1, T2> &src2)
 	{
-		return (src1._first > src2._first || (src1._first > src2._first && src1._second > src2._second));
+		return (src1._first > src2._first || src1._second > src2._second);
 	}
 
 	template<class T1, class T2>
 	bool    operator>=(const pair<T1, T2> &src1, const pair<T1, T2> &src2)
 	{
-		return (src1._first >= src2._first || (src1._first >= src2._first && src1._second >= src2._second));
+		return (src1._first >= src2._first);
 	}
 
 	template <class T1, class T2>

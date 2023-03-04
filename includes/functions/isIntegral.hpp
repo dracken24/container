@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:59:56 by dracken24         #+#    #+#             */
-/*   Updated: 2023/03/03 20:34:21 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/03/04 11:10:47 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ namespace ft
 	struct is_same
 	{
 		static const bool value = false;
-		
+
 		operator bool()
 		{
 			return value;
@@ -135,7 +135,7 @@ namespace ft
 	struct is_same<T, T>
 	{
 		static const bool value = true;
-		
+
 		operator bool()
 		{
 			return value;
