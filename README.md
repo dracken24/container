@@ -104,6 +104,9 @@ https://www.simplilearn.com/tutorials/cpp-tutorial/cpp-vector
 ## swap
 - [x] template <class T, class Alloc> void swap (vector<T,Alloc>& x, vector<T,Alloc>& y);
 
+
+
+
 # MAP_______________________________________
 ## (constructor)
 - [x] explicit map (const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type());
@@ -164,6 +167,9 @@ https://www.simplilearn.com/tutorials/cpp-tutorial/cpp-vector
 - [x] pair<const_iterator,const_iterator> equal_range (const key_type& k) const
 - [x] pair<iterator,iterator> equal_range (const key_type& k);
 
+
+
+
 # STACK_______________________________________
 ## (constructor)
 - [x] explicit stack (const container_type& ctnr = container_type());
@@ -185,6 +191,9 @@ https://www.simplilearn.com/tutorials/cpp-tutorial/cpp-vector
 - [x] template <class T, class Container> bool operator<= (const stack<T,Container>& lhs, const stack<T,Container>& rhs);
 - [x] template <class T, class Container> bool operator> (const stack<T,Container>& lhs, const stack<T,Container>& rhs);
 - [x] template <class T, class Container> bool operator>= (const stack<T,Container>& lhs, const stack<T,Container>& rhs);
+
+
+
 
 # LIST_________________________________________
 ## (constructor)
@@ -271,6 +280,9 @@ https://www.simplilearn.com/tutorials/cpp-tutorial/cpp-vector
 - [x] template <class T, class Alloc> bool operator>= (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
 ## swap (list)
 - [x] template <class T, class Alloc> void swap (list<T,Alloc>& x, list<T,Alloc>& y);
+
+
+
 
 # QUEUE________________________________________
 

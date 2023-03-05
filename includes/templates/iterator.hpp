@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 08:09:40 by dracken24         #+#    #+#             */
-/*   Updated: 2023/03/04 17:38:06 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/03/04 20:26:08 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -357,37 +357,37 @@ namespace ft
 	template<typename T, typename U>
 	bool operator==(const reverse_iterator<T> &src1, const reverse_iterator<U> &src2)
 	{
-		return lhs.base() == rhs.base();
+		return src1.base() == src2.base();
 	}
 
 	template<typename T, typename U>
 	bool operator!=(const reverse_iterator<T> &src1, const reverse_iterator<U> &src2)
 	{
-		return lhs.base() != rhs.base();
+		return src1.base() != src2.base();
 	}
 
 	template<typename T, typename U>
 	bool operator>(const reverse_iterator<T> &src1, const reverse_iterator<U> &src2)
 	{
-		return lhs.base() > rhs.base();
+		return src1.base() > src2.base();
 	}
 
 	template<typename T, typename U>
 	bool operator>=(const reverse_iterator<T> &src1, const reverse_iterator<U> &src2)
 	{
-		return lhs.base() >= rhs.base();
+		return src1.base() >= src2.base();
 	}
 
 	template<typename T, typename U>
 	bool operator<(const reverse_iterator<T> &src1, const reverse_iterator<U> &src2)
 	{
-		return lhs.base() < rhs.base();
+		return src1.base() < src2.base();
 	}
 
 	template<typename T, typename U>
 	bool operator<=(const reverse_iterator<T> &src1, const reverse_iterator<U> &src2)
 	{
-		return lhs.base() <= rhs.base();
+		return src1.base() <= src2.base();
 	}
 }
 
