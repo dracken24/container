@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 13:34:30 by dracken24         #+#    #+#             */
-/*   Updated: 2023/03/04 14:45:24 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/03/05 20:38:25 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ print(T value)
 
 template <typename T>
 typename std::enable_if<std::is_integral<T>::value, void>::type
-print(const std::vector<T>& vec)
+print(const std::vector<T> &vec)
 {
 	std::cout << BLUE << "std: The vector contains integers." << MAGENTA << std::endl;
 	for (const auto& elem : vec)
@@ -43,7 +43,7 @@ print(const std::vector<T>& vec)
 
 template <typename T>
 typename std::enable_if<!std::is_integral<T>::value, void>::type
-print(const std::vector<T>& vec)
+print(const std::vector<T> &vec)
 {
 	std::cout << BLUE << "std: The vector does not contain integers." << MAGENTA << std::endl;
 	for (const auto& elem : vec)
@@ -73,7 +73,7 @@ printFt(T value)
 
 template <typename T>
 typename ft::enable_if<std::is_integral<T>::value, void>::type
-printFt(const std::vector<T>& vec)
+printFt(const std::vector<T> &vec)
 {
 	std::cout << GREEN << "ft: The vector contains integers." << MAGENTA << std::endl;
 	for (const auto& elem : vec)
@@ -85,7 +85,7 @@ printFt(const std::vector<T>& vec)
 
 template <typename T>
 typename ft::enable_if<!std::is_integral<T>::value, void>::type
-printFt(const std::vector<T>& vec)
+printFt(const std::vector<T> &vec)
 {
 	std::cout << GREEN << "ft: The vector does not contain integers." << MAGENTA << std::endl;
 	for (const auto& elem : vec)

@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 08:09:40 by dracken24         #+#    #+#             */
-/*   Updated: 2023/03/04 20:26:08 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/03/05 00:13:53 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,31 +43,31 @@ namespace ft
   template <typename Iter>
 	struct iterator_traits
 	{
-	  typedef typename Iter::difference_type	difference_type;
-	  typedef typename Iter::value_type			value_type;
-	  typedef typename Iter::pointer			pointer;
-	  typedef typename Iter::reference			reference;
-	  typedef typename Iter::iterator_category	iterator_category;
+		typedef typename Iter::difference_type	difference_type;
+		typedef typename Iter::value_type			value_type;
+		typedef typename Iter::pointer			pointer;
+		typedef typename Iter::reference			reference;
+		typedef typename Iter::iterator_category	iterator_category;
 	};
 
 	template <typename T>
 	struct iterator_traits<T*>
 	{
-	  typedef std::ptrdiff_t					difference_type;
-	  typedef T									value_type;
-	  typedef T*								pointer;
-	  typedef T&								reference;
-	  typedef std::random_access_iterator_tag	iterator_category;
+		typedef std::ptrdiff_t					difference_type;
+		typedef T									value_type;
+		typedef T*								pointer;
+		typedef T&								reference;
+		typedef std::random_access_iterator_tag	iterator_category;
 	};
 
 	template <typename T>
 	struct iterator_traits<const T*>
 	{
-	  typedef std::ptrdiff_t					difference_type;
-	  typedef T									value_type;
-	  typedef const T*							pointer;
-	  typedef const T&							reference;
-	  typedef std::random_access_iterator_tag	iterator_category;
+		typedef std::ptrdiff_t					difference_type;
+		typedef T									value_type;
+		typedef const T*							pointer;
+		typedef const T&							reference;
+		typedef std::random_access_iterator_tag	iterator_category;
 	};
 	
 //******************************************************************************************************//

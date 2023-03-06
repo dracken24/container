@@ -6,21 +6,21 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 23:43:30 by dracken24         #+#    #+#             */
-/*   Updated: 2023/03/04 22:02:11 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/03/05 19:20:44 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_HPP
 # define VECTOR_HPP
 
-#include "../functions/utils.hpp"
+# include "../functions/utils.hpp"
 
-#include <iostream>
-#include <limits>
-#include <memory>
-#include <iterator>
+# include <iostream>
+# include <limits>
+# include <memory>
+# include <iterator>
 
-#include "iterator.hpp"
+# include "iterator.hpp"
 
 namespace ft
 {
@@ -29,57 +29,46 @@ namespace ft
 	{
 		public:
 
-			// [allocator_type](#allocator_type)	A type that represents the allocator class for the vector object.
-			typedef Allocator											allocator_type;
-			// const_pointer	A type that provides a pointer to a const element in a vector.
-			typedef const T*											const_pointer;
-			// const_iterator	A type that provides a random-access iterator that can read a const element in a vector.
-			typedef std::random_access_iterator_tag						const_iterator;
+			typedef Allocator											allocator_type;			// allocator_type	A type that represents the allocator class for the vector object.
+			typedef T													value_type;				// value_type	A type that represents the data type stored in a vector.
+			typedef T*													pointer;				// pointer	A type that provides a pointer to an element in a vector.
+			typedef const T*											const_pointer;			// const_pointer	A type that provides a pointer to a const element in a vector.
+			
+			typedef const value_type									&const_reference;		// const_reference	A type that provides a reference to a const element stored in a vector. It's used for reading and doing const operations.
+			
+			typedef std::random_access_iterator_tag						iterator;				// iterator	A type that provides a random-access iterator that can read or modify any element in a vector.
+			typedef std::random_access_iterator_tag						const_iterator;			// const_iterator	A type that provides a random-access iterator that can read a const element in a vector.
+			typedef std::reverse_iterator<iterator>						reverse_iterator;		// reverse_iterator	A type that provides a random-access iterator that can read or modify any element in a reversed vector.
+			typedef std::reverse_iterator<const_iterator>				const_reverse_iterator;	// const_reverse_iterator	A type that provides a random-access iterator that can read any const element in the vector.
+			// typedef ft::random_access_iterator_tag<pointer, vector>				iterator;
 			// typedef ft::random_access_iterator_tag<const_pointer, vector>		const_iterator;
 			
-			// value_type	A type that represents the data type stored in a vector.
-			typedef T													value_type;
-			// const_reference	A type that provides a reference to a const element stored in a vector. It's used for reading and doing const operations.
-			typedef const value_type									&const_reference;
-			// const_reverse_iterator	A type that provides a random-access iterator that can read any const element in the vector.
-			typedef std::reverse_iterator<const_iterator>				const_reverse_iterator;
-			// difference_type	A type that provides the difference between the addresses of two elements in a vector.
-			typedef std::ptrdiff_t										difference_type;
-			// pointer	A type that provides a pointer to an element in a vector.
-			typedef T*													pointer;
-			// iterator	A type that provides a random-access iterator that can read or modify any element in a vector.
-			typedef std::random_access_iterator_tag						iterator;
-			// typedef ft::random_access_iterator_tag<pointer, vector>		iterator;
-			
-			// reference	A type that provides a reference to an element stored in a vector.
-			typedef value_type&											reference;
-			// reverse_iterator	A type that provides a random-access iterator that can read or modify any element in a reversed vector.
-			typedef std::reverse_iterator<iterator>						reverse_iterator;
-			// size_type	A type that counts the number of elements in a vector.
-			typedef std::size_t											size_type;
+			typedef std::ptrdiff_t										difference_type;		// difference_type	A type that provides the difference between the addresses of two elements in a vector.
+			typedef value_type											&reference;				// reference	A type that provides a reference to an element stored in a vector.
+			typedef std::size_t											size_type;				// size_type	A type that counts the number of elements in a vector.
 
 			//******************************************************************************************************//
 			//										Constructor - Destructor							    		//
 			//******************************************************************************************************//
 
-			vector(void) :
-			_first(), _end(_first), _capacity(_first), _alloc()
-			{ } ;
-
-			explicit	vector(const allocator_type& alloc = allocator_type()) :
+			explicit	vector(const allocator_type &alloc = allocator_type()) :
 			_first(nullptr), _end(_first), _capacity(_first), _alloc(alloc)
 			{ };
 			
-			explicit	vector(size_type size, const value_type& value = value_type(),
+			explicit	vector(size_type size, const value_type &value = value_type(),
 				const allocator_type &alloc = allocator_type()) :
 			_first(nullptr), _end(_first), _capacity(_first), _alloc(alloc)
 			{
 				// check the capacity
+				if (size > max_size())
+					throw std::length_error("error, no more space on device. Capacity exed max_size()");
+				if (size < _capacity)
+					return ;
 				//init storage
 			};
 			
-			template <class InputIterator>
-			vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type()) :
+			template <class InTerator>
+			vector(InTerator first, InTerator last, const allocator_type &alloc = allocator_type()) :
 			_first(nullptr), _end(_first), _capacity(_first), _alloc(alloc)
 			{
 				// insert
@@ -96,7 +85,7 @@ namespace ft
 			{
 				// clear
 
-				// in non null, dealloc
+				// if non null, dealloc
 			}
 			
 			vector& operator=(const vector &src)
@@ -107,6 +96,14 @@ namespace ft
 				// insert all src values
 				// return  this
 			}
+
+			const_reference	operator[](size_type place) const;
+
+			reference		operator[](size_type place);
+
+		//******************************************************************************************************//
+		//												Find										    		//
+		//******************************************************************************************************//
 
 			reference		at(size_type nbr)
 			{
@@ -153,8 +150,8 @@ namespace ft
 
 			void		insert(iterator position, size_type nbr, const value_type &value);
 			
-			template <class InputIterator>
-			void		insert(iterator position, InputIterator first, InputIterator last);
+			template <class InTerator>
+			void		insert(iterator position, InTerator first, InTerator last);
 
 			// erase(): It is used to remove the element from the container at a specified position or a range.
 			iterator	erase(iterator position);
@@ -165,8 +162,8 @@ namespace ft
 			void	swap(vector &src);
 
 			// assign(): It is used to assign a new value to the vector by substituting the old value.
-			template <class InputIterator>
-			void	assign(InputIterator first, InputIterator last);
+			template <class InTerator>
+			void	assign(InTerator first, InTerator last);
 			
 			void	assign(size_type nbr, const value_type &value);
 			
@@ -234,23 +231,22 @@ namespace ft
 			void	resize(size_type nbr, value_type value = value_type());
 			
 			// capacity(): This function returns the size that is currently allocated to the vector.
-			size_type	capacity(void) const;
+			size_type	capacity(void) const
+			{
+				return (_capacity);
+			}
 
 			void	reserve(size_type size)
 			{
 				if (size > max_size())
-					throw std::length_error("error, no more space. Capacity exed max_size()");
-				
+					throw std::length_error("error, no more space on device. Capacity exed max_size()");
 				if (size < _capacity)
 					return ;
-				
-				pointer	start = _alloc.allocate(size);
 
+				pointer	start = _alloc.allocate(size);
 				int i = 0;
 				for (; _first + i != _end; ++i)
-				{
 					_alloc.construct(start + i, *(_first + i));
-				}
 				pointer	end = start + i;
 
 				clear();
@@ -268,10 +264,6 @@ namespace ft
 			{
 				return begin() == end();
 			}
-
-			const_reference	operator[](size_type nbr) const;
-
-			reference		operator[](size_type nbr);
 			
 			//******************************************************************************************************//
 			//									Private non members functions							    		//
@@ -281,7 +273,7 @@ namespace ft
 			void checkCapacity(size_type capacity)
 			{
 				if (capacity > max_size())
-					throw std::length_error("error, no more space. Capacity exed max_size()");
+					throw std::length_error("error, no more space on device. Capacity exed max_size()");
 				for (;capacity > _capacity;)
 					reserve(_capacity *= 2);
 			}

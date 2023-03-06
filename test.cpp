@@ -1,22 +1,15 @@
 #include <iostream>
-#include <vector>
+#include <map>
+
+bool compareStringLength(const std::string& a, const std::string& b) {
+    return a.length() < b.length();
+}
 
 int main()
 {
-  std::vector<int> v{1, 2, 3, 4, 5};
-  
-  std::cout << "La dernière valeur du vecteur est : " << v.back() << std::endl;
-  
-  v.push_back(6);
-  
-  std::cout << "La nouvelle dernière valeur du vecteur est : " << v.back() << std::endl;
+    std::map<int, int> test;
 
-  v.push_back(6745);
-  
-  std::cout << "La nouvelle dernière valeur du vecteur est : " << v.back() << std::endl;
+    test.
 
-  
-  for (size_t i = 0; i < v.size(); i++)
-		std::cout << "[" << v.at(i) << "] ";
-  return 0;
+    return 0;
 }
