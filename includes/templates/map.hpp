@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:28:54 by dracken24         #+#    #+#             */
-/*   Updated: 2023/03/05 20:35:03 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/03/06 01:00:41 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ namespace ft
 		public:
 			typedef Key														key_type;				// key_type	The first template parameter (Key)	
 			typedef T														mapped_type;			// mapped_type	The second template parameter (T)	
-			typedef ft::pair<const Key, T>									value_type;				// value_type	pair<const key_type,mapped_type>	
+			typedef ft::_node<Key, T>										value_type;				// value_type	pair<const key_type,mapped_type>	
 			typedef Compare													key_compare;			// key_compare	The third template parameter (Compare)	defaults to: less<key_type>
 			typedef Allocator												allocator_type;			// allocator_type	The fourth template parameter (Alloc)	defaults to: allocator<value_type>
 
