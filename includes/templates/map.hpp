@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:28:54 by dracken24         #+#    #+#             */
-/*   Updated: 2023/03/06 01:00:41 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/03/06 21:29:23 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include <map>
 
 # include "../functions/utils.hpp"
-# include "../templates/iterator.hpp"
+# include "mapIterator.hpp"
 
 namespace ft
 {
@@ -29,10 +29,17 @@ namespace ft
 	class _node
 	{
 		public:
+			_node(void)
+			{
+				pair = ft::make_pair(nullptr, nullptr);
+			};
+			
 			_node(Key k, T value)
 			{
 				pair = ft::make_pair(k, value);
 			};
+			
+			~_node(void) { };
 		
 		private:
 			_node				*left;
@@ -42,28 +49,28 @@ namespace ft
 	};
 
   	template <typename Key, typename T, typename Compare = std::less<Key>,
-		typename Allocator = std::allocator<ft::_node<Key, T>>> // typename Allocator = std::allocator<ft::pair<const Key, T>>>
+		typename Allocator = std::allocator<ft::_node<Key, T> > > // typename Allocator = std::allocator<ft::pair<const Key, T>>>
 	class map
 	{
 		public:
-			typedef Key														key_type;				// key_type	The first template parameter (Key)	
-			typedef T														mapped_type;			// mapped_type	The second template parameter (T)	
-			typedef ft::_node<Key, T>										value_type;				// value_type	pair<const key_type,mapped_type>	
-			typedef Compare													key_compare;			// key_compare	The third template parameter (Compare)	defaults to: less<key_type>
-			typedef Allocator												allocator_type;			// allocator_type	The fourth template parameter (Alloc)	defaults to: allocator<value_type>
+			typedef Key															key_type;				// key_type	The first template parameter (Key)	
+			typedef T															mapped_type;			// mapped_type	The second template parameter (T)	
+			typedef ft::_node<Key, T>											value_type;				// value_type	pair<const key_type,mapped_type>	
+			typedef Compare														key_compare;			// key_compare	The third template parameter (Compare)	defaults to: less<key_type>
+			typedef Allocator													allocator_type;			// allocator_type	The fourth template parameter (Alloc)	defaults to: allocator<value_type>
 
-			typedef value_type												&reference;				// reference	allocator_type::reference	for the default allocator: value_type&
-			typedef const value_type										&const_reference;		// const_reference	allocator_type::const_reference	for the default allocator: const value_type&
-			typedef typename Allocator::pointer								pointer;				// pointer	allocator_type::pointer	for the default allocator: value_type*
-			typedef typename Allocator::const_pointer						const_pointer;			// const_pointer	allocator_type::const_pointer	for the default allocator: const value_type*
+			typedef value_type													&reference;				// reference	allocator_type::reference	for the default allocator: value_type&
+			typedef const value_type											&const_reference;		// const_reference	allocator_type::const_reference	for the default allocator: const value_type&
+			typedef typename Allocator::pointer									pointer;				// pointer	allocator_type::pointer	for the default allocator: value_type*
+			typedef typename Allocator::const_pointer							const_pointer;			// const_pointer	allocator_type::const_pointer	for the default allocator: const value_type*
 			
-			typedef std::bidirectional_iterator_tag							iterator;				// iterator	a bidirectional iterator to value_type	convertible to const_iterator
-			typedef const std::bidirectional_iterator_tag					const_iterator;			// const_iterator	a bidirectional iterator to const value_type	
-			typedef typename std::reverse_iterator<iterator>				reverse_iterator;		// reverse_iterator	reverse_iterator<iterator>	
-			typedef typename std::reverse_iterator<const_iterator>			const_reverse_iterator;	// const_reverse_iterator	reverse_iterator<const_iterator>	
+			typedef typename ft::map_iterator<mapped_type, key_compare>			iterator;				// iterator	a bidirectional iterator to value_type	convertible to const_iterator
+			typedef const typename ft::map_iterator<mapped_type, key_compare>	const_iterator;			// const_iterator	a bidirectional iterator to const value_type	
+			typedef typename std::reverse_iterator<iterator>					reverse_iterator;		// reverse_iterator	reverse_iterator<iterator>	
+			typedef typename std::reverse_iterator<const_iterator>				const_reverse_iterator;	// const_reverse_iterator	reverse_iterator<const_iterator>	
 			
-			typedef std::ptrdiff_t											difference_type;		// difference_type	a signed integral type, identical to: iterator_traits<iterator>::difference_type	usually the same as ptrdiff_t
-			typedef std::size_t												size_type;				// size_type	an unsigned integral type that can represent any non-negative value of difference_type
+			typedef std::ptrdiff_t												difference_type;		// difference_type	a signed integral type, identical to: iterator_traits<iterator>::difference_type	usually the same as ptrdiff_t
+			typedef std::size_t													size_type;				// size_type	an unsigned integral type that can represent any non-negative value of difference_type
 			
 			class value_compare
 			{		
@@ -91,26 +98,81 @@ namespace ft
 	//******************************************************************************************************//
 
 		public:
-			explicit map(const key_compare &compare = key_compare(), const allocator_type &alloc = allocator_type());
+			explicit map(const key_compare &compare = key_compare(), const allocator_type &alloc = allocator_type()) :
+			_alloc(alloc), _comp(compare), _size(0), _first(nullptr), _end(_first)
+			{ };
 			
 			template <class InTerator>
-			map(InTerator first, InTerator last, const key_compare &comp = key_compare(),
-				const allocator_type &alloc = allocator_type());
+			map(InTerator first, InTerator last, const key_compare &compare = key_compare(),
+				const allocator_type &alloc = allocator_type()) :
+			_alloc(alloc), _comp(compare), _size(0), _first(nullptr), _end(_first)
+			{
+				insert(first, last);
+			}
+
+			template <class InTerator>
+			map(InTerator value, const key_compare &compare = key_compare(),
+				const allocator_type &alloc = allocator_type()) :
+			_alloc(alloc), _comp(compare), _size(0), _first(nullptr), _end(_first)
+			{
+				insert(value);
+			}
 				
-			map(const map &src);
+			map(const map &src) :
+			_alloc(src.alloc), _comp(src.compare), _size(0), _first(nullptr), _end(_first)
+			{
+				insert(src._first, src._end);
+			}
 			
-			~map(void);
+			~map(void)
+			{
+				clear();
+			}
 
-			map	&operator=(const map &src);
+			map	&operator=(const map &src)
+			{
+				if (this != &src)
+				{
+					_first = src._first;
+					_end = src._end;
+					_comp = src._comp;
+					_size = src._size;
+					_alloc = src._alloc;
+				}
 
-			mapped_type	&operator[](const key_type &palce);
+				return (this);
+			}
+
+			// Return value if find, else return 0
+			mapped_type	&operator[](const key_type &key)
+			{
+				try
+				{
+					return at(key);
+				}
+				// insert with key and empty mapped_type
+				catch (std::out_of_range e)
+				{
+					mapped_type	empty_type;
+					insert(ft::_node<key_type, mapped_type>(key, empty_type));
+				}
+			}
 		
 		//******************************************************************************************************//
 		//												Find										    		//
 		//******************************************************************************************************//
 
-			// at
-			reference		&at(const key_type &k_type);
+			// put the key and return the value
+			// template <typename Key, typename T>
+			T	&at(const key_type &k_type)
+			{
+				iterator	it = find(k_type);
+
+				if (it == end())
+					throw std::out_of_range("error, key not found");
+
+				return it->pair.second;
+			}
 			
 			const_reference	&at(const key_type &k_type) const;
 

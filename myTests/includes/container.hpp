@@ -6,7 +6,7 @@
 /*   By: dracken24 <dracken24@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:57:08 by dracken24         #+#    #+#             */
-/*   Updated: 2023/03/05 11:43:46 by dracken24        ###   ########.fr       */
+/*   Updated: 2023/03/06 20:25:43 by dracken24        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 // Functions //
 #include "../../includes/functions/isIntegral.hpp"
+#include "../../includes/templates/mapIterator.hpp"
 #include "../../includes/templates/iterator.hpp"
 #include "../../includes/functions/utils.hpp"
 #include "../../includes/functions/pair.hpp"
